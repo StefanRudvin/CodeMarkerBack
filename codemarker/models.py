@@ -8,15 +8,13 @@ import datetime
 
 # Create your models here.
 
+
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
 
     def __str__(self):
         return self.question_text
-
-    def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 
 class Choice(models.Model):
@@ -27,12 +25,22 @@ class Choice(models.Model):
     def __str__(self):
         return self.choice_text
 
+    def was_published_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+
+
 class Course(models.Model):
     name = models.CharField(max_length=100, null=False)
     description = models.CharField(max_length=400)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def was_published_recently(self):
+        return self.created_at >= timezone.now() - datetime.timedelta(days=1)
+
+    class Meta:
+        ordering = ('created_at',)
 
 
 class Resource(models.Model):
@@ -43,10 +51,11 @@ class Resource(models.Model):
 
     status = EnumField(choices=['start', 'in_progress', 'complete'])
 
-    assessment_id = models.ForeignKey(
+    assessments = models.ForeignKey(
         'Assessment',
         on_delete=models.CASCADE,
-        null=False
+        null=False,
+        default=None,
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -61,14 +70,14 @@ class Assessment(models.Model):
     start_date = models.DateTimeField
     end_date = models.DateTimeField
 
-    resource_id = models.ForeignKey(
-        'Resource',
-        on_delete=models.CASCADE
+    resources = models.ForeignKey(
+        Resource,
+        on_delete=models.CASCADE,
+        default=None
     )
 
-    course_id = models.ForeignKey(
-        'Course',
-        on_delete=models.CASCADE,
+    course = models.ForeignKey(
+        Course,
         null=False
     )
 
@@ -87,13 +96,13 @@ class Submission(models.Model):
     marks = models.DecimalField(decimal_places=10, max_digits=10)
     output = models.TextField
 
-    user_id = models.ForeignKey(
+    user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         null=False
     )
-    assessment_id = models.ForeignKey(
-        'Assessment',
+    assessment = models.ForeignKey(
+        Assessment,
         on_delete=models.CASCADE,
         null=False
     )
