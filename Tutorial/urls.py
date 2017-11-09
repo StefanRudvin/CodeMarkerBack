@@ -22,5 +22,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
     url(r'^api/courses/$', views.CoursesList.as_view(), name='courses-list'),
-    url(r'^api/courses/(?P<pk>[0-9]+)/$', views.CoursesList.as_view(), name='courses-detail'),
+    url(r'^api/courses/(?P<pk>[0-9]+)/$', views.CoursesDetail.as_view(), name='courses-detail'),
+
+    url(r'^api/assessments/$', views.AssessmentsList.as_view(), name='assessment-list'),
+    url(r'^api/assessments/(?P<pk>[0-9]+)/$', views.AssessmentsDetail.as_view(), name='assessments-detail'),
 ]

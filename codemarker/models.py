@@ -51,11 +51,12 @@ class Resource(models.Model):
 
     status = EnumField(choices=['start', 'in_progress', 'complete'])
 
-    assessments = models.ForeignKey(
+    assessment = models.ForeignKey(
         'Assessment',
         on_delete=models.CASCADE,
         null=False,
         default=None,
+        related_name="assessments"
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -70,19 +71,24 @@ class Assessment(models.Model):
     start_date = models.DateTimeField
     end_date = models.DateTimeField
 
-    resources = models.ForeignKey(
+    resource = models.ForeignKey(
         Resource,
         on_delete=models.CASCADE,
-        default=None
+        default=None,
+        related_name="resources",
     )
 
     course = models.ForeignKey(
         Course,
-        null=False
+        null=False,
+        related_name="assessments"
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return '%d %s %s' % (self.id, self.name, self.description)
 
 
 class Submission(models.Model):
