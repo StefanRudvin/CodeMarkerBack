@@ -76,6 +76,7 @@ class Assessment(models.Model):
         on_delete=models.CASCADE,
         default=None,
         related_name="resources",
+        null=True
     )
 
     course = models.ForeignKey(
