@@ -56,7 +56,7 @@ class Resource(models.Model):
         on_delete=models.CASCADE,
         null=False,
         default=None,
-        related_name="assessments"
+        related_name="resources"
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -65,8 +65,8 @@ class Resource(models.Model):
 
 class Assessment(models.Model):
     name = models.CharField(max_length=400, null=False)
-    description = models.TextField
-    additional_help = models.TextField
+    description = models.CharField(max_length=1000, default="")
+    additional_help = models.CharField(max_length=1000, default="")
 
     start_date = models.DateTimeField
     end_date = models.DateTimeField
@@ -93,14 +93,16 @@ class Assessment(models.Model):
 
 
 class Submission(models.Model):
-    filename = models.CharField(max_length=400, null=False)
+    filename = models.FileField(upload_to='submissions/')
     content_type = models.CharField(max_length=400)
     data = models.BinaryField(null=False)
+
+    timeTaken = models.DecimalField(null=False, default=0, decimal_places=4, max_digits=4)
 
     status = EnumField(choices=['start', 'in_progress', 'complete'])
     result = EnumField(choices=['pass', 'fail', 'error'])
 
-    marks = models.DecimalField(decimal_places=10, max_digits=10)
+    marks = models.IntegerField()
     output = models.TextField
 
     user = models.ForeignKey(
@@ -111,7 +113,8 @@ class Submission(models.Model):
     assessment = models.ForeignKey(
         Assessment,
         on_delete=models.CASCADE,
-        null=False
+        null=False,
+        related_name="submissions"
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

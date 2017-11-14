@@ -24,6 +24,12 @@ urlpatterns = [
     url(r'^api/courses/$', views.CoursesList.as_view(), name='courses-list'),
     url(r'^api/courses/(?P<pk>[0-9]+)/$', views.CoursesDetail.as_view(), name='courses-detail'),
 
-    url(r'^api/assessments/$', views.AssessmentsList.as_view(), name='assessment-list'),
+    url(r'^api/submissions/$', views.SubmissionsList.as_view(), name='submissions-list'),
+    url(r'^api/submissions/(?P<pk>[0-9]+)/$', views.SubmissionsDetail.as_view(), name='submissions-detail'),
+
+    url(r'^api/assessments/$', views.AssessmentsList.as_view(), name='assessments-list'),
     url(r'^api/assessments/(?P<pk>[0-9]+)/$', views.AssessmentsDetail.as_view(), name='assessments-detail'),
+
+    url(r'^api/assessments/([0-9]+)/upload/$', views.assessmentsUpload, name='submissions-upload'),
+    url(r'^api/submissions/(?P<submission_id>\d+)/process/$', views.submissionsProcess, name='submission-process'),
 ]

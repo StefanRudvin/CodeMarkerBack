@@ -28,6 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 CORS_ORIGIN_ALLOW_ALL = True
 
+MEDIA_URL = '/uploads/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+
 
 # Application definition
 
