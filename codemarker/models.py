@@ -68,9 +68,6 @@ class Assessment(models.Model):
     description = models.CharField(max_length=1000, default="")
     additional_help = models.CharField(max_length=1000, default="")
 
-    start_date = models.DateTimeField
-    end_date = models.DateTimeField
-
     resource = models.ForeignKey(
         Resource,
         on_delete=models.CASCADE,

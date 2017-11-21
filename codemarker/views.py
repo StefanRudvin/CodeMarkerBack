@@ -68,6 +68,7 @@ class CoursesDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CourseSerializer
 
 
+
 class AssessmentsList(generics.ListCreateAPIView):
     """
         List all assessments.

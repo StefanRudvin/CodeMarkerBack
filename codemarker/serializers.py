@@ -18,6 +18,13 @@ class AssessmentSerializer(serializers.ModelSerializer):
 
     submissions = SubmissionSerializer(many=True, read_only=True)
 
+    def create(self, validated_data):
+        del validated_data['user']
+
+        assessment = Assessment(**validated_data)
+        assessment.save()
+        return Assessment
+
     class Meta:
         model = Assessment
         fields = '__all__'
@@ -31,6 +38,13 @@ class AssessmentSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
 
     assessments = AssessmentSerializer(many=True, read_only=True)
+
+    def create(self, validated_data):
+        del validated_data['user']
+
+        course = Course(**validated_data)
+        course.save()
+        return course
 
     class Meta:
         model = Course

@@ -4,6 +4,8 @@ from django.core import serializers
 import random
 import time
 import json
+from codemarker.dockerProcessor import startDockerInstance
+
 
 
 def processSubmission(submission_id):
@@ -44,11 +46,15 @@ def processSubmission(submission_id):
 
     submission.save()
 
+    startDockerInstance("echo Hello from first docker container!")
+    # startDockerInstance("echo Hello from second docker container!")
+    # startDockerInstance("echo Hello from third docker container!")
+    # startDockerInstance("echo Hello from fourth docker container!")
+
+    # startDockerInstance("ls")
+
     data = serializers.serialize('json', [submission, ])
     struct = json.loads(data)
     data = json.dumps(struct[0])
 
     return data
-
-
-
