@@ -1,29 +1,18 @@
 from django.http import HttpResponse
 from codemarker.models import Course, Assessment, Submission
-from codemarker.forms import SubmissionForm
-
-from rest_framework import viewsets
 from rest_framework import generics
-from rest_framework.response import Response
-from rest_framework.reverse import reverse
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from codemarker.SubmissionProcessor import processSubmission
-from django.core import serializers as djangoserializers
-import json
-
 from codemarker.serializers import CourseSerializer, AssessmentSerializer, SubmissionSerializer
 
 
 def index(request):
     return HttpResponse("Hello world. You're at the codemarker index.")
 
+
 @csrf_exempt
 def assessmentsUpload(request, assessmentId):
-
     if request.method == 'POST' and request.FILES['submission']:
         myfile = request.FILES['submission']
         fs = FileSystemStorage()
@@ -66,7 +55,6 @@ class CoursesDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-
 
 
 class AssessmentsList(generics.ListCreateAPIView):

@@ -2,13 +2,59 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21c7af0a-3fd0-4979-8e8a-ed2650fd54e4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/codemarker/dockerProcessor.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2numsSleep.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2numsSleep_P2yxB88.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2numsSleep_Qfq9XVL.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2numsSleep_RbZ6ADv.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2numsSleep_SF0vlo0.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2numsSleep_mq1fRDT.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_0Mf8SH8.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_1fsyoeJ.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_6foSvQq.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_6zmbD1q.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_7q56hJN.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_85lG1X9.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_8PYcFI3.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_BAFyKfu.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_BXj3AQ9.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_ByiAoui.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_ERIppQd.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_GlKG3Yi.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_O9SGSBU.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_PrvDmVY.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_R4X1l14.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_TDI8hN1.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_TdKPW6q.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_TnA4RWy.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_UHbIXPy.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_UJU4ZZO.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_WPUy3yt.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_XJrYUEb.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_ZF7tPsW.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_ZKAE7Oq.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_euiR942.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_i41vqWS.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_jTA70pR.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_kMo2aqC.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_pI6nyFW.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_pldDrrP.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_qawf09S.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_rMgaqRe.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_sdvU6zb.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_svYjc6i.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_trfJdk0.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_y2gFTUp.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_z0YRzVD.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/sum2nums_zu776ZV.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/testDocker.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tutorial/settings.py" afterPath="$PROJECT_DIR$/Tutorial/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tutorial/urls.py" afterPath="$PROJECT_DIR$/Tutorial/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codemarker/SubmissionProcessor.py" afterPath="$PROJECT_DIR$/codemarker/SubmissionProcessor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codemarker/models.py" afterPath="$PROJECT_DIR$/codemarker/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codemarker/pip-selfcheck.json" afterPath="$PROJECT_DIR$/codemarker/pip-selfcheck.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codemarker/dockerProcessor.py" afterPath="$PROJECT_DIR$/codemarker/dockerProcessor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codemarker/serializers.py" afterPath="$PROJECT_DIR$/codemarker/serializers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codemarker/urls.py" afterPath="$PROJECT_DIR$/codemarker/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codemarker/views.py" afterPath="$PROJECT_DIR$/codemarker/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +79,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tutorial/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="13" column="28" lean-forward="true" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+            <state relative-caret-position="144">
+              <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
               <folding>
                 <element signature="e#642#683#0" expanded="true" />
               </folding>
@@ -45,8 +91,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codemarker/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+            <state relative-caret-position="244">
+              <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -54,13 +100,57 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/codemarker/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/codemarker/tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codemarker/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+            <state relative-caret-position="228">
+              <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dockerProcessor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/codemarker/dockerProcessor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SubmissionProcessor.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/codemarker/SubmissionProcessor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -69,8 +159,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codemarker/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="65" column="31" lean-forward="true" selection-start-line="65" selection-start-column="31" selection-end-line="65" selection-end-column="31" />
+            <state relative-caret-position="84">
+              <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -79,28 +169,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tutorial/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="19" column="31" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sum2nums_BXj3AQ9.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/uploads/sum2nums_BXj3AQ9.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sum2nums.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/uploads/sum2nums.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+            <state relative-caret-position="358">
+              <caret line="55" column="25" lean-forward="false" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -143,17 +213,18 @@
         <option value="$PROJECT_DIR$/polls/apps.py" />
         <option value="$PROJECT_DIR$/codemarker/fixture.txt" />
         <option value="$PROJECT_DIR$/codemarker/forms.py" />
-        <option value="$PROJECT_DIR$/Tutorial/urls.py" />
         <option value="$PROJECT_DIR$/codemarker/ReportCreator.py" />
         <option value="$PROJECT_DIR$/codemarker/test.py" />
         <option value="$PROJECT_DIR$/uploads/sum2nums.py" />
         <option value="$PROJECT_DIR$/uploads/sum2nums_BXj3AQ9.py" />
+        <option value="$PROJECT_DIR$/Tutorial/urls.py" />
+        <option value="$PROJECT_DIR$/codemarker/models.py" />
         <option value="$PROJECT_DIR$/Tutorial/settings.py" />
+        <option value="$PROJECT_DIR$/codemarker/views.py" />
+        <option value="$PROJECT_DIR$/codemarker/urls.py" />
+        <option value="$PROJECT_DIR$/codemarker/serializers.py" />
         <option value="$PROJECT_DIR$/codemarker/dockerProcessor.py" />
         <option value="$PROJECT_DIR$/codemarker/SubmissionProcessor.py" />
-        <option value="$PROJECT_DIR$/codemarker/models.py" />
-        <option value="$PROJECT_DIR$/codemarker/views.py" />
-        <option value="$PROJECT_DIR$/codemarker/serializers.py" />
       </list>
     </option>
   </component>
@@ -164,8 +235,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="2" />
+    <option name="y" value="11" />
+    <option name="width" value="1436" />
+    <option name="height" value="878" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -204,6 +277,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="uploads" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tutorial" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tutorial" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="codemarker" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -220,7 +307,7 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="SearchEverywhereHistoryKey" value="settings&#9;FILE&#9;file:///Users/stefanrudvin/Dropbox/Code/Python/Django/Tutorial/Tutorial/settings.py&#10;model&#9;FILE&#9;file:///Users/stefanrudvin/Dropbox/Code/Python/Django/Tutorial/codemarker/models.py&#10;setting&#9;FILE&#9;file:///Users/stefanrudvin/Dropbox/Code/Python/Django/Tutorial/Tutorial/settings.py" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />
     <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
@@ -514,27 +601,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="2" y="11" width="1436" height="878" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21319444" sideWeight="0.4741602" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21309192" sideWeight="0.4741602" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22291666" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16640624" sideWeight="0.5258398" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -813,13 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codemarker/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/rest_framework/relations.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -857,17 +937,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codemarker/tests.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="722" column="0" lean-forward="false" selection-start-line="722" selection-start-column="0" selection-end-line="722" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codemarker/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/random.py">
+    <entry file="file://$PROJECT_DIR$/codemarker/migrations/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="722" column="0" lean-forward="false" selection-start-line="722" selection-start-column="0" selection-end-line="722" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -881,88 +968,90 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/uploads/sum2nums.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codemarker/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codemarker/migrations/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codemarker/dockerProcessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codemarker/SubmissionProcessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="32" column="29" lean-forward="false" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorial/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="31" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codemarker/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="65" column="31" lean-forward="true" selection-start-line="65" selection-start-column="31" selection-end-line="65" selection-end-column="31" />
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tutorial/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="28" lean-forward="true" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+        <state relative-caret-position="144">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding>
             <element signature="e#642#683#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/codemarker/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tutorial/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="55" column="25" lean-forward="false" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/codemarker/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+        <state relative-caret-position="244">
+          <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/codemarker/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codemarker/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/codemarker/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+        <state relative-caret-position="228">
+          <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codemarker/dockerProcessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codemarker/SubmissionProcessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="24" column="17" lean-forward="true" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -4,7 +4,6 @@ from codemarker.models import Course, Assessment, Submission
 
 
 class SubmissionSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Submission
         fields = '__all__'
@@ -14,8 +13,8 @@ class SubmissionSerializer(serializers.ModelSerializer):
             }
         }
 
-class AssessmentSerializer(serializers.ModelSerializer):
 
+class AssessmentSerializer(serializers.ModelSerializer):
     submissions = SubmissionSerializer(many=True, read_only=True)
 
     def create(self, validated_data):
@@ -36,7 +35,6 @@ class AssessmentSerializer(serializers.ModelSerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
-
     assessments = AssessmentSerializer(many=True, read_only=True)
 
     def create(self, validated_data):
@@ -54,6 +52,3 @@ class CourseSerializer(serializers.ModelSerializer):
                 'view_name': 'course:courses-detail',
             }
         }
-
-
-

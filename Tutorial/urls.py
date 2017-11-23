@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^codemarker/', include('codemarker.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
+
     url(r'^api/courses/$', views.CoursesList.as_view(), name='courses-list'),
     url(r'^api/courses/(?P<pk>[0-9]+)/$', views.CoursesDetail.as_view(), name='courses-detail'),
 

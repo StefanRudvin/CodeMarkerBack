@@ -7,8 +7,8 @@ import json
 from codemarker.dockerProcessor import startDockerInstance
 
 
-
 def processSubmission(submission_id):
+    # First get submission
     submission = Submission.objects.get(pk=submission_id)
     submission.status = "in_progress"
     submission.save()
@@ -18,9 +18,11 @@ def processSubmission(submission_id):
 
     start_time = time.time()
 
+    # Send submission to a new service and get output
     p = Popen(['python', './uploads/' + str(submission.filename)], stdout=PIPE, stdin=PIPE, stderr=PIPE)
     stdout_data = p.communicate(input=str.encode(str(num1) + "\n" + str(num2)))[0]
 
+    # Test output
     if (float(stdout_data) == float(num1 + num2)):
         submission.result = "pass"
     else:
@@ -29,6 +31,8 @@ def processSubmission(submission_id):
     submission.status = "complete"
     submission.timeTaken = time.time() - start_time
 
+    # Set mark based on time taken
+    # Hard-coded time limits for PoC
     if submission.timeTaken < 0.01:
         submission.marks = 100
     elif submission.timeTaken < 0.02:
@@ -46,13 +50,16 @@ def processSubmission(submission_id):
 
     submission.save()
 
+    # Start docker instances, send and print text output
     startDockerInstance("echo Hello from first docker container!")
+
     # startDockerInstance("echo Hello from second docker container!")
     # startDockerInstance("echo Hello from third docker container!")
     # startDockerInstance("echo Hello from fourth docker container!")
 
     # startDockerInstance("ls")
 
+    # Produce JSON output
     data = serializers.serialize('json', [submission, ])
     struct = json.loads(data)
     data = json.dumps(struct[0])
