@@ -19,8 +19,10 @@ def processSubmission(submission_id):
     start_time = time.time()
 
     # Send submission to a new service and get output
-    p = Popen(['python', './uploads/' + str(submission.filename)], stdout=PIPE, stdin=PIPE, stderr=PIPE)
-    stdout_data = p.communicate(input=str.encode(str(num1) + "\n" + str(num2)))[0]
+    p = Popen(['python', './uploads/submissions/' + str(submission.assessment_id) + '/' +
+               str(submission.filename)], stdout=PIPE, stdin=PIPE, stderr=PIPE)
+    stdout_data = p.communicate(
+        input=str.encode(str(num1) + "\n" + str(num2)))[0]
 
     # Test output
     if (float(stdout_data) == float(num1 + num2)):
@@ -51,7 +53,7 @@ def processSubmission(submission_id):
     submission.save()
 
     # Start docker instances, send and print text output
-    startDockerInstance("echo Hello from first docker container!")
+    startDockerInstance(submission)
 
     # startDockerInstance("echo Hello from second docker container!")
     # startDockerInstance("echo Hello from third docker container!")

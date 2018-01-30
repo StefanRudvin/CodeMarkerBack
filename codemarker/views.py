@@ -5,6 +5,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
 from codemarker.SubmissionProcessor import processSubmission
 from codemarker.serializers import CourseSerializer, AssessmentSerializer, SubmissionSerializer
+import codemarker
+from Tutorial import settings
+import os
 
 
 def index(request):
@@ -14,8 +17,13 @@ def index(request):
 @csrf_exempt
 def assessmentsUpload(request, assessmentId):
     if request.method == 'POST' and request.FILES['submission']:
+
         myfile = request.FILES['submission']
-        fs = FileSystemStorage()
+        os.makedirs(os.path.join(settings.MEDIA_ROOT, 'submissions',
+                                 assessmentId), exist_ok=True)
+        fs = FileSystemStorage(location=os.path.join(
+            settings.MEDIA_ROOT, 'submissions', assessmentId))
+
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
         submission = Submission(

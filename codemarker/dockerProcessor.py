@@ -1,7 +1,24 @@
 import docker
+from Tutorial.settings import MEDIA_ROOT
+import os
 
 
-def startDockerInstance(command):
+def startDockerInstance(submission):
     client = docker.from_env()
 
-    print(client.containers.run("ubuntu", command))
+    container = client.containers.run("python",
+                                      volumes={
+                                          MEDIA_ROOT:
+                                          {
+                                              'bind': '/mnt/vol1',
+                                              'mode': 'rw'
+                                          },
+                                          os.path.join(MEDIA_ROOT, '..', 'scripts'):
+                                          {
+                                              'bind': '/mnt/vol2',
+                                              'mode': 'rw'
+                                          }
+                                      },
+                                      command="/bin/bash /mnt/vol2/script.sh %s %s" % (submission.filename, submission.assessment_id))
+
+    print(container)
