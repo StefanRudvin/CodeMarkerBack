@@ -19,6 +19,4 @@ def startDockerInstance(submission):
                                               'mode': 'rw'
                                           }
                                       },
-                                      command="/bin/bash /mnt/vol2/script.sh %s %s" % (submission.filename, submission.assessment_id))
-
-    print(container)
+                                      command="/bin/bash /mnt/vol2/run_python.sh %s %s %s" % (submission.filename, submission.assessment_id, submission.id))

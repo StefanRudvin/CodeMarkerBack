@@ -19,15 +19,8 @@ def assessmentsUpload(request, assessmentId):
     if request.method == 'POST' and request.FILES['submission']:
 
         myfile = request.FILES['submission']
-        os.makedirs(os.path.join(settings.MEDIA_ROOT, 'submissions',
-                                 assessmentId), exist_ok=True)
-        fs = FileSystemStorage(location=os.path.join(
-            settings.MEDIA_ROOT, 'submissions', assessmentId))
-
-        filename = fs.save(myfile.name, myfile)
-        uploaded_file_url = fs.url(filename)
         submission = Submission(
-            filename=filename,
+            filename=myfile.name,
             content_type="python",
             status="start",
             result="fail",
@@ -36,6 +29,14 @@ def assessmentsUpload(request, assessmentId):
             assessment_id=assessmentId,
             timeTaken=0)
         submission.save()
+
+        os.makedirs(os.path.join(settings.MEDIA_ROOT,
+                                 assessmentId, 'submissions', str(submission.id)), exist_ok=True)
+        fs = FileSystemStorage(location=os.path.join(
+            settings.MEDIA_ROOT, assessmentId, 'submissions', str(submission.id)))
+
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
 
         return HttpResponse(submission.id)
 
