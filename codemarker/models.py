@@ -36,6 +36,19 @@ class Course(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=False
+    )
+
+    def haha(self):
+        return False
+
+    @property
+    def professor(self):
+        return self.user_id
+
     def was_published_recently(self):
         return self.created_at >= timezone.now() - datetime.timedelta(days=1)
 
@@ -50,6 +63,8 @@ class Resource(models.Model):
     data = models.BinaryField(null=False)
 
     status = EnumField(choices=['start', 'in_progress', 'complete'])
+
+    # Make method to get owner i.e. professor of a resource
 
     assessment = models.ForeignKey(
         'Assessment',
