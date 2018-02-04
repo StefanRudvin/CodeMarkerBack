@@ -8,27 +8,6 @@ import datetime
 
 # Create your models here.
 
-
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
-
-    def __str__(self):
-        return self.question_text
-
-
-class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.choice_text
-
-    def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
-
-
 class Course(models.Model):
     name = models.CharField(max_length=100, null=False)
     description = models.CharField(max_length=400)
@@ -54,10 +33,8 @@ class Course(models.Model):
 
 
 class Resource(models.Model):
-    filename = models.CharField(max_length=100, null=False)
+    filename = models.FileField(upload_to='resources/')
     content_type = models.CharField(max_length=400)
-
-    data = models.BinaryField(null=False)
 
     status = EnumField(choices=['start', 'in_progress', 'complete'])
 
@@ -72,18 +49,17 @@ class Resource(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class InputGenerator(models.Model):
-    filename = models.CharField(max_length=100, null=False)
-    content_type = models.CharField(max_length=400)
 
-    data = models.BinaryField(null=False)
+class InputGenerator(models.Model):
+    filename = models.FileField(upload_to='input_generators/')
+    content_type = models.CharField(max_length=400)
 
     assessment = models.ForeignKey(
         'Assessment',
         on_delete=models.CASCADE,
         null=False,
         default=None,
-        related_name="input_generator"
+        related_name="input_generators"
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -112,9 +88,9 @@ class Assessment(models.Model):
     input_generator = models.ForeignKey(
         InputGenerator,
         on_delete=models.CASCADE,
-        null=True,
         default=None,
-        related_name="input_generator"
+        related_name="input_generators",
+        null=True
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

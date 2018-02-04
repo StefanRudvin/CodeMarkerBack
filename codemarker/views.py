@@ -62,30 +62,33 @@ def assessments_upload(request, course_id):
         resource.save()
 
         os.makedirs(os.path.join(settings.MEDIA_ROOT,
-                                 assessment.id, 'resources', str(resource.id)), exist_ok=True)
+                                 resource.id, 'resources', str(resource.id)), exist_ok=True)
         fs = FileSystemStorage(location=os.path.join(
-            settings.MEDIA_ROOT, assessment.id, 'resources', str(resource.id)))
+            settings.MEDIA_ROOT, resource.id, 'resources', str(resource.id)))
 
-        filename = fs.save(resource_file.name, resource_file)
-        uploaded_file_url = fs.url(filename)
-
+        fs.save(resource_file.name, resource_file)
 
         if request.FILES['input_generator_file']:
             input_generator_file = request.FILES['input_generator_file']
 
             input_generator = InputGenerator(
-                filename=resource_file.name,
+                filename=input_generator_file.name,
                 content_type="python",
                 assessment=assessment.id)
             input_generator.save()
 
             os.makedirs(os.path.join(settings.MEDIA_ROOT,
-                                     assessment.id, 'input_generator', str(input_generator.id)), exist_ok=True)
+                                     input_generator.id, 'input_generators', str(input_generator.id)), exist_ok=True)
             fs = FileSystemStorage(location=os.path.join(
-                settings.MEDIA_ROOT, assessment.id, 'input_generator', str(input_generator.id)))
+                settings.MEDIA_ROOT, input_generator.id, 'input_generators', str(input_generator.id)))
 
-            filename = fs.save(resource_file.name, resource_file)
-            uploaded_file_url = fs.url(filename)
+            fs.save(input_generator_file.name, input_generator_file)
+
+            assessment.input_generator = input_generator.id
+
+        assessment.resource = resource.id
+
+        assessment.save()
 
         return HttpResponse(assessment.id)
 
