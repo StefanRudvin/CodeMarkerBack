@@ -42,9 +42,6 @@ class Course(models.Model):
         null=False
     )
 
-    def haha(self):
-        return False
-
     @property
     def professor(self):
         return self.user_id
@@ -64,14 +61,29 @@ class Resource(models.Model):
 
     status = EnumField(choices=['start', 'in_progress', 'complete'])
 
-    # Make method to get owner i.e. professor of a resource
-
     assessment = models.ForeignKey(
         'Assessment',
         on_delete=models.CASCADE,
         null=False,
         default=None,
         related_name="resources"
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class InputGenerator(models.Model):
+    filename = models.CharField(max_length=100, null=False)
+    content_type = models.CharField(max_length=400)
+
+    data = models.BinaryField(null=False)
+
+    assessment = models.ForeignKey(
+        'Assessment',
+        on_delete=models.CASCADE,
+        null=False,
+        default=None,
+        related_name="input_generator"
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -95,6 +107,14 @@ class Assessment(models.Model):
         Course,
         null=False,
         related_name="assessments"
+    )
+
+    input_generator = models.ForeignKey(
+        InputGenerator,
+        on_delete=models.CASCADE,
+        null=True,
+        default=None,
+        related_name="input_generator"
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

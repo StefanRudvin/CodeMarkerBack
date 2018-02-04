@@ -1,11 +1,10 @@
-from django.http import HttpResponse
-from codemarker.models import Course, Assessment, Submission
-from rest_framework import generics
-from django.views.decorators.csrf import csrf_exempt
-from django.core.files.storage import FileSystemStorage
-from codemarker.SubmissionProcessor import processSubmission
 from codemarker.serializers import CourseSerializer, AssessmentSerializer, SubmissionSerializer
-import codemarker
+from codemarker.models import Course, Assessment, Submission, Resource, InputGenerator
+from codemarker.SubmissionProcessor import processSubmission
+from django.core.files.storage import FileSystemStorage
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+from rest_framework import generics
 from Tutorial import settings
 import os
 
@@ -15,30 +14,80 @@ def index(request):
 
 
 @csrf_exempt
-def assessmentsUpload(request, assessmentId):
+def submissions_upload(request, assessment_id):
     if request.method == 'POST' and request.FILES['submission']:
 
-        myfile = request.FILES['submission']
+        submission_file = request.FILES['submission']
         submission = Submission(
-            filename=myfile.name,
+            filename=submission_file.name,
             content_type="python",
             status="start",
             result="fail",
             marks=0,
             user_id=1,
-            assessment_id=assessmentId,
+            assessment_id=assessment_id,
             timeTaken=0)
         submission.save()
 
         os.makedirs(os.path.join(settings.MEDIA_ROOT,
-                                 assessmentId, 'submissions', str(submission.id)), exist_ok=True)
+                                 assessment_id, 'submissions', str(submission.id)), exist_ok=True)
         fs = FileSystemStorage(location=os.path.join(
-            settings.MEDIA_ROOT, assessmentId, 'submissions', str(submission.id)))
+            settings.MEDIA_ROOT, assessment_id, 'submissions', str(submission.id)))
 
-        filename = fs.save(myfile.name, myfile)
+        filename = fs.save(submission_file.name, submission_file)
         uploaded_file_url = fs.url(filename)
 
         return HttpResponse(submission.id)
+
+@csrf_exempt
+def assessments_upload(request, course_id):
+    if request.method == 'POST' and request.FILES['resource']:
+
+        assessment = Assessment(
+            name=request.POST.get("name", ""),
+            description=request.POST.get("description", ""),
+            additional_help=request.POST.get("additional_help", ""),
+            resource="",
+            input_generator="",
+            course=course_id,)
+        assessment.save()
+
+        resource_file = request.FILES['resource']
+
+        resource = Resource(
+            filename=resource_file.name,
+            content_type="python",
+            status="start",
+            assessment=assessment.id)
+        resource.save()
+
+        os.makedirs(os.path.join(settings.MEDIA_ROOT,
+                                 assessment.id, 'resources', str(resource.id)), exist_ok=True)
+        fs = FileSystemStorage(location=os.path.join(
+            settings.MEDIA_ROOT, assessment.id, 'resources', str(resource.id)))
+
+        filename = fs.save(resource_file.name, resource_file)
+        uploaded_file_url = fs.url(filename)
+
+
+        if request.FILES['input_generator_file']:
+            input_generator_file = request.FILES['input_generator_file']
+
+            input_generator = InputGenerator(
+                filename=resource_file.name,
+                content_type="python",
+                assessment=assessment.id)
+            input_generator.save()
+
+            os.makedirs(os.path.join(settings.MEDIA_ROOT,
+                                     assessment.id, 'input_generator', str(input_generator.id)), exist_ok=True)
+            fs = FileSystemStorage(location=os.path.join(
+                settings.MEDIA_ROOT, assessment.id, 'input_generator', str(input_generator.id)))
+
+            filename = fs.save(resource_file.name, resource_file)
+            uploaded_file_url = fs.url(filename)
+
+        return HttpResponse(assessment.id)
 
 
 def submissionsProcess(request, submission_id):

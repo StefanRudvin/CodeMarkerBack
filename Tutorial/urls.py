@@ -31,6 +31,8 @@ urlpatterns = [
     url(r'^api/assessments/$', views.AssessmentsList.as_view(), name='assessments-list'),
     url(r'^api/assessments/(?P<pk>[0-9]+)/$', views.AssessmentsDetail.as_view(), name='assessments-detail'),
 
-    url(r'^api/assessments/([0-9]+)/upload/$', views.assessmentsUpload, name='submissions-upload'),
+    url(r'^api/assessments/([0-9]+)/upload/$', views.assessments_upload, name='assessments-upload'),
+
+    url(r'^api/submissions/([0-9]+)/upload/$', views.submissions_upload, name='submissions-upload'),
     url(r'^api/submissions/(?P<submission_id>\d+)/process/$', views.submissionsProcess, name='submission-process'),
 ]
