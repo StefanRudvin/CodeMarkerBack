@@ -1,4 +1,7 @@
-from codemarker.serializers import CourseSerializer, AssessmentSerializer, SubmissionSerializer
+from django.contrib.auth.models import User
+from rest_framework import viewsets
+
+from codemarker.serializers import CourseSerializer, AssessmentSerializer, SubmissionSerializer, UserSerializer
 from codemarker.models import Course, Assessment, Submission, Resource, InputGenerator
 from codemarker.SubmissionProcessor import processSubmission
 from django.core.files.storage import FileSystemStorage
@@ -13,6 +16,17 @@ def index(request):
     return HttpResponse("Hello world. You're at the codemarker index.")
 
 
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def retrieve(self, request, pk=None):
+        if pk == 'i':
+            return HttpResponse(UserSerializer(request.user,
+                                               context={'request': request}).data)
+        return super(UserViewSet, self).retrieve(request, pk)
+
+
 @csrf_exempt
 def submissions_upload(request, assessment_id: int) -> HttpResponse:
     """
@@ -25,7 +39,6 @@ def submissions_upload(request, assessment_id: int) -> HttpResponse:
     """
 
     if request.method == 'POST' and request.FILES['submission']:
-
         submission_file = request.FILES['submission']
         submission = Submission(
             filename=submission_file.name,
