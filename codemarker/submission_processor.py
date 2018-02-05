@@ -1,22 +1,27 @@
-from codemarker.models import Submission
-from subprocess import Popen, PIPE, STDOUT
-from django.core import serializers
-import random
-import time
-import json
-from codemarker.dockerProcessor import startDockerInstance
-from Tutorial.settings import MEDIA_ROOT
-import os
 import filecmp
+import json
+import os
+
+from django.core import serializers
+
+from Tutorial.settings import MEDIA_ROOT
+from codemarker.dockerProcessor import start_docker_instance, generate_input
+from codemarker.models import Submission
 
 
-def processSubmission(submission_id):
+def run_submission(submission_id, **kwargs):
+    """
+
+    :param submission_id:
+    :return: data
+    """
     # First get submission
     submission = Submission.objects.get(pk=submission_id)
     submission.status = "in_progress"
     submission.save()
 
-    startDockerInstance(submission)
+    generate_input(submission)
+    start_docker_instance(submission)
 
     expected_output_dir = os.path.join(MEDIA_ROOT, str(
         submission.assessment_id), "expected_outputs")

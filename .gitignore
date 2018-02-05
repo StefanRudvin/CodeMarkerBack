@@ -1,5 +1,5 @@
 /uploads
-.idea
 /.idea
 /codemarker/__pycache__/
-.idea/workspace.xml
+Tutorial/__pycache__/*
+codemarker/migrations/__pycache__/*

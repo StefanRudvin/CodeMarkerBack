@@ -3,7 +3,7 @@ from rest_framework import viewsets
 
 from codemarker.serializers import CourseSerializer, AssessmentSerializer, SubmissionSerializer, UserSerializer
 from codemarker.models import Course, Assessment, Submission, Resource, InputGenerator
-from codemarker.SubmissionProcessor import processSubmission
+from codemarker.submission_processor import run_submission
 from django.core.files.storage import FileSystemStorage
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
@@ -95,9 +95,9 @@ def assessments_upload(request, course_id: int) -> HttpResponse:
         resource.save()
 
         os.makedirs(os.path.join(settings.MEDIA_ROOT,
-                                 str(assessment.id), 'resources', str(resource.id)), exist_ok=True)
+                                 str(assessment.id), 'model_solution', str(resource.id)), exist_ok=True)
         fs = FileSystemStorage(location=os.path.join(
-            settings.MEDIA_ROOT, str(assessment.id), 'resources', str(resource.id)))
+            settings.MEDIA_ROOT, str(assessment.id), 'model_solution', str(resource.id)))
 
         fs.save(resource_file.name, resource_file)
 
@@ -126,7 +126,7 @@ def assessments_upload(request, course_id: int) -> HttpResponse:
         return HttpResponse(assessment.id)
 
 
-def process_submission(request, submission_id: int) -> HttpResponse:
+def process_submission(request, submission_id) -> HttpResponse:
     """
     Process a submission with Docker and processSubmission.py
 
@@ -134,8 +134,8 @@ def process_submission(request, submission_id: int) -> HttpResponse:
     :param submission_id:
     :return: HttpResponse
     """
-
-    return HttpResponse(processSubmission(submission_id), content_type='text/plain')
+    print(submission_id)
+    return HttpResponse(run_submission(submission_id), content_type='text/plain')
 
 
 class CoursesList(generics.ListCreateAPIView):
