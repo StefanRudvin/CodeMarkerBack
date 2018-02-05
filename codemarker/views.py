@@ -14,7 +14,16 @@ def index(request):
 
 
 @csrf_exempt
-def submissions_upload(request, assessment_id):
+def submissions_upload(request, assessment_id: int) -> HttpResponse:
+    """
+    Upload a new submission linked to an assessment
+
+    :param request:
+    :type request
+    :param assessment_id:
+    :return: HttpResponse
+    """
+
     if request.method == 'POST' and request.FILES['submission']:
 
         submission_file = request.FILES['submission']
@@ -39,8 +48,19 @@ def submissions_upload(request, assessment_id):
 
         return HttpResponse(submission.id)
 
+
 @csrf_exempt
-def assessments_upload(request, course_id):
+def assessments_upload(request, course_id: int) -> HttpResponse:
+    """
+    Create a new assessment with resource and input_generator files
+
+    :return: HttpResponse
+    :rtype: HttpResponse
+    :param request:
+    :type request:
+    :param course_id:
+    """
+
     if request.method == 'POST' and request.FILES['resource']:
 
         course = Course.objects.get(pk=course_id)
@@ -93,13 +113,22 @@ def assessments_upload(request, course_id):
         return HttpResponse(assessment.id)
 
 
-def submissionsProcess(request, submission_id):
+def process_submission(request, submission_id: int) -> HttpResponse:
+    """
+    Process a submission with Docker and processSubmission.py
+
+    :param request:
+    :param submission_id:
+    :return: HttpResponse
+    """
+
     return HttpResponse(processSubmission(submission_id), content_type='text/plain')
 
 
 class CoursesList(generics.ListCreateAPIView):
     """
-        List all courses.
+        List all courses using RestFramework.
+        :rtype: CourseSerializer
     """
 
     queryset = Course.objects.all()
@@ -111,16 +140,18 @@ class CoursesList(generics.ListCreateAPIView):
 
 class CoursesDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-        Get a single course.
+        Get a single course using RestFramework.
         :rtype: Course
     """
+
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
 
 class AssessmentsList(generics.ListCreateAPIView):
     """
-        List all assessments.
+        List all assessments using RestFramework.
+        :rtype: AssessmentSerializer
     """
     queryset = Assessment.objects.all()
     serializer_class = AssessmentSerializer
@@ -132,7 +163,9 @@ class AssessmentsList(generics.ListCreateAPIView):
 class AssessmentsDetail(generics.RetrieveUpdateDestroyAPIView):
     """
         Get a single Assessment.
+        :rtype: AssessmentSerializer
     """
+
     queryset = Assessment.objects.all()
     serializer_class = AssessmentSerializer
 
@@ -140,7 +173,9 @@ class AssessmentsDetail(generics.RetrieveUpdateDestroyAPIView):
 class SubmissionsList(generics.ListCreateAPIView):
     """
         List all submissions.
+        :rtype: SubmissionSerializer
     """
+
     queryset = Submission.objects.all()
     serializer_class = SubmissionSerializer
 
@@ -151,6 +186,8 @@ class SubmissionsList(generics.ListCreateAPIView):
 class SubmissionsDetail(generics.RetrieveUpdateDestroyAPIView):
     """
         Get a single submission.
+        :rtype: SubmissionSerializer
     """
+
     queryset = Submission.objects.all()
     serializer_class = SubmissionSerializer

@@ -2,3 +2,4 @@
 .idea
 /.idea
 /codemarker/__pycache__/
+.idea/workspace.xml

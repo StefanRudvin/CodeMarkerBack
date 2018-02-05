@@ -34,5 +34,5 @@ urlpatterns = [
     url(r'^api/assessments/([0-9]+)/upload/$', views.assessments_upload, name='assessments-upload'),
 
     url(r'^api/submissions/([0-9]+)/upload/$', views.submissions_upload, name='submissions-upload'),
-    url(r'^api/submissions/(?P<submission_id>\d+)/process/$', views.submissionsProcess, name='submission-process'),
+    url(r'^api/submissions/(?P<submission_id>\d+)/process/$', views.process_submission, name='submission-process'),
 ]
