@@ -43,13 +43,13 @@ def submissions_upload(request, assessment_id):
 def assessments_upload(request, course_id):
     if request.method == 'POST' and request.FILES['resource']:
 
+        course = Course.objects.get(pk=course_id)
+
         assessment = Assessment(
             name=request.POST.get("name", ""),
             description=request.POST.get("description", ""),
             additional_help=request.POST.get("additional_help", ""),
-            resource="",
-            input_generator="",
-            course=course_id,)
+            course=course)
         assessment.save()
 
         resource_file = request.FILES['resource']
@@ -58,35 +58,35 @@ def assessments_upload(request, course_id):
             filename=resource_file.name,
             content_type="python",
             status="start",
-            assessment=assessment.id)
+            assessment=assessment)
         resource.save()
 
         os.makedirs(os.path.join(settings.MEDIA_ROOT,
-                                 resource.id, 'resources', str(resource.id)), exist_ok=True)
+                                 str(assessment.id), 'resources', str(resource.id)), exist_ok=True)
         fs = FileSystemStorage(location=os.path.join(
-            settings.MEDIA_ROOT, resource.id, 'resources', str(resource.id)))
+            settings.MEDIA_ROOT, str(assessment.id), 'resources', str(resource.id)))
 
         fs.save(resource_file.name, resource_file)
 
-        if request.FILES['input_generator_file']:
-            input_generator_file = request.FILES['input_generator_file']
+        if request.FILES['input_generator']:
+            input_generator_file = request.FILES['input_generator']
 
             input_generator = InputGenerator(
                 filename=input_generator_file.name,
                 content_type="python",
-                assessment=assessment.id)
+                assessment=assessment)
             input_generator.save()
 
             os.makedirs(os.path.join(settings.MEDIA_ROOT,
-                                     input_generator.id, 'input_generators', str(input_generator.id)), exist_ok=True)
+                                     str(assessment.id), 'input_generators', str(input_generator.id)), exist_ok=True)
             fs = FileSystemStorage(location=os.path.join(
-                settings.MEDIA_ROOT, input_generator.id, 'input_generators', str(input_generator.id)))
+                settings.MEDIA_ROOT, str(assessment.id), 'input_generators', str(input_generator.id)))
 
             fs.save(input_generator_file.name, input_generator_file)
 
-            assessment.input_generator = input_generator.id
+            assessment.input_generator = input_generator
 
-        assessment.resource = resource.id
+        assessment.resource = resource
 
         assessment.save()
 

@@ -1,1 +1,4 @@
 /uploads
+.idea
+/.idea
+/codemarker/__pycache__/
