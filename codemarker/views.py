@@ -95,9 +95,9 @@ def assessments_upload(request, course_id: int) -> HttpResponse:
         resource.save()
 
         os.makedirs(os.path.join(settings.MEDIA_ROOT,
-                                 str(assessment.id), 'model_solution', str(resource.id)), exist_ok=True)
+                                 str(assessment.id), 'model_solutions', str(resource.id)), exist_ok=True)
         fs = FileSystemStorage(location=os.path.join(
-            settings.MEDIA_ROOT, str(assessment.id), 'model_solution', str(resource.id)))
+            settings.MEDIA_ROOT, str(assessment.id), 'model_solutions', str(resource.id)))
 
         fs.save(resource_file.name, resource_file)
 
@@ -128,13 +128,12 @@ def assessments_upload(request, course_id: int) -> HttpResponse:
 
 def process_submission(request, submission_id) -> HttpResponse:
     """
-    Process a submission with Docker and processSubmission.py
+    Process a submission with Docker and process_submission.py
 
     :param request:
     :param submission_id:
     :return: HttpResponse
     """
-    print(submission_id)
     return HttpResponse(run_submission(submission_id), content_type='text/plain')
 
 

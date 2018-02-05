@@ -4,6 +4,11 @@ import os
 
 
 def start_docker_instance(submission):
+    """
+    Start docker instance and evaluate the submitted code
+
+    :param submission:
+    """
     client = docker.from_env()
 
     client.containers.run("python",
@@ -23,6 +28,10 @@ def start_docker_instance(submission):
 
 
 def generate_input(submission):
+    """
+
+    :param submission:
+    """
     client = docker.from_env()
 
     client.containers.run("python",

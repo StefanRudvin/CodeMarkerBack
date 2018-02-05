@@ -5,7 +5,7 @@ import os
 from django.core import serializers
 
 from Tutorial.settings import MEDIA_ROOT
-from codemarker.dockerProcessor import start_docker_instance, generate_input
+from codemarker.docker_processor import start_docker_instance, generate_input
 from codemarker.models import Submission
 
 
