@@ -18,29 +18,29 @@ do
     echo "Processing $f file..";
     # Take note of the starting time to measure execution time
     start=$(date +%s.%N)
-    filename=${filename}
+    output=$(basename "${f}")
     
     # Depending on the language we will run different compiler / interpreter
     # You redirect input to the file and save output in the outputs folder in all the cases.
     case $language in
         java)
             javac "submissions/${submissionId}/${filename}";
-            java -cp "submissions/${submissionId} ${filename%.*}" < "${f}" &> "submissions/${submissionId}/outputs/${filename}";
+            java -cp "submissions/${submissionId} ${filename%.*}" < "${f}" &> "submissions/${submissionId}/outputs/${output}";
         ;;
         cpp)
             g++ -o "submissions/${submissionId}/out" "submissions/${submissionId}/${filename}";
-            "submissions/${submissionId}/out" < "${f}" &> "submissions/${submissionId}/outputs/${filename}";
+            "submissions/${submissionId}/out" < "${f}" &> "submissions/${submissionId}/outputs/${output}";
         ;;
         c)
             g++ -o "submissions/${submissionId}/out" "submissions/${submissionId}/${filename}";
-            "submissions/${submissionId}/out" < "${f}" &> "submissions/${submissionId}/outputs/${filename}";
+            "submissions/${submissionId}/out" < "${f}" &> "submissions/${submissionId}/outputs/${output}";
         ;;
         *)
-            "${language} submissions/${submissionId}/${filename}" < "${f}" &> "submissions/${submissionId}/outputs/${filename}";
+            ${language} "submissions/${submissionId}/${filename}" < "${f}" &> "submissions/${submissionId}/outputs/${output}";
         ;;
     esac
     
     # Finally check how long the execution took and save the results in a separate file
     dur=$(echo "$(date +%s.%N) - $start" | bc)
-    printf "%.6f" "$dur" > "submissions/${submissionId}/outputs/t_${filename}";
+    printf "%.6f" "$dur" > "submissions/${submissionId}/outputs/t_${output}";
 done

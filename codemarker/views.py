@@ -42,9 +42,10 @@ def submissions_upload(request, assessment_id: int) -> HttpResponse:
         submission_file = request.FILES['submission']
         submission = Submission(
             filename=submission_file.name,
-            content_type="python",
+            content_type=language,
             status="start",
             result="fail",
+            info="Awaiting result...",
             marks=0,
             user_id=1,
             assessment_id=assessment_id,
