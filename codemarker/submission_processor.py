@@ -36,7 +36,16 @@ def run_submission(submission_id, **kwargs):
         submission.result = "fail"
         submission.marks = 0
 
-    submission.timeTaken = 0.005
+    count = 0
+    total = 0.0
+    for filename in os.listdir(output_dir):
+
+        if filename.startswith("t_") or filename.startswith("t_"):
+            file = open(os.path.join(output_dir, filename), "r")
+            total += float(file.read())
+            count += 1
+
+    submission.timeTaken = total / count
 
     submission.status = "complete"
 
