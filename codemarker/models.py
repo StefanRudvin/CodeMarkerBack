@@ -105,10 +105,13 @@ class Submission(models.Model):
     content_type = models.CharField(max_length=400)
     data = models.BinaryField(null=False)
 
-    timeTaken = models.DecimalField(null=False, default=0, decimal_places=4, max_digits=4)
+    timeTaken = models.DecimalField(
+        null=False, default=0, decimal_places=4, max_digits=4)
 
     status = EnumField(choices=['start', 'in_progress', 'complete'])
     result = EnumField(choices=['pass', 'fail', 'error'])
+    language = EnumField(choices=['python', 'python3', 'java', 'cpp', 'ruby'],
+                         default='python')
 
     marks = models.IntegerField()
     output = models.TextField

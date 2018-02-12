@@ -37,8 +37,8 @@ def submissions_upload(request, assessment_id: int) -> HttpResponse:
     :param assessment_id:
     :return: HttpResponse
     """
-
     if request.method == 'POST' and request.FILES['submission']:
+        language = request.POST['language']
         submission_file = request.FILES['submission']
         submission = Submission(
             filename=submission_file.name,
@@ -48,7 +48,8 @@ def submissions_upload(request, assessment_id: int) -> HttpResponse:
             marks=0,
             user_id=1,
             assessment_id=assessment_id,
-            timeTaken=0)
+            timeTaken=0,
+            language=language)
         submission.save()
 
         os.makedirs(os.path.join(settings.MEDIA_ROOT,
