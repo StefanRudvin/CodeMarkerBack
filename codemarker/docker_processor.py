@@ -11,7 +11,7 @@ def start_docker_instance(submission):
     """
     client = docker.from_env()
 
-    client.containers.run("codemarkerdocker",
+    client.containers.run("kdryja96/codemarker",
                           volumes={
                               MEDIA_ROOT:
                                   {
@@ -24,7 +24,7 @@ def start_docker_instance(submission):
                                       'mode': 'ro'
                                   }
                           },
-                          command=f"/bin/bash /mnt/vol2/run_python.sh {submission.filename} {submission.assessment_id} {submission.id} {submission.language}")
+                          command=f"/bin/bash /mnt/vol2/run.sh {submission.filename} {submission.assessment_id} {submission.id} {submission.language}")
 
 
 def generate_input(submission):
@@ -34,7 +34,7 @@ def generate_input(submission):
     """
     client = docker.from_env()
 
-    client.containers.run("codemarkerdocker",
+    client.containers.run("kdryja96/codemarker",
                           volumes={
                               MEDIA_ROOT:
                                   {

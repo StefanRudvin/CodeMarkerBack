@@ -110,8 +110,8 @@ class Submission(models.Model):
 
     status = EnumField(choices=['start', 'in_progress', 'complete'])
     result = EnumField(choices=['pass', 'fail', 'error'])
-    language = EnumField(choices=['python', 'python3', 'java', 'cpp', 'ruby'],
-                         default='python')
+    language = EnumField(choices=['python2', 'python3', 'java', 'cpp', 'c', 'ruby'],
+                         default='python2')
 
     marks = models.IntegerField()
     output = models.TextField
