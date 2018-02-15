@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 from rest_framework import viewsets
+from rest_framework.views import APIView
 
 from codemarker.serializers import CourseSerializer, AssessmentSerializer, SubmissionSerializer, UserSerializer
 from codemarker.models import Course, Assessment, Submission, Resource, InputGenerator
@@ -8,7 +10,7 @@ from django.core.files.storage import FileSystemStorage
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from rest_framework import generics
-from Tutorial import settings
+from django.conf import settings
 import os
 
 
@@ -60,6 +62,22 @@ def submissions_upload(request, assessment_id: int) -> HttpResponse:
         uploaded_file_url = fs.url(filename)
 
         return HttpResponse(submission.id)
+
+
+class GetUser(APIView):
+
+    def get(self, request, format=None):
+        #user = User.objects.get(username=request.user)
+
+
+        #content = {
+        #    'user': request.user.username,  # `django.contrib.auth.User` instance.
+        #    'auth': request.auth,  # None
+        #}
+
+        user = UserSerializer(request.user)
+
+        return JsonResponse(user, safe=False)
 
 
 @csrf_exempt

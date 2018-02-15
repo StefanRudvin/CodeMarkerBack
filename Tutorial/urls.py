@@ -23,7 +23,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
 
-    url(r'^users/$', views.UserViewSet, name='user-list'),
+    url(r'^api/users/$', views.UserViewSet, name='user-list'),
+
+    url(r'^api/get-user/$', views.GetUser.as_view(), name='getUser'),
 
     url(r'^api/obtain-auth-token/$', obtain_auth_token),
 
