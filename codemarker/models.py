@@ -104,11 +104,15 @@ class Submission(models.Model):
     filename = models.FileField(upload_to='submissions/')
     content_type = models.CharField(max_length=400)
     data = models.BinaryField(null=False)
+    info = models.TextField(default='None')
 
-    timeTaken = models.DecimalField(null=False, default=0, decimal_places=4, max_digits=4)
+    timeTaken = models.DecimalField(
+        null=False, default=0, decimal_places=4, max_digits=4)
 
     status = EnumField(choices=['start', 'in_progress', 'complete'])
     result = EnumField(choices=['pass', 'fail', 'error'])
+    language = EnumField(choices=['python2', 'python3', 'java', 'cpp', 'c', 'ruby'],
+                         default='python2')
 
     marks = models.IntegerField()
     output = models.TextField
