@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from codemarker import views
+from codemarker.views import CustomObtainAuthToken
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
@@ -25,9 +26,9 @@ urlpatterns = [
 
     url(r'^api/users/$', views.UserViewSet, name='user-list'),
 
-    url(r'^api/get-user/$', views.GetUser.as_view(), name='getUser'),
+    url(r'^api/obtain-auth-token/$', CustomObtainAuthToken.as_view()),
 
-    url(r'^api/obtain-auth-token/$', obtain_auth_token),
+    #url(r'^api/obtain-auth-token/$', obtain_auth_token),
 
     url(r'^api/courses/$', views.CoursesList.as_view(), name='courses-list'),
     url(r'^api/courses/(?P<pk>[0-9]+)/$', views.CoursesDetail.as_view(), name='courses-detail'),

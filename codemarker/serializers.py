@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from codemarker.models import Course, Assessment, Submission
 
+
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 

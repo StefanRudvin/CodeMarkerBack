@@ -13,6 +13,24 @@ from rest_framework import generics
 from django.conf import settings
 import os
 
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+
+
+class CustomObtainAuthToken(ObtainAuthToken):
+    authentication_classes = ()
+    permission_classes = ()
+    def post(self, request, *args, **kwargs):
+        response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
+        token = Token.objects.get(key=response.data['token'])
+        return Response({
+            'token': token.key,
+            'id': token.user_id,
+            'username': token.user.username,
+            'superuser': token.user.is_superuser
+        })
+
 
 def index(request):
     return HttpResponse("Hello world. You're at the codemarker index.")
@@ -64,22 +82,6 @@ def submissions_upload(request, assessment_id: int) -> HttpResponse:
         uploaded_file_url = fs.url(filename)
 
         return HttpResponse(submission.id)
-
-
-class GetUser(APIView):
-
-    def get(self, request, format=None):
-        #user = User.objects.get(username=request.user)
-
-
-        #content = {
-        #    'user': request.user.username,  # `django.contrib.auth.User` instance.
-        #    'auth': request.auth,  # None
-        #}
-
-        user = UserSerializer(request.user)
-
-        return JsonResponse(user, safe=False)
 
 
 @csrf_exempt
@@ -165,6 +167,13 @@ class CoursesList(generics.ListCreateAPIView):
 
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+
+    def get_queryset(self):
+        """
+
+        """
+        user = self.request.user
+        return Course.objects.filter(user_id=user)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
