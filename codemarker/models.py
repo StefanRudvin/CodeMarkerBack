@@ -1,4 +1,3 @@
-from django.utils.encoding import python_2_unicode_compatible
 from django_mysql.models import EnumField
 from django.utils import timezone
 from django.conf import settings
@@ -15,15 +14,14 @@ class Course(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    user = models.ForeignKey(
+    professor = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        null=False
+        null=False,
+        related_name='professor'
     )
 
-    @property
-    def professor(self):
-        return self.user_id
+    students = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
     def was_published_recently(self):
         return self.created_at >= timezone.now() - datetime.timedelta(days=1)

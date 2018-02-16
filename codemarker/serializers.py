@@ -60,17 +60,15 @@ class CourseSerializer(serializers.ModelSerializer):
     assessments = AssessmentSerializer(many=True, read_only=True)
 
     def create(self, validated_data):
-        del validated_data['user']
-
         course = Course(**validated_data)
 
-        course.user = User.objects.get(pk=1)
-        course.save()
+        course.professor = self.context['request'].user
+        course.save(self)
         return course
 
     class Meta:
         model = Course
-        fields = ('id', 'name', 'description', 'created_at', 'updated_at', 'assessments', 'user_id')
+        fields = ('id', 'name', 'description', 'created_at', 'updated_at', 'assessments', 'professor_id')
         extra_kwargs = {
             'url': {
                 'view_name': 'course:courses-detail',

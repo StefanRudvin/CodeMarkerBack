@@ -28,8 +28,6 @@ urlpatterns = [
 
     url(r'^api/obtain-auth-token/$', CustomObtainAuthToken.as_view()),
 
-    #url(r'^api/obtain-auth-token/$', obtain_auth_token),
-
     url(r'^api/courses/$', views.CoursesList.as_view(), name='courses-list'),
     url(r'^api/courses/(?P<pk>[0-9]+)/$', views.CoursesDetail.as_view(), name='courses-detail'),
 
@@ -39,8 +37,5 @@ urlpatterns = [
     url(r'^api/assessments/$', views.AssessmentsList.as_view(), name='assessments-list'),
     url(r'^api/assessments/(?P<pk>[0-9]+)/$', views.AssessmentsDetail.as_view(), name='assessments-detail'),
 
-    url(r'^api/assessments/([0-9]+)/upload/$', views.assessments_upload, name='assessments-upload'),
-
-    url(r'^api/submissions/([0-9]+)/upload/$', views.submissions_upload, name='submissions-upload'),
     url(r'^api/submissions/(?P<submission_id>\d+)/process/$', views.process_submission, name='submission-process'),
 ]
