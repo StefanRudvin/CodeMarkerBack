@@ -31,6 +31,9 @@ urlpatterns = [
     url(r'^api/courses/$', views.CoursesList.as_view(), name='courses-list'),
     url(r'^api/courses/(?P<pk>[0-9]+)/$', views.CoursesDetail.as_view(), name='courses-detail'),
 
+    url(r'^api/courses/users/delete/$', views.CoursesUsersDestroy.as_view(),
+        name='courses-users-delete'),
+
     url(r'^api/submissions/$', views.SubmissionsList.as_view(), name='submissions-list'),
     url(r'^api/submissions/(?P<pk>[0-9]+)/$', views.SubmissionsDetail.as_view(), name='submissions-detail'),
 

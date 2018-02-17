@@ -1,6 +1,7 @@
 from django.http import HttpResponseServerError
 
-from codemarker.serializers import CourseSerializer, AssessmentSerializer, SubmissionSerializer, UserSerializer
+from codemarker.serializers import CourseSerializer, AssessmentSerializer, SubmissionSerializer, UserSerializer, \
+    CoursesUsersSerializer
 from codemarker.models import Course, Assessment, Submission
 from codemarker.submission_processor import run_submission
 from django.http import HttpResponseForbidden
@@ -30,7 +31,7 @@ class CustomObtainAuthToken(ObtainAuthToken):
             'id': token.user_id,
             'username': token.user.username,
             'superuser': token.user.is_superuser,
-            'staff': token.user.is_staff
+            'staff': token.user.is_staff,
         })
 
 
@@ -116,6 +117,26 @@ class CoursesDetail(generics.RetrieveUpdateDestroyAPIView):
         if not self.request.user.is_staff:
             return HttpResponseForbidden("You are not allowed to destroy courses")
         return self.destroy(request, *args, **kwargs)
+
+
+class CoursesUsersDestroy(generics.CreateAPIView):
+
+    queryset = Course.objects.all()
+    serializer_class = CoursesUsersSerializer
+
+    def post(self, request, *args, **kwargs):
+
+        course_id = self.request.POST.get("course_id", "")
+
+        user_id = self.request.POST.get("user_id", "")
+
+        course = Course.objects.get(pk=course_id)
+
+        user = User.objects.get(pk=user_id)
+
+        course.students.remove(user)
+
+        return Response('Success')
 
 
 class AssessmentsList(generics.ListCreateAPIView):
