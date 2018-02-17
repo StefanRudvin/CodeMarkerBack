@@ -5,6 +5,7 @@ from codemarker.models import Course, Assessment, Submission
 
 
 class SubmissionSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Submission
         fields = '__all__'
@@ -34,6 +35,8 @@ class AssessmentSerializer(serializers.ModelSerializer):
             }
         }
 
+SubmissionSerializer.assessments = AssessmentSerializer()
+
 
 class CourseSerializer(serializers.ModelSerializer):
     assessments = AssessmentSerializer(many=True, read_only=True)
@@ -58,7 +61,9 @@ class CourseSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     courses = CourseSerializer(many=True, read_only=True)
 
-    password = serializers.CharField(write_only=True)
+    submissions = CourseSerializer(many=True, read_only=True)
+
+    password = serializers.CharField(write_only=True, required=False)
 
     email = serializers.EmailField()
     username = serializers.CharField(max_length=100)
@@ -74,4 +79,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'date_joined', 'email', 'is_staff', 'is_superuser', 'courses', 'password')
+        fields = ('id', 'username', 'date_joined', 'email', 'is_staff', 'is_superuser', 'courses', 'password', 'submissions')

@@ -1,12 +1,9 @@
-from django.http import HttpResponseBadRequest
-from django.utils.datastructures import MultiValueDictKeyError
-from django.db import DataError
-
-from codemarker.serializers import CourseSerializer, AssessmentSerializer, SubmissionSerializer, UserSerializer
 from codemarker.models import Course, Assessment, Submission, Resource, InputGenerator
+from django.utils.datastructures import MultiValueDictKeyError
 from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponseBadRequest
 from django.http import HttpResponseForbidden
-from django.contrib.auth.models import User
+from django.db import DataError
 from django.conf import settings
 import os
 

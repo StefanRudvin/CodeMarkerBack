@@ -171,6 +171,23 @@ class UsersDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+    def get(self, request, *args, **kwargs):
+        user_id = self.kwargs['pk']
+
+        user = User.objects.get(pk=user_id)
+        userJson = UserSerializer(user).data
+
+        courses = Course.objects.filter(students=user)
+        coursesJson = CourseSerializer(courses, many=True).data
+
+        submissions = Submission.objects.filter(user=user)
+        submissionsJson = SubmissionSerializer(submissions, many=True).data
+
+        userJson['submissions'] = submissionsJson
+        userJson['courses'] = coursesJson
+
+        return Response(userJson)
+
 
 class SubmissionsList(generics.ListCreateAPIView):
     """

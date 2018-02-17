@@ -17,7 +17,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from codemarker import views
 from codemarker.views import CustomObtainAuthToken
-from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     url(r'^codemarker/', include('codemarker.urls')),
@@ -26,11 +25,8 @@ urlpatterns = [
 
     url(r'^api/obtain-auth-token/$', CustomObtainAuthToken.as_view()),
 
-    #url(r'^api/users/$', views.UserViewSet, name='user-list'),
-
     url(r'^api/users/$', views.UsersList.as_view(), name='user-list'),
     url(r'^api/users/(?P<pk>[0-9]+)/$', views.UsersDetail.as_view(), name='users-detail'),
-
 
     url(r'^api/courses/$', views.CoursesList.as_view(), name='courses-list'),
     url(r'^api/courses/(?P<pk>[0-9]+)/$', views.CoursesDetail.as_view(), name='courses-detail'),
