@@ -1,28 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-from django.conf import settings
 from codemarker.models import Course, Assessment, Submission
-
-
-class UserSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
-
-    email = serializers.EmailField()
-    username = serializers.CharField(max_length=100)
-
-    def create(self, validated_data):
-        user = User.objects.create(
-            username=validated_data['username']
-        )
-        user.set_password(validated_data['password'])
-        user.save()
-
-        return user
-
-    class Meta:
-        model = settings.AUTH_USER_MODEL
-        fields = '__all__'
 
 
 class SubmissionSerializer(serializers.ModelSerializer):
@@ -74,3 +53,25 @@ class CourseSerializer(serializers.ModelSerializer):
                 'view_name': 'course:courses-detail',
             }
         }
+
+
+class UserSerializer(serializers.ModelSerializer):
+    courses = CourseSerializer(many=True, read_only=True)
+
+    password = serializers.CharField(write_only=True)
+
+    email = serializers.EmailField()
+    username = serializers.CharField(max_length=100)
+
+    def create(self, validated_data):
+        user = User.objects.create(
+            username=validated_data['username']
+        )
+        user.set_password(validated_data['password'])
+        user.save()
+
+        return user
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'date_joined', 'email', 'is_staff', 'is_superuser', 'courses', 'password')

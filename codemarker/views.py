@@ -153,6 +153,25 @@ class AssessmentsDetail(generics.RetrieveUpdateDestroyAPIView):
         serializer.destroy()
 
 
+class UsersList(generics.ListCreateAPIView):
+    """
+        List all users and create using RestFramework.
+        :rtype: UserSerializer
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UsersDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+        Get a single user.
+        :rtype: SubmissionSerializer
+    """
+
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
 class SubmissionsList(generics.ListCreateAPIView):
     """
         List all submissions.
