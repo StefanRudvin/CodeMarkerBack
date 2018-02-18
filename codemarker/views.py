@@ -1,3 +1,4 @@
+from django.http import HttpResponseBadRequest
 from django.http import HttpResponseServerError
 
 from codemarker.serializers import CourseSerializer, AssessmentSerializer, SubmissionSerializer, UserSerializer, \
@@ -120,12 +121,10 @@ class CoursesDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class CoursesUsersDestroy(generics.CreateAPIView):
-
     queryset = Course.objects.all()
     serializer_class = CoursesUsersSerializer
 
     def post(self, request, *args, **kwargs):
-
         course_id = self.request.POST.get("course_id", "")
 
         user_id = self.request.POST.get("user_id", "")
@@ -137,6 +136,25 @@ class CoursesUsersDestroy(generics.CreateAPIView):
         course.students.remove(user)
 
         return Response('Success')
+
+
+class CoursesUsersAdd(generics.CreateAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CoursesUsersSerializer
+
+    def post(self, request, *args, **kwargs):
+        course_id = self.request.POST.get("course_id", "")
+
+        user_id = self.request.POST.get("user_id", "")
+
+        course = Course.objects.get(pk=course_id)
+
+        user = User.objects.get(pk=user_id)
+
+        if user in course.students.all():
+            return HttpResponseBadRequest('The user is already enrolled to this course!')
+        else:
+            return Response(course.students.add(user))
 
 
 class AssessmentsList(generics.ListCreateAPIView):
