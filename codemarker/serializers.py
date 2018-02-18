@@ -17,11 +17,11 @@ class SubmissionSerializer(serializers.ModelSerializer):
 
 class CoursesUsersSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
-        #del validated_data['user']
+        del validated_data['user']
 
-        #assessment = Assessment(**validated_data)
-        #assessment.save()
-        #return Assessment
+        assessment = Assessment(**validated_data)
+        assessment.save()
+        return Assessment
         return "ok"
 
 
@@ -45,22 +45,20 @@ class AssessmentSerializer(serializers.ModelSerializer):
         }
 
 
-SubmissionSerializer.assessments = AssessmentSerializer()
-
-
 class CourseSerializer(serializers.ModelSerializer):
     assessments = AssessmentSerializer(many=True, read_only=True)
 
     def create(self, validated_data):
-        course = Course(**validated_data)
 
-        course.professor = self.context['request'].user
-        course.save(self)
-        return course
+        return Course.objects.create(
+            name=validated_data['name'],
+            description=validated_data['description'],
+            professor_id=self.context['request'].user.id
+        )
 
     class Meta:
         model = Course
-        fields = ('id', 'name', 'description', 'created_at', 'updated_at', 'assessments', 'professor_id')
+        fields = ('id', 'name', 'description', 'created_at', 'updated_at', 'assessments', 'professor_id', 'students')
         extra_kwargs = {
             'url': {
                 'view_name': 'course:courses-detail',
@@ -90,4 +88,8 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
-        'id', 'username', 'date_joined', 'email', 'is_staff', 'is_superuser', 'courses', 'password', 'submissions')
+            'id', 'username', 'date_joined', 'email', 'is_staff', 'is_superuser', 'courses', 'password', 'submissions')
+
+
+CourseSerializer.students = UserSerializer(many=True, required=False)
+SubmissionSerializer.assessments = AssessmentSerializer(required=False)

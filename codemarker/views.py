@@ -91,9 +91,9 @@ class CoursesList(generics.ListCreateAPIView):
         return Course.objects.filter(students=user)
 
     def post(self, request, *args, **kwargs):
+
         if not self.request.user.is_staff:
             return HttpResponseForbidden("You are not allowed to create assessments")
-
         return self.create(request, *args, **kwargs)
 
 

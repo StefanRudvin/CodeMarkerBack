@@ -21,7 +21,7 @@ class Course(models.Model):
         related_name='professor'
     )
 
-    students = models.ManyToManyField(settings.AUTH_USER_MODEL)
+    students = models.ManyToManyField(settings.AUTH_USER_MODEL, null=True, blank=True)
 
     def was_published_recently(self):
         return self.created_at >= timezone.now() - datetime.timedelta(days=1)
