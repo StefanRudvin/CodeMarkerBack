@@ -107,12 +107,15 @@ class CoursesDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
-    def update(self, request, *args, **kwargs):
-
+    def put(self, request, *args, **kwargs):
         if not self.request.user.is_staff:
             return HttpResponseForbidden("You are not allowed to update courses")
+        return self.update(request, *args, **kwargs)
 
-        return self.serializer.update(professor=self.request.user)
+    def patch(self, request, *args, **kwargs):
+        if not self.request.user.is_staff:
+            return HttpResponseForbidden("You are not allowed to update courses")
+        return self.partial_update(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
         if not self.request.user.is_staff:
