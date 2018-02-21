@@ -5,6 +5,8 @@ from django.http import HttpResponseBadRequest
 from django.http import HttpResponseForbidden
 from django.db import DataError
 from django.conf import settings
+from django_mysql.models import ListF
+import json
 import os
 
 from rest_framework.response import Response
@@ -22,6 +24,9 @@ def assessment_creator(self, serializer):
         description = self.request.POST.get("description", "")
         additional_help = self.request.POST.get("additional_help", "")
         resource_file = self.request.FILES['resource']
+        languages = [x for x in json.loads(
+            self.request.POST.get('languages', ""))]
+
     except MultiValueDictKeyError:
         return HttpResponseBadRequest("Looks like you have an empty field or an unknown file type.")
     except:
@@ -39,7 +44,9 @@ def assessment_creator(self, serializer):
         name=name,
         description=description,
         additional_help=additional_help,
-        course=course)
+        course=course,
+        languages=languages)
+
     assessment.save()
 
     resource = Resource(

@@ -25,7 +25,8 @@ class CustomObtainAuthToken(ObtainAuthToken):
     permission_classes = ()
 
     def post(self, request, *args, **kwargs):
-        response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
+        response = super(CustomObtainAuthToken, self).post(
+            request, *args, **kwargs)
         token = Token.objects.get(key=response.data['token'])
         return Response({
             'token': token.key,
@@ -229,6 +230,23 @@ class UsersDetail(generics.RetrieveUpdateDestroyAPIView):
         userJson['courses'] = coursesJson
 
         return Response(userJson)
+
+    def put(self, request, *args, **kwargs):
+        username = self.request.POST.get("username", "")
+
+        user_id = self.request.POST.get("id", "")
+
+        is_staff = self.request.POST.get("is_staff", "")
+
+        email = self.request.POST.get("email", "")
+
+        user = User.objects.get(pk=user_id)
+        user.username = username
+        user.email = email
+        user.is_staff = is_staff == 'true'
+        user.save()
+
+        return Response(200)
 
 
 class SubmissionsList(generics.ListCreateAPIView):
