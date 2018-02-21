@@ -24,8 +24,9 @@ def assessment_creator(self, serializer):
         description = self.request.POST.get("description", "")
         additional_help = self.request.POST.get("additional_help", "")
         resource_file = self.request.FILES['resource']
-        languages = [ x for x in json.loads(self.request.POST.get('languages', "")).keys()]
-        print(languages)
+        languages = [x for x in json.loads(
+            self.request.POST.get('languages', ""))]
+
     except MultiValueDictKeyError:
         return HttpResponseBadRequest("Looks like you have an empty field or an unknown file type.")
     except:
@@ -45,7 +46,7 @@ def assessment_creator(self, serializer):
         additional_help=additional_help,
         course=course,
         languages=languages)
-    
+
     assessment.save()
 
     resource = Resource(
