@@ -27,7 +27,7 @@ def start_docker_instance(submission):
                           command=f"/bin/bash /mnt/vol2/run.sh {submission.filename} {submission.assessment_id} {submission.id} {submission.language}")
 
 
-def generate_input(submission):
+def generate_input(submission, resource_language):
     """
 
     :param submission:
@@ -47,4 +47,4 @@ def generate_input(submission):
                                       'mode': 'ro'
                                   }
                           },
-                          command=f"/bin/bash /mnt/vol2/generate_python.sh {submission.assessment_id}")
+                          command=f"/bin/bash /mnt/vol2/generate.sh {submission.assessment_id} {resource_language}")

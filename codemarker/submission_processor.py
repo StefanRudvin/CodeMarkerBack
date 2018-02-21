@@ -6,7 +6,7 @@ from django.core import serializers
 
 from Tutorial.settings import MEDIA_ROOT
 from codemarker.docker_processor import start_docker_instance, generate_input
-from codemarker.models import Submission
+from codemarker.models import Submission, Resource
 
 
 def run_submission(submission_id, **kwargs):
@@ -20,7 +20,10 @@ def run_submission(submission_id, **kwargs):
     submission.status = "in_progress"
     submission.save()
 
-    generate_input(submission)
+    resource_language = Resource.objects.get(
+        assessment_id=submission.assessment_id).language
+
+    generate_input(submission, resource_language)
     start_docker_instance(submission)
 
     expected_output_dir = os.path.join(MEDIA_ROOT, str(

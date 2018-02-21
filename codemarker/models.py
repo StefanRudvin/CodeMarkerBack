@@ -22,7 +22,8 @@ class Course(models.Model):
         related_name='professor'
     )
 
-    students = models.ManyToManyField(settings.AUTH_USER_MODEL, null=True, blank=True)
+    students = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, null=True, blank=True)
 
     def was_published_recently(self):
         return self.created_at >= timezone.now() - datetime.timedelta(days=1)
@@ -36,6 +37,7 @@ class Resource(models.Model):
     content_type = models.CharField(max_length=400)
 
     status = EnumField(choices=['start', 'in_progress', 'complete'])
+    language = models.CharField(max_length=400, default='')
 
     assessment = models.ForeignKey(
         'Assessment',
@@ -52,6 +54,7 @@ class Resource(models.Model):
 class InputGenerator(models.Model):
     filename = models.FileField(upload_to='input_generators/')
     content_type = models.CharField(max_length=400)
+    language = models.CharField(max_length=400, default='')
 
     assessment = models.ForeignKey(
         'Assessment',
@@ -70,11 +73,10 @@ class Assessment(models.Model):
     description = models.CharField(max_length=1000, default="")
     additional_help = models.CharField(max_length=1000, default="")
 
-
     languages = ListCharField(
         base_field=models.CharField(max_length=10),
         size=10,
-        max_length = (10*11),
+        max_length=(10 * 11),
         null=True
     )
     resource = models.ForeignKey(

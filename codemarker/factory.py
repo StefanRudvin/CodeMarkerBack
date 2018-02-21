@@ -26,6 +26,7 @@ def assessment_creator(self, serializer):
         resource_file = self.request.FILES['resource']
         languages = [x for x in json.loads(
             self.request.POST.get('languages', ""))]
+        selected_language = self.request.POST.get('selected_language', "")
 
     except MultiValueDictKeyError:
         return HttpResponseBadRequest("Looks like you have an empty field or an unknown file type.")
@@ -53,7 +54,8 @@ def assessment_creator(self, serializer):
         filename=resource_file.name,
         content_type="python",
         status="start",
-        assessment=assessment)
+        assessment=assessment,
+        language=selected_language)
     resource.save()
 
     os.makedirs(os.path.join(settings.MEDIA_ROOT,
@@ -69,7 +71,8 @@ def assessment_creator(self, serializer):
         input_generator = InputGenerator(
             filename=input_generator_file.name,
             content_type="python",
-            assessment=assessment)
+            assessment=assessment,
+            language=selected_language)
         input_generator.save()
 
         os.makedirs(os.path.join(settings.MEDIA_ROOT,
