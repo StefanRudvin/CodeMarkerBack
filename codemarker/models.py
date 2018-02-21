@@ -1,4 +1,5 @@
 from django_mysql.models import EnumField
+from django_mysql.models import ListCharField
 from django.utils import timezone
 from django.conf import settings
 from django.db import models
@@ -69,6 +70,13 @@ class Assessment(models.Model):
     description = models.CharField(max_length=1000, default="")
     additional_help = models.CharField(max_length=1000, default="")
 
+
+    languages = ListCharField(
+        base_field=models.CharField(max_length=10),
+        size=10,
+        max_length = (10*11),
+        null=True
+    )
     resource = models.ForeignKey(
         Resource,
         on_delete=models.CASCADE,
