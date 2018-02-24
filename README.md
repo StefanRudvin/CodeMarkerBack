@@ -19,9 +19,7 @@ DATABASES = {
 }
 ```
 
-- virtualenv -p /usr/local/bin/python3 codemarker   - this needs to only run once
-
-- source codemarker/bin/activate
+Make sure that you actually have a database called codemarker and your user root (identified by password 'root') has access to the database.
 
 - python manage.py makemigrations
 
