@@ -61,10 +61,12 @@ def process_submission(request, submission_id) -> HttpResponse:
     :param submission_id:
     :return: HttpResponse
     """
+
     try:
         result = run_submission(submission_id)
         return HttpResponse(result, content_type='text/plain')
-    except:
+    except Exception as e:
+        print(e)
         return HttpResponseServerError("An error occurred in processing your submission."
                                        "If this persists please contact the administrator.")
 

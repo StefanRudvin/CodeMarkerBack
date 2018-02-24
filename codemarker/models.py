@@ -37,7 +37,8 @@ class Resource(models.Model):
     content_type = models.CharField(max_length=400)
 
     status = EnumField(choices=['start', 'in_progress', 'complete'])
-    language = models.CharField(max_length=400, default='')
+    language = EnumField(choices=['python2', 'python3', 'java', 'cpp', 'c', 'ruby'],
+                         default='python2')
 
     assessment = models.ForeignKey(
         'Assessment',
@@ -54,7 +55,8 @@ class Resource(models.Model):
 class InputGenerator(models.Model):
     filename = models.FileField(upload_to='input_generators/')
     content_type = models.CharField(max_length=400)
-    language = models.CharField(max_length=400, default='')
+    language = EnumField(choices=['python2', 'python3', 'java', 'cpp', 'c', 'ruby'],
+                         default='python2')
 
     assessment = models.ForeignKey(
         'Assessment',

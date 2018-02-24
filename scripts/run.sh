@@ -25,14 +25,15 @@ do
     case $language in
         java)
             javac "submissions/${submissionId}/${filename}";
-            java -cp "submissions/${submissionId} ${filename%.*}" < "${f}" &> "submissions/${submissionId}/outputs/${output}";
+            echo ${filename%.*} > test.txt
+            java -cp submissions/${submissionId} ${filename%.*} < "${f}" &> "submissions/${submissionId}/outputs/${output}";
         ;;
         cpp)
             g++ -o "submissions/${submissionId}/out" "submissions/${submissionId}/${filename}";
             "submissions/${submissionId}/out" < "${f}" &> "submissions/${submissionId}/outputs/${output}";
         ;;
         c)
-            g++ -o "submissions/${submissionId}/out" "submissions/${submissionId}/${filename}";
+            gcc -o "submissions/${submissionId}/out" "submissions/${submissionId}/${filename}";
             "submissions/${submissionId}/out" < "${f}" &> "submissions/${submissionId}/outputs/${output}";
         ;;
         *)

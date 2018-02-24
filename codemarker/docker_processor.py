@@ -33,7 +33,6 @@ def generate_input(submission, resource_language):
     :param submission:
     """
     client = docker.from_env()
-
     client.containers.run("kdryja96/codemarker",
                           volumes={
                               MEDIA_ROOT:

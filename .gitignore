@@ -8,3 +8,4 @@ codemarker/__pycache__/
 ./codemarker/__pycache__/
 Tutorial/__pycache__/*
 codemarker/migrations/__pycache__/*
+.vscode/
