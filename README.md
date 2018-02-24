@@ -3,6 +3,8 @@ Django Python backend for Codemarker, an application designed for the University
 
 ## Setup
 
+Requires Python 3.6.4 or above to run
+
 Setup local mysql first in settings.py. Example:
 ```
 DATABASES = {
@@ -26,6 +28,3 @@ DATABASES = {
 - python manage.py migrate
 
 - python manage.py runserver
-
-
-A requirements.txt for pip dependencies will be added soon.
