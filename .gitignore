@@ -1,11 +1,10 @@
 /uploads
 /.idea
-/codemarker/__pycache__/
 .idea/workspace.xml
 ./idea/
 ./idea
-codemarker/__pycache__/
-./codemarker/__pycache__/
-Tutorial/__pycache__/*
-codemarker/migrations/__pycache__/*
+app/__pycache__/
+codemarker/__pycache__/*
+app/migrations/__pycache__/*
 .vscode/
+ENV_DIR
