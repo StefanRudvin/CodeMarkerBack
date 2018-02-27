@@ -34,7 +34,6 @@ class Course(models.Model):
 
 class Resource(models.Model):
     filename = models.FileField(upload_to='resources/')
-    content_type = models.CharField(max_length=400)
 
     status = EnumField(choices=['start', 'in_progress', 'complete'])
     language = EnumField(choices=['python2', 'python3', 'java', 'cpp', 'c', 'ruby'],
@@ -54,7 +53,6 @@ class Resource(models.Model):
 
 class InputGenerator(models.Model):
     filename = models.FileField(upload_to='input_generators/')
-    content_type = models.CharField(max_length=400)
     language = EnumField(choices=['python2', 'python3', 'java', 'cpp', 'c', 'ruby'],
                          default='python2')
 
@@ -112,8 +110,6 @@ class Assessment(models.Model):
 
 class Submission(models.Model):
     filename = models.FileField(upload_to='submissions/')
-    content_type = models.CharField(max_length=400)
-    data = models.BinaryField(null=False)
     info = models.TextField(default='None')
 
     timeTaken = models.DecimalField(

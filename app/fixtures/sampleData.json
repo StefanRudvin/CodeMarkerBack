@@ -1,0 +1,908 @@
+[
+  {
+    "model": "app.resource",
+    "pk": 1,
+    "fields": {
+      "filename": "python3resource.py",
+      "status": "start",
+      "language": "python3",
+      "assessment": 1,
+      "created_at": "2018-02-27T14:33:54.835Z",
+      "updated_at": "2018-02-27T14:33:54.835Z"
+    }
+  },
+  {
+    "model": "app.inputgenerator",
+    "pk": 1,
+    "fields": {
+      "filename": "python3generator.py",
+      "language": "python3",
+      "assessment": 1,
+      "created_at": "2018-02-27T14:33:54.848Z",
+      "updated_at": "2018-02-27T14:33:54.848Z"
+    }
+  },
+  {
+    "model": "app.assessment",
+    "pk": 1,
+    "fields": {
+      "name": "The grand assessment of the north 1",
+      "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
+      "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "languages": "Python2,Python3,Ruby,C,CPlus,Java",
+      "resource": 1,
+      "course": 1,
+      "input_generator": 1,
+      "created_at": "2018-02-02T14:33:54.822Z",
+      "updated_at": "2018-02-01T14:33:54.853Z"
+    }
+  },
+  {
+    "model": "app.assessment",
+    "pk": 2,
+    "fields": {
+      "name": "The grand assessment of the north 2",
+      "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
+      "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "languages": "Python2,Python3,Ruby,C,CPlus,Java",
+      "resource": 1,
+      "course": 1,
+      "input_generator": 1,
+      "created_at": "2018-02-10T14:33:54.822Z",
+      "updated_at": "2018-02-03T14:33:54.853Z"
+    }
+  },
+  {
+    "model": "app.assessment",
+    "pk": 3,
+    "fields": {
+      "name": "The grand assessment of the north 3",
+      "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
+      "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "languages": "Python2,Python3,Ruby,C,CPlus,Java",
+      "resource": 1,
+      "course": 1,
+      "input_generator": 1,
+      "created_at": "2018-02-15T14:33:54.822Z",
+      "updated_at": "2018-02-04T14:33:54.853Z"
+    }
+  },
+  {
+    "model": "app.assessment",
+    "pk": 4,
+    "fields": {
+      "name": "The grand assessment of the north 4",
+      "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
+      "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "languages": "Python2,Python3,Ruby,C,CPlus,Java",
+      "resource": 1,
+      "course": 1,
+      "input_generator": 1,
+      "created_at": "2018-02-17T14:33:54.822Z",
+      "updated_at": "2018-02-06T14:33:54.853Z"
+    }
+  },
+  {
+    "model": "app.assessment",
+    "pk": 5,
+    "fields": {
+      "name": "The grand assessment of the north 5",
+      "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
+      "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "languages": "Python2,Python3,Ruby,C,CPlus,Java",
+      "resource": 1,
+      "course": 1,
+      "input_generator": 1,
+      "created_at": "2018-02-01T14:33:54.822Z",
+      "updated_at": "2018-02-11T14:33:54.853Z"
+    }
+  },
+  {
+    "model": "app.assessment",
+    "pk": 6,
+    "fields": {
+      "name": "The grand assessment of the north 6",
+      "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
+      "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "languages": "Python2,Python3,Ruby,C,CPlus,Java",
+      "resource": 1,
+      "course": 2,
+      "input_generator": 1,
+      "created_at": "2018-02-25T14:33:54.822Z",
+      "updated_at": "2018-02-13T14:33:54.853Z"
+    }
+  },
+  {
+    "model": "app.assessment",
+    "pk": 7,
+    "fields": {
+      "name": "The grand assessment of the north 7",
+      "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
+      "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "languages": "Python2,Python3,Ruby,C,CPlus,Java",
+      "resource": 1,
+      "course": 2,
+      "input_generator": 1,
+      "created_at": "2018-03-04T14:33:54.822Z",
+      "updated_at": "2018-02-27T14:33:54.853Z"
+    }
+  },
+  {
+    "model": "app.assessment",
+    "pk": 8,
+    "fields": {
+      "name": "The grand assessment of the north 8",
+      "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
+      "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "languages": "Python2,Python3,Ruby,C,CPlus,Java",
+      "resource": 1,
+      "course": 2,
+      "input_generator": 1,
+      "created_at": "2018-03-10T14:33:54.822Z",
+      "updated_at": "2018-02-27T14:33:54.853Z"
+    }
+  },
+  {
+    "model": "app.assessment",
+    "pk": 9,
+    "fields": {
+      "name": "The grand assessment of the north 9",
+      "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
+      "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "languages": "Python2,Python3,Ruby,C,CPlus,Java",
+      "resource": 1,
+      "course": 2,
+      "input_generator": 1,
+      "created_at": "2018-02-27T14:33:54.822Z",
+      "updated_at": "2018-02-27T14:33:54.853Z"
+    }
+  },
+  {
+    "model": "app.assessment",
+    "pk": 10,
+    "fields": {
+      "name": "The grand assessment of the north 10",
+      "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
+      "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "languages": "Python2,Python3,Ruby,C,CPlus,Java",
+      "resource": 1,
+      "course": 2,
+      "input_generator": 1,
+      "created_at": "2018-02-27T14:33:54.822Z",
+      "updated_at": "2018-02-27T14:33:54.853Z"
+    }
+  },
+  {
+    "model": "app.assessment",
+    "pk": 11,
+    "fields": {
+      "name": "The grand assessment of the north 11",
+      "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
+      "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "languages": "Python2,Python3,Ruby,C,CPlus,Java",
+      "resource": 1,
+      "course": 3,
+      "input_generator": 1,
+      "created_at": "2018-02-27T14:33:54.822Z",
+      "updated_at": "2018-02-27T14:33:54.853Z"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "app",
+      "model": "assessment"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "app",
+      "model": "course"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "app",
+      "model": "inputgenerator"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "app",
+      "model": "resource"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "app",
+      "model": "submission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "auth",
+      "model": "user"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+      "app_label": "authtoken",
+      "model": "token"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add assessment",
+      "content_type": 1,
+      "codename": "add_assessment"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change assessment",
+      "content_type": 1,
+      "codename": "change_assessment"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete assessment",
+      "content_type": 1,
+      "codename": "delete_assessment"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can add course",
+      "content_type": 2,
+      "codename": "add_course"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can change course",
+      "content_type": 2,
+      "codename": "change_course"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can delete course",
+      "content_type": 2,
+      "codename": "delete_course"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can add input generator",
+      "content_type": 3,
+      "codename": "add_inputgenerator"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can change input generator",
+      "content_type": 3,
+      "codename": "change_inputgenerator"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can delete input generator",
+      "content_type": 3,
+      "codename": "delete_inputgenerator"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can add resource",
+      "content_type": 4,
+      "codename": "add_resource"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can change resource",
+      "content_type": 4,
+      "codename": "change_resource"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can delete resource",
+      "content_type": 4,
+      "codename": "delete_resource"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add submission",
+      "content_type": 5,
+      "codename": "add_submission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change submission",
+      "content_type": 5,
+      "codename": "change_submission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete submission",
+      "content_type": 5,
+      "codename": "delete_submission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 6,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 6,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 6,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 7,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 7,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 7,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 8,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 8,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 8,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add user",
+      "content_type": 9,
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change user",
+      "content_type": 9,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete user",
+      "content_type": 9,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 10,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 10,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 10,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 11,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 11,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 11,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can add Token",
+      "content_type": 12,
+      "codename": "add_token"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can change Token",
+      "content_type": 12,
+      "codename": "change_token"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can delete Token",
+      "content_type": 12,
+      "codename": "delete_token"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$36000$WNw6K79uqeRt$tNl0C7jLTyuMcqnLHdokh+v4zfWnhDv3WrMhT975hRM=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "Administrator",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@admin.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2018-02-27T14:15:01.904Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$36000$nSjhNZ9k73zY$oGnTN3TNorwpnycPvpWRc2iuYKJkhNar8zbKEVHGpwY=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "testuser123",
+      "first_name": "",
+      "last_name": "",
+      "email": "aberdeen@israiny.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2018-02-27T15:44:05.854Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$36000$YcJzYkWY3EnX$nf2TQL5SWIm8lyiS6fXU4St7dq1e0iT/2/5TfBXdvfs=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "whatislove",
+      "first_name": "",
+      "last_name": "",
+      "email": "iamthechosen@one.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2018-02-27T15:44:25.422Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+
+  {
+    "model": "app.submission",
+    "pk": 1,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 20,
+      "user": 1,
+      "assessment": 1,
+      "created_at": "2018-02-27T14:34:43.162Z",
+      "updated_at": "2018-02-27T14:34:46.988Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 2,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 1,
+      "assessment": 2,
+      "created_at": "2018-02-27T14:35:32.589Z",
+      "updated_at": "2018-02-27T14:35:35.713Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 3,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "Awaiting result...",
+      "timeTaken": "0.0000",
+      "status": "start",
+      "result": "pass",
+      "language": "python3",
+      "marks": 20,
+      "user": 1,
+      "assessment": 3,
+      "created_at": "2018-02-27T14:38:37.898Z",
+      "updated_at": "2018-02-27T14:38:37.898Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 4,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "Awaiting result...",
+      "timeTaken": "0.0000",
+      "status": "start",
+      "result": "pass",
+      "language": "python3",
+      "marks": 70,
+      "user": 1,
+      "assessment": 4,
+      "created_at": "2018-02-27T14:40:19.367Z",
+      "updated_at": "2018-02-27T14:40:19.367Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 5,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 90,
+      "user": 1,
+      "assessment": 5,
+      "created_at": "2018-02-27T14:41:47.623Z",
+      "updated_at": "2018-02-27T14:41:50.818Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 6,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 4,
+      "user": 1,
+      "assessment": 6,
+      "created_at": "2018-02-27T14:43:14.009Z",
+      "updated_at": "2018-02-27T14:43:17.092Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 7,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 94,
+      "user": 1,
+      "assessment": 7,
+      "created_at": "2018-02-27T14:53:11.279Z",
+      "updated_at": "2018-02-27T14:53:14.365Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 8,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 73,
+      "user": 1,
+      "assessment": 8,
+      "created_at": "2018-02-27T14:53:11.279Z",
+      "updated_at": "2018-02-27T14:53:14.365Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 9,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 2,
+      "user": 1,
+      "assessment": 9,
+      "created_at": "2018-02-27T14:43:14.009Z",
+      "updated_at": "2018-02-27T14:43:17.092Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 10,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 56,
+      "user": 1,
+      "assessment": 10,
+      "created_at": "2018-02-27T14:53:11.279Z",
+      "updated_at": "2018-02-27T14:53:14.365Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 11,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 56,
+      "user": 1,
+      "assessment": 11,
+      "created_at": "2018-02-27T14:53:11.279Z",
+      "updated_at": "2018-02-27T14:53:14.365Z"
+    }
+  },
+  {
+    "model": "app.course",
+    "pk": 1,
+    "fields": {
+      "name": "CS2020 - What is love",
+      "description": "Scourge of the seven seas belaying pin brigantine Buccaneer Davy Jones' Locker chase keel hardtack tack driver. Take a caulk careen cackle fruit chase guns belay landlubber or just lubber nipperkin jury mast matey hands. Gabion lad pillage maroon topgallant piracy black jack no prey, no pay skysail American Main.",
+      "created_at": "2018-02-27T14:26:08.002Z",
+      "updated_at": "2018-02-27T14:26:08.002Z",
+      "professor": 1,
+      "students": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "app.course",
+    "pk": 2,
+    "fields": {
+      "name": "CS2021 - Gandalf the wise",
+      "description": "Bowsprit mizzen keel keelhaul jury mast deadlights poop deck ho killick furl. Sutler skysail Jolly Roger Gold Road to go on account reef sails gunwalls black jack Pirate Round plunder. No prey, no pay mutiny ho sheet come about crimp Jolly Roger gangplank keel to go on account.",
+      "created_at": "2018-02-27T14:26:08.002Z",
+      "updated_at": "2018-02-27T14:26:08.002Z",
+      "professor": 1,
+      "students": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "app.course",
+    "pk": 3,
+    "fields": {
+      "name": "CS2022 - Lorem Hipsum",
+      "description": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "created_at": "2018-02-27T14:26:08.002Z",
+      "updated_at": "2018-02-27T14:26:08.002Z",
+      "professor": 1,
+      "students": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "app.course",
+    "pk": 4,
+    "fields": {
+      "name": "CS2023 - Great lakes",
+      "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
+      "created_at": "2018-02-27T14:26:08.002Z",
+      "updated_at": "2018-02-27T14:26:08.002Z",
+      "professor": 1,
+      "students": [
+        1
+      ]
+    }
+  }
+]

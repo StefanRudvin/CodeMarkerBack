@@ -30,7 +30,8 @@ def assessment_creator(self, serializer):
 
     except MultiValueDictKeyError:
         return HttpResponseBadRequest("Looks like you have an empty field or an unknown file type.")
-    except:
+    except Exception as e:
+        print(e)
         return HttpResponseBadRequest("Unexpected error.")
 
     if name == "" or description == "":
@@ -105,7 +106,8 @@ def submission_creator(self, serializer):
         return HttpResponseBadRequest("Looks like you have an empty upload field.")
     except DataError:
         return HttpResponseBadRequest("Looks like you have an empty dropdown field.")
-    except:
+    except Exception as e:
+        print(e)
         return HttpResponseBadRequest("Unexpected error.")
 
     if language == "undefined":
