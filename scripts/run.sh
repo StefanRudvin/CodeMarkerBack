@@ -25,7 +25,6 @@ do
     case $language in
         java)
             javac "submissions/${submissionId}/${filename}";
-            echo ${filename%.*} > test.txt
             java -cp submissions/${submissionId} ${filename%.*} < "${f}" &> "submissions/${submissionId}/outputs/${output}";
         ;;
         cpp)
