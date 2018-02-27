@@ -30,7 +30,8 @@ def assessment_creator(self, serializer):
 
     except MultiValueDictKeyError:
         return HttpResponseBadRequest("Looks like you have an empty field or an unknown file type.")
-    except:
+    except Exception as e:
+        print(e)
         return HttpResponseBadRequest("Unexpected error.")
 
     if name == "" or description == "":
