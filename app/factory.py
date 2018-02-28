@@ -3,13 +3,12 @@ from django.utils.datastructures import MultiValueDictKeyError
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponseBadRequest
 from django.http import HttpResponseForbidden
-from django.db import DataError
+from rest_framework.response import Response
 from django.conf import settings
-from django_mysql.models import ListF
+from django.db import DataError
 import json
 import os
 
-from rest_framework.response import Response
 
 """
     Factories to create new resources with lengthy methods.
@@ -27,6 +26,7 @@ def assessment_creator(self, serializer):
         languages = [x for x in json.loads(
             self.request.POST.get('languages', ""))]
         selected_language = self.request.POST.get('selected_language', "")
+        deadline = self.request.POST.get('deadline', "")
 
     except MultiValueDictKeyError:
         return HttpResponseBadRequest("Looks like you have an empty field or an unknown file type.")
@@ -47,13 +47,13 @@ def assessment_creator(self, serializer):
         description=description,
         additional_help=additional_help,
         course=course,
-        languages=languages)
+        languages=languages,
+        deadline=deadline)
 
     assessment.save()
 
     resource = Resource(
         filename=resource_file.name,
-        content_type="python",
         status="start",
         assessment=assessment,
         language=selected_language)
@@ -71,7 +71,6 @@ def assessment_creator(self, serializer):
 
         input_generator = InputGenerator(
             filename=input_generator_file.name,
-            content_type="python",
             assessment=assessment,
             language=selected_language)
         input_generator.save()
@@ -102,6 +101,7 @@ def submission_creator(self, serializer):
         assessment_id = self.request.POST['assessment_id']
         language = self.request.POST['language']
         submission_file = self.request.FILES['submission']
+        late = self.request.POST['late']
     except MultiValueDictKeyError:
         return HttpResponseBadRequest("Looks like you have an empty upload field.")
     except DataError:
@@ -121,7 +121,6 @@ def submission_creator(self, serializer):
 
     submission = Submission(
         filename=submission_file.name,
-        content_type=language,
         status="start",
         result="fail",
         info="Awaiting result...",
@@ -129,7 +128,8 @@ def submission_creator(self, serializer):
         user_id=self.request.user.id,
         assessment_id=assessment_id,
         timeTaken=0,
-        language=language)
+        language=language,
+        late=late)
     submission.save()
 
     os.makedirs(os.path.join(settings.MEDIA_ROOT,

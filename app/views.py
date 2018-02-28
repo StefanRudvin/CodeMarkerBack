@@ -273,7 +273,7 @@ class SubmissionsDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Submission.objects.all()
     serializer_class = SubmissionSerializer
 
-    def perform_update(self, serializer):
+    def post(self, serializer):
 
         if not self.request.user.is_staff:
             return HttpResponseForbidden("You are not allowed to update submissions")

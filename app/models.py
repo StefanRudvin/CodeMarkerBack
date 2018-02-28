@@ -7,6 +7,8 @@ import datetime
 
 
 # Create your models here.
+from rest_framework.compat import MinValueValidator, MaxValueValidator
+
 
 class Course(models.Model):
     name = models.CharField(max_length=100, null=False)
@@ -72,6 +74,7 @@ class Assessment(models.Model):
     name = models.CharField(max_length=400, null=False)
     description = models.CharField(max_length=1000, default="")
     additional_help = models.CharField(max_length=1000, default="")
+    deadline = models.DateTimeField(blank=False)
 
     languages = ListCharField(
         base_field=models.CharField(max_length=10),
@@ -115,12 +118,14 @@ class Submission(models.Model):
     timeTaken = models.DecimalField(
         null=False, default=0, decimal_places=4, max_digits=4)
 
-    status = EnumField(choices=['start', 'in_progress', 'complete'])
+    late = models.BooleanField(default=False)
+
+    status = EnumField(choices=['start', 'in_progress', 'complete', 'late'])
     result = EnumField(choices=['pass', 'fail', 'error'])
     language = EnumField(choices=['python2', 'python3', 'java', 'cpp', 'c', 'ruby'],
                          default='python2')
 
-    marks = models.IntegerField()
+    marks = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
     output = models.TextField
 
     user = models.ForeignKey(
