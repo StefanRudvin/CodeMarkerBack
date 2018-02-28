@@ -24,6 +24,9 @@ class Course(models.Model):
         related_name='professor'
     )
 
+    def __str__(self):
+        return 'Course: ' + str(self.id) + ' ' + str(self.name)
+
     students = models.ManyToManyField(
         settings.AUTH_USER_MODEL, null=True, blank=True)
 
@@ -40,6 +43,9 @@ class Resource(models.Model):
     status = EnumField(choices=['start', 'in_progress', 'complete'])
     language = EnumField(choices=['python2', 'python3', 'java', 'cpp', 'c', 'ruby'],
                          default='python2')
+
+    def __str__(self):
+        return 'Resource: ' + str(self.id) + '  ' + str(self.filename)
 
     assessment = models.ForeignKey(
         'Assessment',
@@ -75,6 +81,9 @@ class Assessment(models.Model):
     description = models.CharField(max_length=1000, default="")
     additional_help = models.CharField(max_length=1000, default="")
     deadline = models.DateTimeField(blank=False)
+
+    def __str__(self):
+        return 'Assessment: ' + str(self.id) + '  ' + str(self.name)
 
     languages = ListCharField(
         base_field=models.CharField(max_length=10),
@@ -127,6 +136,9 @@ class Submission(models.Model):
 
     marks = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
     output = models.TextField
+
+    def __str__(self):
+        return 'Submission: ' + str(self.id) + '  ' + str(self.filename)
 
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
