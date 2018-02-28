@@ -6,8 +6,13 @@ from django.http import HttpResponseForbidden
 from rest_framework.response import Response
 from django.conf import settings
 from django.db import DataError
+import logging
 import json
 import os
+
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 
 """
@@ -31,7 +36,7 @@ def assessment_creator(self, serializer):
     except MultiValueDictKeyError:
         return HttpResponseBadRequest("Looks like you have an empty field or an unknown file type.")
     except Exception as e:
-        print(e)
+        logger.error(e)
         return HttpResponseBadRequest("Unexpected error.")
 
     if name == "" or description == "":
@@ -108,6 +113,7 @@ def submission_creator(self, serializer):
         return HttpResponseBadRequest("Looks like you have an empty dropdown field.")
     except Exception as e:
         print(e)
+        logger.error(e)
         return HttpResponseBadRequest("Unexpected error.")
 
     if language == "undefined":

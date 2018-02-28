@@ -18,6 +18,10 @@ from rest_framework.response import Response
 from app.factory import submission_creator
 from app.factory import assessment_creator
 from app.factory import course_creator
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 
 class CustomObtainAuthToken(ObtainAuthToken):
@@ -66,7 +70,7 @@ def process_submission(request, submission_id) -> HttpResponse:
         result = run_submission(submission_id)
         return HttpResponse(result, content_type='text/plain')
     except Exception as e:
-        print(e)
+        logger.error(e)
         return HttpResponseServerError("An error occurred in processing your submission."
                                        "If this persists please contact the administrator.")
 

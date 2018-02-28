@@ -8,3 +8,4 @@ codemarker/__pycache__/*
 app/migrations/__pycache__/*
 .vscode/
 ENV_DIR
+logfile
