@@ -27,12 +27,21 @@ def assessment_creator(self, serializer):
         course_id = self.request.POST.get("course_id", "")
         description = self.request.POST.get("description", "")
         additional_help = self.request.POST.get("additional_help", "")
-        resource_file = self.request.FILES['resource']
+
+        deadline = self.request.POST.get('deadline', "")
+
+        dynamic_input = self.request.POST["dynamicInput"]
+        static_input = self.request.POST["staticInput"]
+
         languages = [x for x in json.loads(
             self.request.POST.get('languages', ""))]
         selected_language = self.request.POST.get('selected_language', "")
-        deadline = self.request.POST.get('deadline', "")
+        num_of_static = int(self.request.POST.get('numOfStatic', ""))
 
+        if static_input == "true":
+            for i in range(int(num_of_static)):
+                if 'inputFile'+str(i) not in self.request.FILES or 'outputFile'+str(i) not in self.request.FILES:
+                    raise MultiValueDictKeyError
     except MultiValueDictKeyError:
         return HttpResponseBadRequest("Looks like you have an empty field or an unknown file type.")
     except Exception as e:
@@ -57,21 +66,41 @@ def assessment_creator(self, serializer):
 
     assessment.save()
 
-    resource = Resource(
-        filename=resource_file.name,
-        status="start",
-        assessment=assessment,
-        language=selected_language)
-    resource.save()
+    if static_input == "true":
+        for i in range(int(num_of_static)):
+            os.makedirs(os.path.join(settings.MEDIA_ROOT,
+                                     str(assessment.id), 'static_inputs', str(i)), exist_ok=True)
+            os.makedirs(os.path.join(settings.MEDIA_ROOT,
+                                     str(assessment.id), 'static_outputs', str(i)), exist_ok=True)
 
-    os.makedirs(os.path.join(settings.MEDIA_ROOT,
-                             str(assessment.id), 'model_solutions', str(resource.id)), exist_ok=True)
-    fs = FileSystemStorage(location=os.path.join(
-        settings.MEDIA_ROOT, str(assessment.id), 'model_solutions', str(resource.id)))
+            fs = FileSystemStorage(location=os.path.join(
+                settings.MEDIA_ROOT, str(assessment.id), 'static_inputs', str(i)))
+            static_file = self.request.FILES['inputFile'+str(i)]
+            fs.save(static_file.name, static_file)
 
-    fs.save(resource_file.name, resource_file)
+            fs = FileSystemStorage(location=os.path.join(
+                settings.MEDIA_ROOT, str(assessment.id), 'static_outputs', str(i)))
+            static_file = self.request.FILES['outputFile'+str(i)]
+            fs.save(static_file.name, static_file)
 
-    if self.request.FILES['input_generator']:
+    if dynamic_input == "true":
+
+        resource_file = self.request.FILES['resource']
+
+        resource = Resource(
+            filename=resource_file.name,
+            status="start",
+            assessment=assessment,
+            language=selected_language)
+        resource.save()
+
+        os.makedirs(os.path.join(settings.MEDIA_ROOT,
+                                 str(assessment.id), 'model_solutions', str(resource.id)), exist_ok=True)
+        fs = FileSystemStorage(location=os.path.join(
+            settings.MEDIA_ROOT, str(assessment.id), 'model_solutions', str(resource.id)))
+
+        fs.save(resource_file.name, resource_file)
+
         input_generator_file = self.request.FILES['input_generator']
 
         input_generator = InputGenerator(
@@ -90,7 +119,7 @@ def assessment_creator(self, serializer):
 
         assessment.input_generator = input_generator
 
-    assessment.resource = resource
+        assessment.resource = resource
 
     assessment.save()
 
