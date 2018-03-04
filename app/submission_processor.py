@@ -5,8 +5,8 @@ import os
 from django.core import serializers
 
 from codemarker.settings import MEDIA_ROOT
-from app.docker_processor import start_docker_instance, generate_input
-from app.models import Submission, Resource
+from app.docker_processor import run_dynamic, run_static, generate_input
+from app.models import Submission, Resource, Assessment
 
 
 def run_submission(submission_id, **kwargs):
@@ -19,12 +19,15 @@ def run_submission(submission_id, **kwargs):
     submission = Submission.objects.get(pk=submission_id)
     submission.status = "in_progress"
     submission.save()
+    assessment = Assessment.objects.get(id=submission.assessment_id)
 
-    resource_language = Resource.objects.get(
-        assessment_id=submission.assessment_id).language
-
-    generate_input(submission, resource_language)
-    start_docker_instance(submission)
+    if assessment.static_input:
+        run_static(submission, assessment)
+    if assessment.dynamic_input:
+        resource_language = Resource.objects.get(
+            assessment_id=submission.assessment_id).language
+        generate_input(submission, resource_language)
+        run_dynamic(submission)
 
     expected_output_dir = os.path.join(MEDIA_ROOT, str(
         submission.assessment_id), "expected_outputs")

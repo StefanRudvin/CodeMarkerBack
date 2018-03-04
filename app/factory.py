@@ -62,26 +62,29 @@ def assessment_creator(self, serializer):
         additional_help=additional_help,
         course=course,
         languages=languages,
-        deadline=deadline)
+        deadline=deadline,
+        static_input=json.loads(static_input),
+        dynamic_input=json.loads(dynamic_input),
+        num_of_static=num_of_static)
 
     assessment.save()
 
     if static_input == "true":
         for i in range(int(num_of_static)):
             os.makedirs(os.path.join(settings.MEDIA_ROOT,
-                                     str(assessment.id), 'static_inputs', str(i)), exist_ok=True)
+                                     str(assessment.id), 'static_inputs'), exist_ok=True)
             os.makedirs(os.path.join(settings.MEDIA_ROOT,
-                                     str(assessment.id), 'static_outputs', str(i)), exist_ok=True)
+                                     str(assessment.id), 'expected_static_outputs'), exist_ok=True)
 
             fs = FileSystemStorage(location=os.path.join(
-                settings.MEDIA_ROOT, str(assessment.id), 'static_inputs', str(i)))
+                settings.MEDIA_ROOT, str(assessment.id), 'static_inputs'))
             static_file = self.request.FILES['inputFile'+str(i)]
-            fs.save(static_file.name, static_file)
+            fs.save(str(i), static_file)
 
             fs = FileSystemStorage(location=os.path.join(
-                settings.MEDIA_ROOT, str(assessment.id), 'static_outputs', str(i)))
+                settings.MEDIA_ROOT, str(assessment.id), 'expected_static_outputs'))
             static_file = self.request.FILES['outputFile'+str(i)]
-            fs.save(static_file.name, static_file)
+            fs.save(str(i), static_file)
 
     if dynamic_input == "true":
 
