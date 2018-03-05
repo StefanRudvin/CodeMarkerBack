@@ -1,24 +1,26 @@
-from django.http import HttpResponseBadRequest
-from django.http import HttpResponseServerError
+import logging
+import os
+import shutil
+import time
+import zipfile
 
-from app.serializers import CourseSerializer, AssessmentSerializer, SubmissionSerializer, UserSerializer, \
-    CoursesUsersSerializer
-from app.models import Course, Assessment, Submission
-from app.submission_processor import run_submission
-from django.http import HttpResponseForbidden
 from django.contrib.auth.models import User
-from django.http import HttpResponse
-from rest_framework import generics
-from rest_framework import viewsets
-
-from rest_framework.authtoken.views import ObtainAuthToken
+from django.core.files.storage import FileSystemStorage
+from django.core.management import call_command
+from django.http import (HttpResponse, HttpResponseBadRequest,
+                         HttpResponseForbidden, HttpResponseServerError)
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework import generics, viewsets
 from rest_framework.authtoken.models import Token
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 
-from app.factory import submission_creator
-from app.factory import assessment_creator
-from app.factory import course_creator
-import logging
+from app.factory import assessment_creator, course_creator, submission_creator
+from app.models import Assessment, Course, Submission
+from app.serializers import (AssessmentSerializer, CourseSerializer,
+                             CoursesUsersSerializer, SubmissionSerializer,
+                             UserSerializer)
+from app.submission_processor import run_submission
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -43,6 +45,56 @@ class CustomObtainAuthToken(ObtainAuthToken):
 
 def index(request):
     return HttpResponse("Hello world. You're at the codemarker index.")
+
+
+def create_backup(request=None):
+    """
+    Create back up of the current system,
+    that's including SQL (formatted as JSON) and file system
+    """
+
+    with open('uploads/sql.json', 'w') as f:
+        call_command('dumpdata', stdout=f)
+    os.makedirs('backups', exist_ok=True)
+    shutil.make_archive(
+        'backups/'+time.strftime("%Y%m%d-%H%M%S"), 'zip', 'uploads')
+    try:
+        os.remove('uploads/sql.json')
+    except OSError:
+        pass
+    return HttpResponse(200)
+
+
+@csrf_exempt
+def restore_backup(request):
+    """
+    Restore uploaded zip file containing backed up system
+    """
+
+    # Very important, create a backup of the current system state first.
+    create_backup()
+
+    # Save uploaded archive containing backup
+    zip_archive = request.FILES.get("backup")
+    fs = FileSystemStorage(location='./')
+    fs.save('backup.zip', zip_archive)
+
+    # Remove current file system (safe, as we did a backup before)
+    shutil.rmtree('uploads/')
+    os.makedirs('uploads', exist_ok=True)
+
+    # Extract contents of the zipfile containing backup
+    zip_ref = zipfile.ZipFile('backup.zip', 'r')
+    zip_ref.extractall('uploads')
+    zip_ref.close()
+
+    # Load fixtures into DB
+    call_command('loaddata', 'uploads/sql.json')
+
+    # Clean up uploaded files
+    os.remove('uploads/sql.json')
+    os.remove('backup.zip')
+    return HttpResponse()
 
 
 # // TODO:  Add permissions
