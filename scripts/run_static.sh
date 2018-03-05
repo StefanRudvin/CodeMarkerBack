@@ -7,6 +7,7 @@ filename=$1;
 assessment=$2;
 submissionId=$3;
 num=$4;
+language=$5;
 
 # Change current directory to where the considered assessment is
 cd "/mnt/vol1/${assessment}" || return;
@@ -36,7 +37,7 @@ do
             "submissions/${submissionId}/out" < "${f}" &> "submissions/${submissionId}/static_outputs/${output}";
         ;;
         *)
-            ${language} "submissions/${submissionId}/${filename}" < "${f}" &> "submissions/${submissionId}/static_outputs/${output}.txt";
+            ${language} "submissions/${submissionId}/${filename}" < "${f}" &> "submissions/${submissionId}/static_outputs/${output}";
         ;;
     esac
     

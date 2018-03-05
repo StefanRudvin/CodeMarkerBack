@@ -21,8 +21,8 @@ def run_dynamic(submission):
                               os.path.join(MEDIA_ROOT, '..', 'scripts'):
                                   {
                                       'bind': '/mnt/vol2',
-                                      'mode': 'rw'
-                              }
+                                      'mode': 'ro'
+                                  }
                           },
                           command=f"/bin/bash /mnt/vol2/run_dynamic.sh {submission.filename} {submission.assessment_id} {submission.id} {submission.language}")
 
@@ -45,10 +45,10 @@ def run_static(submission, assessment):
                               os.path.join(MEDIA_ROOT, '..', 'scripts'):
                                   {
                                       'bind': '/mnt/vol2',
-                                      'mode': 'rw'
-                              }
+                                      'mode': 'ro'
+                                  }
                           },
-                          command=f"/bin/bash /mnt/vol2/run_static.sh {submission.filename} {submission.assessment_id} {submission.id} {assessment.num_of_static}")
+                          command=f"/bin/bash /mnt/vol2/run_static.sh {submission.filename} {submission.assessment_id} {submission.id} {assessment.num_of_static} {submission.language}")
 
 
 def generate_input(submission, resource_language):
@@ -68,7 +68,7 @@ def generate_input(submission, resource_language):
                               os.path.join(MEDIA_ROOT, '..', 'scripts'):
                                   {
                                       'bind': '/mnt/vol2',
-                                      'mode': 'rw'
-                              }
+                                      'mode': 'ro'
+                                  }
                           },
                           command=f"/bin/bash /mnt/vol2/generate.sh {submission.assessment_id} {resource_language}")
