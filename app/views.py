@@ -9,6 +9,7 @@ from django.core.files.storage import FileSystemStorage
 from django.core.management import call_command
 from django.http import (HttpResponse, HttpResponseBadRequest,
                          HttpResponseForbidden, HttpResponseServerError)
+from django.utils.encoding import smart_str
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import generics, viewsets
 from rest_framework.authtoken.models import Token
@@ -52,17 +53,26 @@ def create_backup(request=None):
     Create back up of the current system,
     that's including SQL (formatted as JSON) and file system
     """
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    path = 'backups/'+timestamp+'.zip'
 
     with open('uploads/sql.json', 'w') as f:
         call_command('dumpdata', stdout=f)
     os.makedirs('backups', exist_ok=True)
     shutil.make_archive(
-        'backups/'+time.strftime("%Y%m%d-%H%M%S"), 'zip', 'uploads')
+        'backups/'+timestamp, 'zip', 'uploads')
     try:
         os.remove('uploads/sql.json')
     except OSError:
         pass
-    return HttpResponse(200)
+
+    # mimetype is replaced by content_type for django 1.7
+    response = HttpResponse(content_type='application/force-download')
+    response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(
+        timestamp+'.zip')
+    response['X-Sendfile'] = smart_str(path)
+
+    return response
 
 
 @csrf_exempt
