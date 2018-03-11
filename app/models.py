@@ -27,14 +27,16 @@ class Course(models.Model):
     def __str__(self):
         return 'Course: ' + str(self.id) + ' ' + str(self.name)
 
-    students = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, null=True, blank=True)
+    students = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
 
     def was_published_recently(self):
         return self.created_at >= timezone.now() - datetime.timedelta(days=1)
 
     class Meta:
         ordering = ('created_at',)
+        permissions = (
+            ("change_courses_users", "Can change courses_users"),
+        )
 
 
 class Resource(models.Model):

@@ -2,6 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 
 from app.models import Course, Assessment, Submission
+from rest_framework.fields import CurrentUserDefault
 
 
 class SubmissionSerializer(serializers.ModelSerializer):
@@ -22,10 +23,10 @@ class CoursesUsersSerializer(serializers.ModelSerializer):
         assessment = Assessment(**validated_data)
         assessment.save()
         return Assessment
-        return "ok"
 
 
 class AssessmentSerializer(serializers.ModelSerializer):
+    user = CurrentUserDefault()
     submissions = SubmissionSerializer(many=True, read_only=True)
 
     def create(self, validated_data):
@@ -49,7 +50,6 @@ class CourseSerializer(serializers.ModelSerializer):
     assessments = AssessmentSerializer(many=True, read_only=True)
 
     def create(self, validated_data):
-
         return Course.objects.create(
             name=validated_data['name'],
             description=validated_data['description'],

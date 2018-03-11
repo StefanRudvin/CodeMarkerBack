@@ -1,5 +1,6 @@
 from django.http import HttpResponseBadRequest
 from django.http import HttpResponseServerError
+from rest_framework.permissions import DjangoModelPermissions
 
 from app.serializers import CourseSerializer, AssessmentSerializer, SubmissionSerializer, UserSerializer, \
     CoursesUsersSerializer
@@ -17,7 +18,6 @@ from rest_framework.response import Response
 
 from app.factory import submission_creator
 from app.factory import assessment_creator
-from app.factory import course_creator
 import logging
 
 # Get an instance of a logger
@@ -47,10 +47,12 @@ def index(request):
 
 # // TODO:  Add permissions
 class UserViewSet(viewsets.ModelViewSet):
+    permission_classes = (DjangoModelPermissions,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
     def retrieve(self, request, pk=None):
+
         if pk == 'i':
             return HttpResponse(UserSerializer(request.user,
                                                context={'request': request}).data)
@@ -84,12 +86,15 @@ class CoursesList(generics.ListCreateAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
+    permission_classes = (DjangoModelPermissions,)
+
     """
         Concrete view for listing a queryset or creating a model instance.
     """
 
     def get_queryset(self):
         user = self.request.user
+
         if user.is_superuser:
             return Course.objects.all()
 
@@ -97,12 +102,6 @@ class CoursesList(generics.ListCreateAPIView):
             return Course.objects.filter(professor=user)
 
         return Course.objects.filter(students=user)
-
-    def post(self, request, *args, **kwargs):
-
-        if not self.request.user.is_staff:
-            return HttpResponseForbidden("You are not allowed to create assessments")
-        return self.create(request, *args, **kwargs)
 
 
 class CoursesDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -114,20 +113,7 @@ class CoursesDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
-    def put(self, request, *args, **kwargs):
-        if not self.request.user.is_staff:
-            return HttpResponseForbidden("You are not allowed to update courses")
-        return self.update(request, *args, **kwargs)
-
-    def patch(self, request, *args, **kwargs):
-        if not self.request.user.is_staff:
-            return HttpResponseForbidden("You are not allowed to update courses")
-        return self.partial_update(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        if not self.request.user.is_staff:
-            return HttpResponseForbidden("You are not allowed to destroy courses")
-        return self.destroy(request, *args, **kwargs)
+    permission_classes = (DjangoModelPermissions,)
 
 
 class CoursesUsersDestroy(generics.CreateAPIView):
@@ -135,6 +121,10 @@ class CoursesUsersDestroy(generics.CreateAPIView):
     serializer_class = CoursesUsersSerializer
 
     def post(self, request, *args, **kwargs):
+
+        if not request.user.has_perm('app.change_courses_users'):
+            return HttpResponseForbidden("You are not allowed remove students from courses")
+
         course_id = self.request.POST.get("course_id", "")
 
         user_id = self.request.POST.get("user_id", "")
@@ -153,6 +143,10 @@ class CoursesUsersAdd(generics.CreateAPIView):
     serializer_class = CoursesUsersSerializer
 
     def post(self, request, *args, **kwargs):
+
+        if not request.user.has_perm('app.change_courses_users'):
+            return HttpResponseForbidden("You are not allowed remove students from courses")
+
         course_id = self.request.POST.get("course_id", "")
 
         user_id = self.request.POST.get("user_id", "")
@@ -175,6 +169,8 @@ class AssessmentsList(generics.ListCreateAPIView):
     queryset = Assessment.objects.all()
     serializer_class = AssessmentSerializer
 
+    permission_classes = (DjangoModelPermissions,)
+
     def post(self, serializer):
         return assessment_creator(self, serializer)
 
@@ -188,18 +184,7 @@ class AssessmentsDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Assessment.objects.all()
     serializer_class = AssessmentSerializer
 
-    def perform_update(self, serializer):
-
-        if not self.request.user.is_staff:
-            return HttpResponseForbidden("You are not allowed to update assessments")
-
-        serializer.update()
-
-    def perform_destroy(self, serializer):
-        if not self.request.user.is_staff:
-            return HttpResponseForbidden("You are not allowed to destroy assessments")
-
-        serializer.destroy()
+    permission_classes = (DjangoModelPermissions,)
 
 
 class UsersList(generics.ListCreateAPIView):
@@ -209,6 +194,15 @@ class UsersList(generics.ListCreateAPIView):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+    permission_classes = (DjangoModelPermissions,)
+
+    def get(self, request, *args, **kwargs):
+        #if request.user.is_staff and pk != request.user.user_id:
+        if not (request.user.is_staff or request.user.is_superuser):
+            return HttpResponseForbidden('You are not allowed to access this resource.')
+
+        return self.list(request, *args, **kwargs)
 
 
 class UsersDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -220,8 +214,14 @@ class UsersDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+    permission_classes = (DjangoModelPermissions,)
+
     def get(self, request, *args, **kwargs):
         user_id = self.kwargs['pk']
+
+        if (int(user_id) != int(request.user.id)) and not request.user.is_staff:
+            return HttpResponseForbidden('You are not allowed to access this resource.')
+
 
         user = User.objects.get(pk=user_id)
         userJson = UserSerializer(user).data
@@ -264,8 +264,21 @@ class SubmissionsList(generics.ListCreateAPIView):
     queryset = Submission.objects.all()
     serializer_class = SubmissionSerializer
 
+    permission_classes = (DjangoModelPermissions,)
+
     def post(self, serializer):
         return submission_creator(self, serializer)
+
+    # def get_queryset(self):
+    #     user = self.request.user
+    #
+    #     if user.is_superuser:
+    #         return Submission.objects.all()
+    #
+    #     if user.is_staff:
+    #         return Submission.objects.filter(professor=user)
+    #
+    #     return Course.objects.filter(students=user)
 
 
 class SubmissionsDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -276,6 +289,18 @@ class SubmissionsDetail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Submission.objects.all()
     serializer_class = SubmissionSerializer
+
+    permission_classes = (DjangoModelPermissions,)
+
+    def get(self, request, *args, **kwargs):
+        submission_id = self.kwargs['pk']
+
+
+
+
+        if (int(submission_id) != int(request.user.id)) and not request.user.is_superuser:
+            return HttpResponseForbidden('You are not allowed to access this resource.')
+        return self.retrieve(request, *args, **kwargs)
 
     def post(self, serializer):
 
