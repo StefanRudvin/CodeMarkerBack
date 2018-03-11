@@ -53,4 +53,10 @@ urlpatterns = [
 
     url(r'^api/submissions/(?P<submission_id>\d+)/process/$',
         views.process_submission, name='submission-process'),
+
+    url(r'^api/create_backup/$',
+        views.create_backup, name='create-backup'),
+
+    url(r'^api/restore_backup/$',
+        views.restore_backup, name='create-backup'),
 ]

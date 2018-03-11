@@ -83,6 +83,9 @@ class Assessment(models.Model):
     description = models.CharField(max_length=1000, default="")
     additional_help = models.CharField(max_length=1000, default="")
     deadline = models.DateTimeField(blank=False)
+    static_input = models.BooleanField(default=False)
+    dynamic_input = models.BooleanField(default=False)
+    num_of_static = models.IntegerField(default=0)
 
     def __str__(self):
         return 'Assessment: ' + str(self.id) + '  ' + str(self.name)
@@ -136,7 +139,8 @@ class Submission(models.Model):
     language = EnumField(choices=['python2', 'python3', 'java', 'cpp', 'c', 'ruby'],
                          default='python2')
 
-    marks = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
+    marks = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)])
     output = models.TextField
 
     def __str__(self):
