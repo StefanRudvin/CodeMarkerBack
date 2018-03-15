@@ -5,7 +5,6 @@ from django.conf import settings
 from django.db import models
 import datetime
 
-
 # Create your models here.
 from rest_framework.compat import MinValueValidator, MaxValueValidator
 

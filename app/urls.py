@@ -1,9 +1,9 @@
-from django.conf.urls import url
+import django.conf.urls
 
 from . import views
 
 urlpatterns = [
-    url(r'$', views.index, name='index'),
+    django.conf.urls.url(r'$', views.index, name='index'),
 ]
 
 

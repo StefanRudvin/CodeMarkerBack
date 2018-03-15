@@ -16,14 +16,16 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from app import views
-from app.views import CustomObtainAuthToken
+
 
 urlpatterns = [
     url(r'^codemarker/', include('app.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
 
-    url(r'^api/obtain-auth-token/$', CustomObtainAuthToken.as_view()),
+    url(r'^api/obtain-auth-token/$', views.CustomObtainAuthToken.as_view()),
+
+    url(r'^api/get-user/$', views.GetCurrentUserData.as_view()),
 
     url(r'^api/users/$', views.UsersList.as_view(), name='user-list'),
     url(r'^api/users/(?P<pk>[0-9]+)/$',

@@ -27,7 +27,6 @@ from app.serializers import (AssessmentSerializer, CourseSerializer,
                              UserSerializer)
 from app.submission_processor import run_submission
 
-
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
@@ -53,19 +52,31 @@ def index(request):
     return HttpResponse("Hello world. You're at the codemarker index.")
 
 
+class GetCurrentUserData(generics.CreateAPIView):
+    def post(self, request, *args, **kwargs):
+        user = User.objects.get(pk=request.user.id)
+        userJson = UserSerializer(user).data
+
+        return Response(userJson)
+
+
 def create_backup(request=None):
     """
     Create back up of the current system,
     that's including SQL (formatted as JSON) and file system
     """
+
+    if not (request.user.is_staff or request.user.is_superuser):
+        return HttpResponseForbidden('You are not allowed to complete this action.')
+
     timestamp = time.strftime("%Y%m%d_%H%M%S")
-    path = 'backups/'+timestamp+'.zip'
+    path = 'backups/' + timestamp + '.zip'
 
     with open('uploads/sql.json', 'w') as f:
         call_command('dumpdata', stdout=f)
     os.makedirs('backups', exist_ok=True)
     shutil.make_archive(
-        'backups/'+timestamp, 'zip', 'uploads')
+        'backups/' + timestamp, 'zip', 'uploads')
     try:
         os.remove('uploads/sql.json')
     except OSError:
@@ -74,7 +85,7 @@ def create_backup(request=None):
     # mimetype is replaced by content_type for django 1.7
     response = HttpResponse(content_type='application/force-download')
     response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(
-        timestamp+'.zip')
+        timestamp + '.zip')
     response['X-Sendfile'] = smart_str(path)
 
     return response
@@ -85,6 +96,9 @@ def restore_backup(request):
     """
     Restore uploaded zip file containing backed up system
     """
+
+    if not (request.user.is_staff or request.user.is_superuser):
+        return HttpResponseForbidden('You are not allowed to complete this action.')
 
     # Very important, create a backup of the current system state first.
     create_backup()
@@ -119,7 +133,6 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
     def retrieve(self, request, pk=None):
-
         if pk == 'i':
             return HttpResponse(UserSerializer(request.user,
                                                context={'request': request}).data)
@@ -182,13 +195,21 @@ class CoursesDetail(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = (DjangoModelPermissions,)
 
+    def get(self, request, *args, **kwargs):
+        course_id = self.kwargs['pk']
+        course = Course.objects.get(id=course_id)
+
+        if request.user not in course.students.all() and not (request.user.is_staff or request.user.is_superuser):
+            return HttpResponseForbidden('You are not allowed to access this resource.')
+
+        return self.retrieve(request, *args, **kwargs)
+
 
 class CoursesUsersDestroy(generics.CreateAPIView):
     queryset = Course.objects.all()
     serializer_class = CoursesUsersSerializer
 
     def post(self, request, *args, **kwargs):
-
         if not request.user.has_perm('app.change_courses_users'):
             return HttpResponseForbidden("You are not allowed remove students from courses")
 
@@ -264,13 +285,6 @@ class UsersList(generics.ListCreateAPIView):
 
     permission_classes = (DjangoModelPermissions,)
 
-    def get(self, request, *args, **kwargs):
-        #if request.user.is_staff and pk != request.user.user_id:
-        if not (request.user.is_staff or request.user.is_superuser):
-            return HttpResponseForbidden('You are not allowed to access this resource.')
-
-        return self.list(request, *args, **kwargs)
-
 
 class UsersDetail(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -288,7 +302,6 @@ class UsersDetail(generics.RetrieveUpdateDestroyAPIView):
 
         if (int(user_id) != int(request.user.id)) and not request.user.is_staff:
             return HttpResponseForbidden('You are not allowed to access this resource.')
-
 
         user = User.objects.get(pk=user_id)
         userJson = UserSerializer(user).data
@@ -336,16 +349,16 @@ class SubmissionsList(generics.ListCreateAPIView):
     def post(self, serializer):
         return submission_creator(self, serializer)
 
-    # def get_queryset(self):
-    #     user = self.request.user
-    #
-    #     if user.is_superuser:
-    #         return Submission.objects.all()
-    #
-    #     if user.is_staff:
-    #         return Submission.objects.filter(professor=user)
-    #
-    #     return Course.objects.filter(students=user)
+        # def get_queryset(self):
+        #     user = self.request.user
+        #
+        #     if user.is_superuser:
+        #         return Submission.objects.all()
+        #
+        #     if user.is_staff:
+        #         return Submission.objects.filter(professor=user)
+        #
+        #     return Course.objects.filter(students=user)
 
 
 class SubmissionsDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -360,12 +373,13 @@ class SubmissionsDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (DjangoModelPermissions,)
 
     def get(self, request, *args, **kwargs):
+
         submission_id = self.kwargs['pk']
 
+        submission = Submission.objects.get(id=submission_id)
 
-
-
-        if (int(submission_id) != int(request.user.id)) and not request.user.is_superuser:
+        if (int(submission.user.id) != int(request.user.id)) and not (
+                    request.user.is_staff or request.user.is_superuser):
             return HttpResponseForbidden('You are not allowed to access this resource.')
         return self.retrieve(request, *args, **kwargs)
 
