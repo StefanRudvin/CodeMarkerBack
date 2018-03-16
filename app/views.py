@@ -274,6 +274,18 @@ class AssessmentsDetail(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = (DjangoModelPermissions,)
 
+    def get(self, request, *args, **kwargs):
+        assessment_id = self.kwargs['pk']
+
+        assessment = Assessment.objects.get(id=assessment_id)
+
+        course = assessment.course
+
+        if request.user not in course.students.all() and not (request.user.is_staff or request.user.is_superuser):
+            return HttpResponseForbidden('You are not allowed to access this resource.')
+
+        return self.retrieve(request, *args, **kwargs)
+
 
 class UsersList(generics.ListCreateAPIView):
     """

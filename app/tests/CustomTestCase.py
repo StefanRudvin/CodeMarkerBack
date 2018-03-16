@@ -52,12 +52,21 @@ class CustomTestCase(TestCase):
         )
 
         self.assessment1 = Assessment.objects.create(
-            name='testAssessment2',
+            name='testAssessment',
             deadline=now(),
             course=self.course1
         )
 
         self.factory = APIRequestFactory()
+
+    def loginStudent(self, request):
+        force_authenticate(request, user=self.student, token=self.student.auth_token)
+
+    def loginProfessor(self, request):
+        force_authenticate(request, user=self.professor, token=self.professor.auth_token)
+
+    def loginAdmin(self, request):
+        force_authenticate(request, user=self.admin, token=self.admin.auth_token)
 
     def createAssessmentData(self, resource, generator):
         return {
@@ -73,4 +82,11 @@ class CustomTestCase(TestCase):
                     'numOfStatic': 0,
                     'selected_language': 'Python3',
                     'languages': json.dumps(['Python2']),
+                }
+
+    def createCourseData(self):
+        return {
+                    'name': 'Test',
+                    'description': 'Test Description',
+                    'professor': self.professor
                 }
