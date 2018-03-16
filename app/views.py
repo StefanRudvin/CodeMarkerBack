@@ -361,16 +361,16 @@ class SubmissionsList(generics.ListCreateAPIView):
     def post(self, serializer):
         return submission_creator(self, serializer)
 
-        # def get_queryset(self):
-        #     user = self.request.user
-        #
-        #     if user.is_superuser:
-        #         return Submission.objects.all()
-        #
-        #     if user.is_staff:
-        #         return Submission.objects.filter(professor=user)
-        #
-        #     return Course.objects.filter(students=user)
+    def get_queryset(self):
+        user = self.request.user
+
+        if user.is_superuser:
+            return Submission.objects.all()
+
+        # if user.is_staff:
+        #     return Submission.objects.filter(professor=user)
+
+        return Course.objects.filter(students=user)
 
 
 class SubmissionsDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -385,7 +385,6 @@ class SubmissionsDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (DjangoModelPermissions,)
 
     def get(self, request, *args, **kwargs):
-
         submission_id = self.kwargs['pk']
 
         submission = Submission.objects.get(id=submission_id)
@@ -394,16 +393,3 @@ class SubmissionsDetail(generics.RetrieveUpdateDestroyAPIView):
                     request.user.is_staff or request.user.is_superuser):
             return HttpResponseForbidden('You are not allowed to access this resource.')
         return self.retrieve(request, *args, **kwargs)
-
-    def post(self, serializer):
-
-        if not self.request.user.is_staff:
-            return HttpResponseForbidden("You are not allowed to update submissions")
-
-        serializer.update()
-
-    def perform_destroy(self, serializer):
-        if not self.request.user.is_staff:
-            return HttpResponseForbidden("You are not allowed to destroy submissions")
-
-        serializer.destroy()

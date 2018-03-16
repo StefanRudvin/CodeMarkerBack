@@ -4,7 +4,7 @@ from app.views import CoursesList, CoursesDetail
 from app.models import Course
 
 
-class Testcourses(CustomTestCase):
+class TestCourses(CustomTestCase):
     def test_get_courses(self):
         view = CoursesList.as_view()
 

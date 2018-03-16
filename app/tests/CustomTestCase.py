@@ -2,10 +2,11 @@ from rest_framework.test import force_authenticate, APIRequestFactory
 from django.contrib.auth.models import User, Group
 from app.views import CoursesList, CoursesDetail
 from django.test import TestCase
-from app.models import Course, Assessment
+from app.models import Course, Assessment, Submission
 from django.test import TestCase
 from django.utils.timezone import now
 import json
+
 
 class CustomTestCase(TestCase):
     fixtures = ['testData.json']
@@ -57,6 +58,26 @@ class CustomTestCase(TestCase):
             course=self.course1
         )
 
+        self.submission1 = Submission.objects.create(
+            timeTaken=0.0000,
+            assessment=self.assessment1,
+            user=self.student,
+            status='complete',
+            result='pass',
+            language='python3',
+            marks=90
+        )
+
+        self.submission2 = Submission.objects.create(
+            timeTaken=0.0000,
+            assessment=self.assessment1,
+            user=self.student,
+            status='complete',
+            result='pass',
+            language='python3',
+            marks=90
+        )
+
         self.factory = APIRequestFactory()
 
     def loginStudent(self, request):
@@ -70,23 +91,38 @@ class CustomTestCase(TestCase):
 
     def createAssessmentData(self, resource, generator):
         return {
-                    'name': 'Test',
-                    'description': 'Test Description',
-                    'additional_help': 'Additional help',
-                    'course_id': self.course1.id,
-                    'deadline': now(),
-                    'dynamicInput': "true",
-                    'resource': resource,
-                    'input_generator': generator,
-                    'staticInput': "false",
-                    'numOfStatic': 0,
-                    'selected_language': 'Python3',
-                    'languages': json.dumps(['Python2']),
-                }
+            'name': 'Test',
+            'description': 'Test Description',
+            'additional_help': 'Additional help',
+            'course_id': self.course1.id,
+            'deadline': now(),
+            'dynamicInput': "true",
+            'resource': resource,
+            'input_generator': generator,
+            'staticInput': "false",
+            'numOfStatic': 0,
+            'selected_language': 'Python3',
+            'languages': json.dumps(['Python2']),
+        }
 
     def createCourseData(self):
         return {
-                    'name': 'Test',
-                    'description': 'Test Description',
-                    'professor': self.professor
-                }
+            'name': 'Test',
+            'description': 'Test Description',
+            'professor': self.professor
+        }
+
+    def createSubmissionData(self, resource):
+        return {
+            'assessment_id': self.assessment1.id,
+            'language': 'Python3',
+            'submission': resource,
+            'late': False,
+        }
+
+    def createUserData(self):
+        return {
+            'username': 'testUser',
+            'email': 'testUser@test.com',
+            'password': 'testUser'
+        }

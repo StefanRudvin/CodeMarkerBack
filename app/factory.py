@@ -136,6 +136,7 @@ def course_creator(self, serializer):
 
 
 def submission_creator(self, serializer):
+
     try:
         assessment_id = self.request.POST['assessment_id']
         language = self.request.POST['language']
@@ -152,6 +153,7 @@ def submission_creator(self, serializer):
 
     if language == "undefined":
         return HttpResponseBadRequest("Looks like you have an empty language field.")
+
 
     assessment = Assessment.objects.get(id=assessment_id)
     course = Course.objects.get(id=assessment.course_id)
@@ -180,4 +182,4 @@ def submission_creator(self, serializer):
     filename = fs.save(submission_file.name, submission_file)
     uploaded_file_url = fs.url(filename)
 
-    return Response(submission.id)
+    return Response(submission.id, 201)
