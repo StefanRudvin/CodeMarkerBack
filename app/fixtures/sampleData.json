@@ -23,12 +23,27 @@
     }
   },
   {
+    "model": "app.inputgenerator",
+    "pk": 3,
+    "fields": {
+      "filename": "python3generator.py",
+      "language": "python3",
+      "assessment": 1,
+      "created_at": "2018-02-27T22:42:02.619Z",
+      "updated_at": "2018-02-27T22:42:02.619Z"
+    }
+  },
+  {
     "model": "app.assessment",
     "pk": 1,
     "fields": {
       "name": "The grand assessment of the north 1",
       "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
       "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "deadline": "2018-02-24T00:00:00Z",
+      "static_input": false,
+      "dynamic_input": false,
+      "num_of_static": 0,
       "languages": "Python2,Python3,Ruby,C,CPlus,Java",
       "resource": 1,
       "course": 1,
@@ -44,6 +59,10 @@
       "name": "The grand assessment of the north 2",
       "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
       "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "deadline": "2018-02-27T00:00:00Z",
+      "static_input": false,
+      "dynamic_input": false,
+      "num_of_static": 0,
       "languages": "Python2,Python3,Ruby,C,CPlus,Java",
       "resource": 1,
       "course": 1,
@@ -59,6 +78,10 @@
       "name": "The grand assessment of the north 3",
       "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
       "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "deadline": "2018-02-27T00:00:00Z",
+      "static_input": false,
+      "dynamic_input": false,
+      "num_of_static": 0,
       "languages": "Python2,Python3,Ruby,C,CPlus,Java",
       "resource": 1,
       "course": 1,
@@ -74,6 +97,10 @@
       "name": "The grand assessment of the north 4",
       "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
       "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "deadline": "2018-02-27T00:00:00Z",
+      "static_input": false,
+      "dynamic_input": false,
+      "num_of_static": 0,
       "languages": "Python2,Python3,Ruby,C,CPlus,Java",
       "resource": 1,
       "course": 1,
@@ -89,6 +116,10 @@
       "name": "The grand assessment of the north 5",
       "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
       "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "deadline": "2018-02-27T00:00:00Z",
+      "static_input": false,
+      "dynamic_input": false,
+      "num_of_static": 0,
       "languages": "Python2,Python3,Ruby,C,CPlus,Java",
       "resource": 1,
       "course": 1,
@@ -104,6 +135,10 @@
       "name": "The grand assessment of the north 6",
       "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
       "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "deadline": "2018-02-27T00:00:00Z",
+      "static_input": false,
+      "dynamic_input": false,
+      "num_of_static": 0,
       "languages": "Python2,Python3,Ruby,C,CPlus,Java",
       "resource": 1,
       "course": 2,
@@ -119,6 +154,10 @@
       "name": "The grand assessment of the north 7",
       "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
       "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "deadline": "2018-02-27T00:00:00Z",
+      "static_input": false,
+      "dynamic_input": false,
+      "num_of_static": 0,
       "languages": "Python2,Python3,Ruby,C,CPlus,Java",
       "resource": 1,
       "course": 2,
@@ -134,6 +173,10 @@
       "name": "The grand assessment of the north 8",
       "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
       "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "deadline": "2018-02-27T00:00:00Z",
+      "static_input": false,
+      "dynamic_input": false,
+      "num_of_static": 0,
       "languages": "Python2,Python3,Ruby,C,CPlus,Java",
       "resource": 1,
       "course": 2,
@@ -149,6 +192,10 @@
       "name": "The grand assessment of the north 9",
       "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
       "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "deadline": "2018-02-27T00:00:00Z",
+      "static_input": false,
+      "dynamic_input": false,
+      "num_of_static": 0,
       "languages": "Python2,Python3,Ruby,C,CPlus,Java",
       "resource": 1,
       "course": 2,
@@ -164,6 +211,10 @@
       "name": "The grand assessment of the north 10",
       "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
       "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "deadline": "2018-02-27T00:00:00Z",
+      "static_input": false,
+      "dynamic_input": false,
+      "num_of_static": 0,
       "languages": "Python2,Python3,Ruby,C,CPlus,Java",
       "resource": 1,
       "course": 2,
@@ -179,6 +230,10 @@
       "name": "The grand assessment of the north 11",
       "description": "Furl Admiral of the Black lugger bowsprit shrouds reef list driver lass crimp. Gangplank grapple code of conduct chase smartly Admiral of the Black American Main provost Shiver me timbers deadlights. Yo-ho-ho brig sheet Shiver me timbers Sea Legs shrouds doubloon hempen halter clipper carouser.",
       "additional_help": "Davy Jones' Locker hogshead keel coffer wherry rigging spike Privateer red ensign cutlass. Scurvy coxswain holystone scallywag prow nipper splice the main brace hands case shot starboard. Yard Letter of Marque lanyard yardarm Plate Fleet bilge squiffy schooner holystone hail-shot.",
+      "deadline": "2018-02-27T00:00:00Z",
+      "static_input": false,
+      "dynamic_input": false,
+      "num_of_static": 0,
       "languages": "Python2,Python3,Ruby,C,CPlus,Java",
       "resource": 1,
       "course": 3,
@@ -284,6 +339,14 @@
     }
   },
   {
+    "model": "sessions.session",
+    "pk": "g95gshqc88u3385x6nvpqhrzroaottq7",
+    "fields": {
+      "session_data": "NmJkMzg3MTE0ZDViMGQ4YTE3MzEwMmZjNjk5M2UwYjkzOTFhZTlhODp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIyM2NhNmM1NTE3MmJhNzI5MTE4MzI0YzEyYjVmYjViOTIwNGZkY2M4In0=",
+      "expire_date": "2018-03-14T00:57:36.526Z"
+    }
+  },
+  {
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -337,274 +400,72 @@
       "codename": "delete_course"
     }
   },
+
   {
-    "model": "auth.permission",
-    "pk": 7,
+    "model": "auth.group",
+    "pk": 1,
     "fields": {
-      "name": "Can add input generator",
-      "content_type": 3,
-      "codename": "add_inputgenerator"
+      "name": "professor",
+      "permissions": [
+        16,
+        17,
+        18,
+        1,
+        2,
+        3,
+        4,
+        5,
+        37,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        22,
+        23,
+        24,
+        19,
+        20,
+        21,
+        25,
+        26,
+        27,
+        34,
+        35,
+        36,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ]
     }
   },
   {
-    "model": "auth.permission",
-    "pk": 8,
+    "model": "auth.group",
+    "pk": 2,
     "fields": {
-      "name": "Can change input generator",
-      "content_type": 3,
-      "codename": "change_inputgenerator"
+      "name": "administrator",
+      "permissions": []
     }
   },
   {
-    "model": "auth.permission",
-    "pk": 9,
+    "model": "auth.group",
+    "pk": 3,
     "fields": {
-      "name": "Can delete input generator",
-      "content_type": 3,
-      "codename": "delete_inputgenerator"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 10,
-    "fields": {
-      "name": "Can add resource",
-      "content_type": 4,
-      "codename": "add_resource"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 11,
-    "fields": {
-      "name": "Can change resource",
-      "content_type": 4,
-      "codename": "change_resource"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 12,
-    "fields": {
-      "name": "Can delete resource",
-      "content_type": 4,
-      "codename": "delete_resource"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 13,
-    "fields": {
-      "name": "Can add submission",
-      "content_type": 5,
-      "codename": "add_submission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 14,
-    "fields": {
-      "name": "Can change submission",
-      "content_type": 5,
-      "codename": "change_submission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 15,
-    "fields": {
-      "name": "Can delete submission",
-      "content_type": 5,
-      "codename": "delete_submission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 16,
-    "fields": {
-      "name": "Can add log entry",
-      "content_type": 6,
-      "codename": "add_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 17,
-    "fields": {
-      "name": "Can change log entry",
-      "content_type": 6,
-      "codename": "change_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 18,
-    "fields": {
-      "name": "Can delete log entry",
-      "content_type": 6,
-      "codename": "delete_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 19,
-    "fields": {
-      "name": "Can add permission",
-      "content_type": 7,
-      "codename": "add_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 20,
-    "fields": {
-      "name": "Can change permission",
-      "content_type": 7,
-      "codename": "change_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 21,
-    "fields": {
-      "name": "Can delete permission",
-      "content_type": 7,
-      "codename": "delete_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 22,
-    "fields": {
-      "name": "Can add group",
-      "content_type": 8,
-      "codename": "add_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 23,
-    "fields": {
-      "name": "Can change group",
-      "content_type": 8,
-      "codename": "change_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 24,
-    "fields": {
-      "name": "Can delete group",
-      "content_type": 8,
-      "codename": "delete_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 25,
-    "fields": {
-      "name": "Can add user",
-      "content_type": 9,
-      "codename": "add_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 26,
-    "fields": {
-      "name": "Can change user",
-      "content_type": 9,
-      "codename": "change_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 27,
-    "fields": {
-      "name": "Can delete user",
-      "content_type": 9,
-      "codename": "delete_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 28,
-    "fields": {
-      "name": "Can add content type",
-      "content_type": 10,
-      "codename": "add_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 29,
-    "fields": {
-      "name": "Can change content type",
-      "content_type": 10,
-      "codename": "change_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 30,
-    "fields": {
-      "name": "Can delete content type",
-      "content_type": 10,
-      "codename": "delete_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 31,
-    "fields": {
-      "name": "Can add session",
-      "content_type": 11,
-      "codename": "add_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 32,
-    "fields": {
-      "name": "Can change session",
-      "content_type": 11,
-      "codename": "change_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 33,
-    "fields": {
-      "name": "Can delete session",
-      "content_type": 11,
-      "codename": "delete_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 34,
-    "fields": {
-      "name": "Can add Token",
-      "content_type": 12,
-      "codename": "add_token"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 35,
-    "fields": {
-      "name": "Can change Token",
-      "content_type": 12,
-      "codename": "change_token"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 36,
-    "fields": {
-      "name": "Can delete Token",
-      "content_type": 12,
-      "codename": "delete_token"
+      "name": "student",
+      "permissions": [
+        10,
+        13,
+        34,
+        31
+      ]
     }
   },
   {
@@ -612,7 +473,7 @@
     "pk": 1,
     "fields": {
       "password": "pbkdf2_sha256$36000$WNw6K79uqeRt$tNl0C7jLTyuMcqnLHdokh+v4zfWnhDv3WrMhT975hRM=",
-      "last_login": null,
+      "last_login": "2018-02-28T00:57:36.522Z",
       "is_superuser": true,
       "username": "Administrator",
       "first_name": "",
@@ -621,7 +482,9 @@
       "is_staff": true,
       "is_active": true,
       "date_joined": "2018-02-27T14:15:01.904Z",
-      "groups": [],
+      "groups": [
+        1
+      ],
       "user_permissions": []
     }
   },
@@ -631,15 +494,17 @@
     "fields": {
       "password": "pbkdf2_sha256$36000$nSjhNZ9k73zY$oGnTN3TNorwpnycPvpWRc2iuYKJkhNar8zbKEVHGpwY=",
       "last_login": null,
-      "is_superuser": true,
+      "is_superuser": false,
       "username": "testuser123",
       "first_name": "",
       "last_name": "",
       "email": "aberdeen@israiny.com",
-      "is_staff": true,
+      "is_staff": false,
       "is_active": true,
       "date_joined": "2018-02-27T15:44:05.854Z",
-      "groups": [],
+      "groups": [
+        3
+      ],
       "user_permissions": []
     }
   },
@@ -661,7 +526,32 @@
       "user_permissions": []
     }
   },
-
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2018-02-28T01:10:41.169Z",
+      "user": 1,
+      "content_type": 1,
+      "object_id": "13",
+      "object_repr": "Assessment: 13  gfdvxv",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2018-02-28T01:10:44.928Z",
+      "user": 1,
+      "content_type": 1,
+      "object_id": "15",
+      "object_repr": "Assessment: 15  zf",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
   {
     "model": "app.submission",
     "pk": 1,
@@ -669,14 +559,15 @@
       "filename": "python3resource.py",
       "info": "All tests cleared! Great job!",
       "timeTaken": "0.0000",
+      "late": false,
       "status": "complete",
       "result": "pass",
       "language": "python3",
-      "marks": 20,
-      "user": 1,
+      "marks": 29,
+      "user": 2,
       "assessment": 1,
       "created_at": "2018-02-27T14:34:43.162Z",
-      "updated_at": "2018-02-27T14:34:46.988Z"
+      "updated_at": "2018-03-15T22:54:25.172Z"
     }
   },
   {
@@ -686,6 +577,7 @@
       "filename": "python3resource.py",
       "info": "All tests cleared! Great job!",
       "timeTaken": "0.0000",
+      "late": false,
       "status": "complete",
       "result": "pass",
       "language": "python3",
@@ -703,6 +595,7 @@
       "filename": "python3resource.py",
       "info": "Awaiting result...",
       "timeTaken": "0.0000",
+      "late": false,
       "status": "start",
       "result": "pass",
       "language": "python3",
@@ -720,6 +613,7 @@
       "filename": "python3resource.py",
       "info": "Awaiting result...",
       "timeTaken": "0.0000",
+      "late": false,
       "status": "start",
       "result": "pass",
       "language": "python3",
@@ -737,6 +631,7 @@
       "filename": "python3resource.py",
       "info": "All tests cleared! Great job!",
       "timeTaken": "0.0000",
+      "late": false,
       "status": "complete",
       "result": "pass",
       "language": "python3",
@@ -754,6 +649,7 @@
       "filename": "python3resource.py",
       "info": "All tests cleared! Great job!",
       "timeTaken": "0.0000",
+      "late": false,
       "status": "complete",
       "result": "pass",
       "language": "python3",
@@ -771,6 +667,7 @@
       "filename": "python3resource.py",
       "info": "All tests cleared! Great job!",
       "timeTaken": "0.0000",
+      "late": false,
       "status": "complete",
       "result": "pass",
       "language": "python3",
@@ -788,6 +685,7 @@
       "filename": "python3resource.py",
       "info": "All tests cleared! Great job!",
       "timeTaken": "0.0000",
+      "late": false,
       "status": "complete",
       "result": "pass",
       "language": "python3",
@@ -805,6 +703,7 @@
       "filename": "python3resource.py",
       "info": "All tests cleared! Great job!",
       "timeTaken": "0.0000",
+      "late": false,
       "status": "complete",
       "result": "pass",
       "language": "python3",
@@ -822,6 +721,7 @@
       "filename": "python3resource.py",
       "info": "All tests cleared! Great job!",
       "timeTaken": "0.0000",
+      "late": false,
       "status": "complete",
       "result": "pass",
       "language": "python3",
@@ -839,6 +739,7 @@
       "filename": "python3resource.py",
       "info": "All tests cleared! Great job!",
       "timeTaken": "0.0000",
+      "late": false,
       "status": "complete",
       "result": "pass",
       "language": "python3",
@@ -847,6 +748,330 @@
       "assessment": 11,
       "created_at": "2018-02-27T14:53:11.279Z",
       "updated_at": "2018-02-27T14:53:14.365Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 12,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": false,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 2,
+      "assessment": 1,
+      "created_at": "2018-02-27T22:44:27.288Z",
+      "updated_at": "2018-02-27T22:44:31.717Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 13,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": false,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 2,
+      "assessment": 1,
+      "created_at": "2018-02-27T22:46:00.417Z",
+      "updated_at": "2018-02-27T22:46:03.777Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 14,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": false,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 2,
+      "assessment": 1,
+      "created_at": "2018-02-27T22:54:16.840Z",
+      "updated_at": "2018-02-27T22:54:20.195Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 15,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": true,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 1,
+      "assessment": 3,
+      "created_at": "2018-02-27T22:54:58.690Z",
+      "updated_at": "2018-02-28T01:03:30.367Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 20,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": true,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 99,
+      "user": 1,
+      "assessment": 1,
+      "created_at": "2018-02-27T23:00:35.692Z",
+      "updated_at": "2018-03-15T17:28:10.890Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 21,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": false,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 1,
+      "assessment": 1,
+      "created_at": "2018-02-27T23:02:02.567Z",
+      "updated_at": "2018-02-27T23:02:05.842Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 22,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": false,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 1,
+      "assessment": 1,
+      "created_at": "2018-02-27T23:12:42.850Z",
+      "updated_at": "2018-02-28T00:11:32.372Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 23,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": true,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 1,
+      "assessment": 1,
+      "created_at": "2018-02-27T23:14:16.438Z",
+      "updated_at": "2018-02-27T23:14:19.841Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 24,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": false,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 1,
+      "assessment": 1,
+      "created_at": "2018-02-28T00:08:52.384Z",
+      "updated_at": "2018-02-28T00:11:46.419Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 25,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": true,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 1,
+      "assessment": 1,
+      "created_at": "2018-02-28T00:12:09.441Z",
+      "updated_at": "2018-02-28T00:12:12.720Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 26,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "Awaiting result...",
+      "timeTaken": "0.0000",
+      "late": true,
+      "status": "in_progress",
+      "result": "fail",
+      "language": "python3",
+      "marks": 0,
+      "user": 1,
+      "assessment": 6,
+      "created_at": "2018-02-28T00:53:56.336Z",
+      "updated_at": "2018-02-28T00:53:56.392Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 27,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": true,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 1,
+      "assessment": 1,
+      "created_at": "2018-02-28T00:54:13.605Z",
+      "updated_at": "2018-02-28T00:54:16.737Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 28,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": true,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 2,
+      "assessment": 1,
+      "created_at": "2018-03-01T13:44:57.151Z",
+      "updated_at": "2018-03-01T13:45:00.625Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 29,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": true,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 2,
+      "assessment": 1,
+      "created_at": "2018-03-02T13:51:52.800Z",
+      "updated_at": "2018-03-02T13:51:56.091Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 30,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": true,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 2,
+      "assessment": 1,
+      "created_at": "2018-03-02T16:30:54.479Z",
+      "updated_at": "2018-03-02T16:30:57.856Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 31,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "All tests cleared! Great job!",
+      "timeTaken": "0.0000",
+      "late": true,
+      "status": "complete",
+      "result": "pass",
+      "language": "python3",
+      "marks": 100,
+      "user": 2,
+      "assessment": 1,
+      "created_at": "2018-03-02T16:31:33.091Z",
+      "updated_at": "2018-03-02T16:31:36.209Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 32,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "Awaiting result...",
+      "timeTaken": "0.0000",
+      "late": true,
+      "status": "in_progress",
+      "result": "fail",
+      "language": "python3",
+      "marks": 0,
+      "user": 1,
+      "assessment": 1,
+      "created_at": "2018-03-11T13:59:00.558Z",
+      "updated_at": "2018-03-11T13:59:00.610Z"
+    }
+  },
+  {
+    "model": "app.submission",
+    "pk": 33,
+    "fields": {
+      "filename": "python3resource.py",
+      "info": "Awaiting result...",
+      "timeTaken": "0.0000",
+      "late": true,
+      "status": "in_progress",
+      "result": "fail",
+      "language": "python3",
+      "marks": 0,
+      "user": 1,
+      "assessment": 1,
+      "created_at": "2018-03-11T13:59:49.735Z",
+      "updated_at": "2018-03-11T13:59:49.795Z"
     }
   },
   {
@@ -859,7 +1084,8 @@
       "updated_at": "2018-02-27T14:26:08.002Z",
       "professor": 1,
       "students": [
-        1
+        1,
+        2
       ]
     }
   },
@@ -873,7 +1099,8 @@
       "updated_at": "2018-02-27T14:26:08.002Z",
       "professor": 1,
       "students": [
-        1
+        1,
+        2
       ]
     }
   },
@@ -887,7 +1114,8 @@
       "updated_at": "2018-02-27T14:26:08.002Z",
       "professor": 1,
       "students": [
-        1
+        1,
+        2
       ]
     }
   },
