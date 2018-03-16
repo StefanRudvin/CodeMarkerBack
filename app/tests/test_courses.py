@@ -61,12 +61,9 @@ class TestCourses(CustomTestCase):
     def test_get_course(self):
         view = CoursesDetail.as_view()
 
-        print(str(self.course1.id))
-
         request = self.factory.get('/api/courses/' + str(self.course1.id))
-        print(request)
         force_authenticate(request, user=self.professor, token=self.professor.auth_token)
-        response = view(request)
+        response = view(request, pk=self.course1.id)
 
         self.assertEqual(response.status_code, 200)
 

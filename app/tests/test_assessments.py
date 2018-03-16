@@ -1,13 +1,15 @@
+import os
+
 from rest_framework.test import force_authenticate, APIRequestFactory
 from django.contrib.auth.models import User, Group
 from app.tests.CustomTestCase import CustomTestCase
 from app.views import CoursesList, CoursesDetail, AssessmentsList, AssessmentsDetail
-from django.test import TestCase, utils
-from app.models import Course
+from django.utils.timezone import now
+from app.models import Course, Assessment
+import json
 
 
-class TestCourses(CustomTestCase):
-
+class TestAssessments(CustomTestCase):
     def test_get_assessments(self):
         view = AssessmentsList.as_view()
 
@@ -28,21 +30,18 @@ class TestCourses(CustomTestCase):
     def test_post_assessments(self):
         view = AssessmentsList.as_view()
 
-        data = {
-            'name': 'Test',
-            'description': 'Test Description',
-            'additional_help' : 'Additional help',
-            'course_id': self.course1.id,
-            'deadline': utils.date.today()
-        }
+        with open('./demo/Python3/generator.py') as generator:
+            with open('./demo/Python3/resource.py') as resource:
+                data = self.createAssessmentData(resource, generator)
 
-        request = self.factory.post('/api/assessments/', data)
-        force_authenticate(request, user=self.professor, token=self.professor.auth_token)
-        response = view(request)
-        print(response)
+                request = self.factory.post('/api/assessments/', data)
 
-        self.assertEqual(response.status_code, 201)
-        self.assertEqual(len(Course.objects.all()), 3)
+                force_authenticate(request, user=self.professor, token=self.professor.auth_token)
+                response = view(request)
+                print(response)
+
+                self.assertEqual(response.status_code, 201)
+                self.assertEqual(len(Assessment.objects.all()), 3)
 
     def test_post_assessments_unauthenticated(self):
         view = AssessmentsList.as_view()
@@ -64,24 +63,10 @@ class TestCourses(CustomTestCase):
     def test_get_assessment(self):
         view = AssessmentsDetail.as_view()
 
-        print(str(self.course1.id))
+        print(self.course1)
 
-        request = self.factory.get('/api/assessments/' + str(self.course1.id))
-        print(request)
+        request = self.factory.get('/api/assessments/' + str(self.assessment1.id) + '/')
         force_authenticate(request, user=self.professor, token=self.professor.auth_token)
-        response = view(request)
+        response = view(request, pk=self.assessment1.id)
 
         self.assertEqual(response.status_code, 200)
-
-
-
-
-
-
-
-
-
-
-
-
-

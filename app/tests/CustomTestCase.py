@@ -2,8 +2,10 @@ from rest_framework.test import force_authenticate, APIRequestFactory
 from django.contrib.auth.models import User, Group
 from app.views import CoursesList, CoursesDetail
 from django.test import TestCase
-from app.models import Course
+from app.models import Course, Assessment
 from django.test import TestCase
+from django.utils.timezone import now
+import json
 
 class CustomTestCase(TestCase):
     fixtures = ['testData.json']
@@ -43,4 +45,32 @@ class CustomTestCase(TestCase):
             professor=self.professor
         )
 
+        self.assessment1 = Assessment.objects.create(
+            name='testAssessment',
+            deadline=now(),
+            course=self.course1
+        )
+
+        self.assessment1 = Assessment.objects.create(
+            name='testAssessment2',
+            deadline=now(),
+            course=self.course1
+        )
+
         self.factory = APIRequestFactory()
+
+    def createAssessmentData(self, resource, generator):
+        return {
+                    'name': 'Test',
+                    'description': 'Test Description',
+                    'additional_help': 'Additional help',
+                    'course_id': self.course1.id,
+                    'deadline': now(),
+                    'dynamicInput': "true",
+                    'resource': resource,
+                    'input_generator': generator,
+                    'staticInput': "false",
+                    'numOfStatic': 0,
+                    'selected_language': 'Python3',
+                    'languages': json.dumps(['Python2']),
+                }

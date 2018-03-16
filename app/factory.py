@@ -1,3 +1,5 @@
+from django.http import HttpResponse
+
 from app.models import Course, Assessment, Submission, Resource, InputGenerator
 from django.utils.datastructures import MultiValueDictKeyError
 from django.core.files.storage import FileSystemStorage
@@ -126,7 +128,7 @@ def assessment_creator(self, serializer):
 
     assessment.save()
 
-    return Response(assessment.id)
+    return Response(assessment.id, 201)
 
 
 def course_creator(self, serializer):
