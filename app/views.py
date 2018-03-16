@@ -1,31 +1,22 @@
-from django.http import HttpResponseBadRequest
-from django.http import HttpResponseServerError
-from rest_framework.permissions import DjangoModelPermissions
-import os
-import shutil
-import time
-import zipfile
-
-from django.contrib.auth.models import User
-from django.core.files.storage import FileSystemStorage
-from django.core.management import call_command
 from django.http import (HttpResponse, HttpResponseBadRequest,
                          HttpResponseForbidden, HttpResponseServerError)
-from django.utils.encoding import smart_str
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework import generics, viewsets
-from rest_framework.authtoken.models import Token
-from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.response import Response
 
-import logging
-
-from app.factory import assessment_creator, course_creator, submission_creator
-from app.models import Assessment, Course, Submission
 from app.serializers import (AssessmentSerializer, CourseSerializer,
                              CoursesUsersSerializer, SubmissionSerializer,
                              UserSerializer)
+
+from app.factory import assessment_creator, submission_creator
+from rest_framework.permissions import DjangoModelPermissions
+from app.backup_service import create_backup, restore_backup
+from rest_framework.authtoken.views import ObtainAuthToken
+from app.models import Assessment, Course, Submission
+from django.views.decorators.csrf import csrf_exempt
 from app.submission_processor import run_submission
+from rest_framework.authtoken.models import Token
+from rest_framework import generics, viewsets
+from rest_framework.response import Response
+from django.contrib.auth.models import User
+import logging
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -60,73 +51,31 @@ class GetCurrentUserData(generics.CreateAPIView):
         return Response(userJson)
 
 
-def create_backup(request=None):
+class CreateBackup(generics.CreateAPIView):
     """
     Create back up of the current system,
     that's including SQL (formatted as JSON) and file system
     """
 
-    if not (request.user.is_staff or request.user.is_superuser):
-        return HttpResponseForbidden('You are not allowed to complete this action.')
-
-    timestamp = time.strftime("%Y%m%d_%H%M%S")
-    path = 'backups/' + timestamp + '.zip'
-
-    with open('uploads/sql.json', 'w') as f:
-        call_command('dumpdata', stdout=f)
-    os.makedirs('backups', exist_ok=True)
-    shutil.make_archive(
-        'backups/' + timestamp, 'zip', 'uploads')
-    try:
-        os.remove('uploads/sql.json')
-    except OSError:
-        pass
-
-    # mimetype is replaced by content_type for django 1.7
-    response = HttpResponse(content_type='application/force-download')
-    response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(
-        timestamp + '.zip')
-    response['X-Sendfile'] = smart_str(path)
-
-    return response
+    def post(self, request, *args, **kwargs):
+        if not (request.user.is_staff or request.user.is_superuser):
+            return HttpResponseForbidden('You are not allowed to complete this action.')
+        return create_backup(request)
 
 
-@csrf_exempt
-def restore_backup(request):
+class RestoreBackup(generics.CreateAPIView):
     """
-    Restore uploaded zip file containing backed up system
+    Create back up of the current system,
+    that's including SQL (formatted as JSON) and file system
     """
 
-    if not (request.user.is_staff or request.user.is_superuser):
-        return HttpResponseForbidden('You are not allowed to complete this action.')
-
-    # Very important, create a backup of the current system state first.
-    create_backup()
-
-    # Save uploaded archive containing backup
-    zip_archive = request.FILES.get("backup")
-    fs = FileSystemStorage(location='./')
-    fs.save('backup.zip', zip_archive)
-
-    # Remove current file system (safe, as we did a backup before)
-    shutil.rmtree('uploads/')
-    os.makedirs('uploads', exist_ok=True)
-
-    # Extract contents of the zipfile containing backup
-    zip_ref = zipfile.ZipFile('backup.zip', 'r')
-    zip_ref.extractall('uploads')
-    zip_ref.close()
-
-    # Load fixtures into DB
-    call_command('loaddata', 'uploads/sql.json')
-
-    # Clean up uploaded files
-    os.remove('uploads/sql.json')
-    os.remove('backup.zip')
-    return HttpResponse()
+    def post(self, request, *args, **kwargs):
+        if not (request.user.is_staff or request.user.is_superuser):
+            return HttpResponseForbidden('You are not allowed to complete this action.')
+        return create_backup(request)
 
 
-# // TODO:  Add permissions
+# TODO:  Add permissions
 class UserViewSet(viewsets.ModelViewSet):
     permission_classes = (DjangoModelPermissions,)
     queryset = User.objects.all()

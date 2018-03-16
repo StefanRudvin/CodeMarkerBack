@@ -5,10 +5,15 @@ from app.models import Assessment
 
 
 class TestAssessments(CustomTestCase):
+
+    @staticmethod
+    def getApiUrl():
+        return '/api/assessments/'
+
     def test_get_assessments(self):
         view = AssessmentsList.as_view()
 
-        request = self.factory.get('/api/assessments/')
+        request = self.factory.get(self.getApiUrl())
         force_authenticate(request, user=self.student, token=self.student.auth_token)
         response = view(request)
 
@@ -17,7 +22,7 @@ class TestAssessments(CustomTestCase):
     def test_get_assessments_student(self):
         view = AssessmentsList.as_view()
 
-        request = self.factory.get('/api/assessments/')
+        request = self.factory.get(self.getApiUrl())
         self.loginStudent(request)
         response = view(request)
 
@@ -26,7 +31,7 @@ class TestAssessments(CustomTestCase):
     def test_get_assessments_unauthenticated(self):
         view = AssessmentsList.as_view()
 
-        request = self.factory.get('/api/assessments/')
+        request = self.factory.get(self.getApiUrl())
         response = view(request)
 
         self.assertEqual(response.status_code, 401)
@@ -38,7 +43,7 @@ class TestAssessments(CustomTestCase):
             with open('./demo/Python3/resource.py') as resource:
                 data = self.createAssessmentData(resource, generator)
 
-                request = self.factory.post('/api/assessments/', data)
+                request = self.factory.post(self.getApiUrl(), data)
 
                 force_authenticate(request, user=self.professor, token=self.professor.auth_token)
                 response = view(request)
@@ -49,7 +54,7 @@ class TestAssessments(CustomTestCase):
     def test_create_assessments_unauthenticated(self):
         view = AssessmentsList.as_view()
 
-        request = self.factory.post('/api/assessments/')
+        request = self.factory.post(self.getApiUrl())
         response = view(request)
 
         self.assertEqual(response.status_code, 401)
@@ -57,7 +62,7 @@ class TestAssessments(CustomTestCase):
     def test_create_assessments_student(self):
         view = AssessmentsList.as_view()
 
-        request = self.factory.post('/api/assessments/')
+        request = self.factory.post(self.getApiUrl())
         force_authenticate(request, user=self.student, token=self.student.auth_token)
         response = view(request)
 
@@ -66,7 +71,7 @@ class TestAssessments(CustomTestCase):
     def test_get_assessment(self):
         view = AssessmentsDetail.as_view()
 
-        request = self.factory.get('/api/assessments/' + str(self.assessment1.id) + '/')
+        request = self.factory.get(self.getApiUrl() + str(self.assessment1.id) + '/')
         force_authenticate(request, user=self.professor, token=self.professor.auth_token)
         response = view(request, pk=self.assessment1.id)
 
@@ -75,7 +80,7 @@ class TestAssessments(CustomTestCase):
     def test_get_assessment_student(self):
         view = AssessmentsDetail.as_view()
 
-        request = self.factory.get('/api/assessments/' + str(self.assessment1.id) + '/')
+        request = self.factory.get(self.getApiUrl() + str(self.assessment1.id) + '/')
         self.loginStudent(request)
         response = view(request, pk=self.assessment1.id)
 
@@ -84,7 +89,7 @@ class TestAssessments(CustomTestCase):
     def test_get_assessment_unauthenticated(self):
         view = AssessmentsDetail.as_view()
 
-        request = self.factory.get('/api/assessments/' + str(self.assessment1.id) + '/')
+        request = self.factory.get(self.getApiUrl() + str(self.assessment1.id) + '/')
         response = view(request, pk=self.assessment1.id)
 
         self.assertEqual(response.status_code, 401)
@@ -96,7 +101,7 @@ class TestAssessments(CustomTestCase):
             'name': 'NewName'
         }
 
-        request = self.factory.patch('/api/assessments/' + str(self.assessment1.id) + '/', data)
+        request = self.factory.patch(self.getApiUrl() + str(self.assessment1.id) + '/', data)
         force_authenticate(request, user=self.professor, token=self.professor.auth_token)
         response = view(request, pk=self.assessment1.id)
 
@@ -112,7 +117,7 @@ class TestAssessments(CustomTestCase):
             'name': 'NewName'
         }
 
-        request = self.factory.patch('/api/assessments/' + str(self.assessment1.id) + '/', data)
+        request = self.factory.patch(self.getApiUrl() + str(self.assessment1.id) + '/', data)
         self.loginStudent(request)
         response = view(request, pk=self.assessment1.id)
 
@@ -125,7 +130,7 @@ class TestAssessments(CustomTestCase):
             'name': 'NewName'
         }
 
-        request = self.factory.patch('/api/assessments/' + str(self.assessment1.id) + '/', data)
+        request = self.factory.patch(self.getApiUrl() + str(self.assessment1.id) + '/', data)
         response = view(request, pk=self.assessment1.id)
 
         self.assertEqual(response.status_code, 401)
@@ -133,7 +138,7 @@ class TestAssessments(CustomTestCase):
     def test_delete_assessment(self):
         view = AssessmentsDetail.as_view()
 
-        request = self.factory.delete('/api/assessments/' + str(self.assessment1.id) + '/')
+        request = self.factory.delete(self.getApiUrl() + str(self.assessment1.id) + '/')
         self.loginProfessor(request)
         response = view(request, pk=self.assessment1.id)
 
@@ -143,7 +148,7 @@ class TestAssessments(CustomTestCase):
     def test_delete_assessment_student(self):
         view = AssessmentsDetail.as_view()
 
-        request = self.factory.delete('/api/assessments/' + str(self.assessment1.id) + '/')
+        request = self.factory.delete(self.getApiUrl() + str(self.assessment1.id) + '/')
         self.loginStudent(request)
         response = view(request, pk=self.assessment1.id)
 
@@ -153,7 +158,7 @@ class TestAssessments(CustomTestCase):
     def test_delete_assessment_unauthenticated(self):
         view = AssessmentsDetail.as_view()
 
-        request = self.factory.delete('/api/assessments/' + str(self.assessment1.id) + '/')
+        request = self.factory.delete(self.getApiUrl() + str(self.assessment1.id) + '/')
         response = view(request, pk=self.assessment1.id)
 
         self.assertEqual(len(Assessment.objects.all()), 2)

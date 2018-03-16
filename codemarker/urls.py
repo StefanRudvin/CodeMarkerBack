@@ -38,8 +38,6 @@ urlpatterns = [
     url(r'^api/courses/users/delete/$', views.CoursesUsersDestroy.as_view(),
         name='courses-users-delete'),
 
-    url(r'^api/courses/users/delete/$', views.CoursesUsersDestroy.as_view(),
-        name='courses-users-delete'),
     url(r'^api/courses/users/add/$', views.CoursesUsersAdd.as_view(),
         name='courses-users-add'),
 
@@ -56,9 +54,6 @@ urlpatterns = [
     url(r'^api/submissions/(?P<submission_id>\d+)/process/$',
         views.process_submission, name='submission-process'),
 
-    url(r'^api/create_backup/$',
-        views.create_backup, name='create-backup'),
-
-    url(r'^api/restore_backup/$',
-        views.restore_backup, name='create-backup'),
+    url(r'^api/create_backup/$', views.CreateBackup.as_view()),
+    url(r'^api/restore_backup/$', views.RestoreBackup.as_view()),
 ]

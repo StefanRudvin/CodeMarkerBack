@@ -2,14 +2,18 @@ from rest_framework.test import force_authenticate
 from app.tests.CustomTestCase import CustomTestCase
 from app.views import SubmissionsList, SubmissionsDetail
 from app.models import Submission
-from django.contrib.auth.models import Permission
 
 
 class TestSubmissions(CustomTestCase):
+    
+    @staticmethod
+    def getApiUrl():
+        return '/api/submissions'
+    
     def test_get_submissions(self):
         view = SubmissionsList.as_view()
 
-        request = self.factory.get('/api/submissions/')
+        request = self.factory.get(self.getApiUrl())
         force_authenticate(request, user=self.student, token=self.student.auth_token)
         response = view(request)
 
@@ -18,7 +22,7 @@ class TestSubmissions(CustomTestCase):
     def test_get_submissions_student(self):
         view = SubmissionsList.as_view()
 
-        request = self.factory.get('/api/submissions/')
+        request = self.factory.get(self.getApiUrl())
         self.loginStudent(request)
         response = view(request)
 
@@ -27,7 +31,7 @@ class TestSubmissions(CustomTestCase):
     def test_get_submissions_unauthenticated(self):
         view = SubmissionsList.as_view()
 
-        request = self.factory.get('/api/submissions/')
+        request = self.factory.get(self.getApiUrl())
         response = view(request)
 
         self.assertEqual(response.status_code, 401)
@@ -41,7 +45,7 @@ class TestSubmissions(CustomTestCase):
 
             data = self.createSubmissionData(resource)
 
-            request = self.factory.post('/api/submissions/', data)
+            request = self.factory.post(self.getApiUrl(), data)
 
             self.loginProfessor(request)
 
@@ -53,7 +57,7 @@ class TestSubmissions(CustomTestCase):
     def test_create_submissions_unauthenticated(self):
         view = SubmissionsList.as_view()
 
-        request = self.factory.post('/api/submissions/')
+        request = self.factory.post(self.getApiUrl())
         response = view(request)
 
         self.assertEqual(response.status_code, 401)
@@ -61,7 +65,7 @@ class TestSubmissions(CustomTestCase):
     def test_create_submissions_student(self):
         view = SubmissionsList.as_view()
 
-        request = self.factory.post('/api/submissions/')
+        request = self.factory.post(self.getApiUrl())
         force_authenticate(request, user=self.student, token=self.student.auth_token)
         response = view(request)
 
@@ -70,7 +74,7 @@ class TestSubmissions(CustomTestCase):
     def test_get_submission(self):
         view = SubmissionsDetail.as_view()
 
-        request = self.factory.get('/api/submissions/' + str(self.submission1.id) + '/')
+        request = self.factory.get(self.getApiUrl() + str(self.submission1.id) + '/')
         force_authenticate(request, user=self.professor, token=self.professor.auth_token)
         response = view(request, pk=self.submission1.id)
 
@@ -79,7 +83,7 @@ class TestSubmissions(CustomTestCase):
     def test_get_submission_student(self):
         view = SubmissionsDetail.as_view()
 
-        request = self.factory.get('/api/submissions/' + str(self.submission1.id) + '/')
+        request = self.factory.get(self.getApiUrl() + str(self.submission1.id) + '/')
         self.loginStudent(request)
         response = view(request, pk=self.submission1.id)
 
@@ -88,7 +92,7 @@ class TestSubmissions(CustomTestCase):
     def test_get_submission_unauthenticated(self):
         view = SubmissionsDetail.as_view()
 
-        request = self.factory.get('/api/submissions/' + str(self.submission1.id) + '/')
+        request = self.factory.get(self.getApiUrl() + str(self.submission1.id) + '/')
         response = view(request, pk=self.submission1.id)
 
         self.assertEqual(response.status_code, 401)
@@ -100,7 +104,7 @@ class TestSubmissions(CustomTestCase):
             'marks': 10
         }
 
-        request = self.factory.patch('/api/submissions/' + str(self.submission1.id) + '/', data)
+        request = self.factory.patch(self.getApiUrl() + str(self.submission1.id) + '/', data)
         force_authenticate(request, user=self.professor, token=self.professor.auth_token)
         response = view(request, pk=self.submission1.id)
 
@@ -116,7 +120,7 @@ class TestSubmissions(CustomTestCase):
             'marks': 10
         }
 
-        request = self.factory.patch('/api/submissions/' + str(self.submission1.id) + '/', data)
+        request = self.factory.patch(self.getApiUrl() + str(self.submission1.id) + '/', data)
         self.loginStudent(request)
         response = view(request, pk=self.submission1.id)
 
@@ -129,7 +133,7 @@ class TestSubmissions(CustomTestCase):
             'marks': 10
         }
 
-        request = self.factory.patch('/api/submissions/' + str(self.submission1.id) + '/', data)
+        request = self.factory.patch(self.getApiUrl() + str(self.submission1.id) + '/', data)
         response = view(request, pk=self.submission1.id)
 
         self.assertEqual(response.status_code, 401)
@@ -137,7 +141,7 @@ class TestSubmissions(CustomTestCase):
     def test_delete_submission(self):
         view = SubmissionsDetail.as_view()
 
-        request = self.factory.delete('/api/submissions/' + str(self.submission1.id) + '/')
+        request = self.factory.delete(self.getApiUrl() + str(self.submission1.id) + '/')
         self.loginProfessor(request)
         response = view(request, pk=self.submission1.id)
 
@@ -147,7 +151,7 @@ class TestSubmissions(CustomTestCase):
     def test_delete_submission_student(self):
         view = SubmissionsDetail.as_view()
 
-        request = self.factory.delete('/api/submissions/' + str(self.submission1.id) + '/')
+        request = self.factory.delete(self.getApiUrl() + str(self.submission1.id) + '/')
         self.loginStudent(request)
         response = view(request, pk=self.submission1.id)
 
@@ -157,7 +161,7 @@ class TestSubmissions(CustomTestCase):
     def test_delete_submission_unauthenticated(self):
         view = SubmissionsDetail.as_view()
 
-        request = self.factory.delete('/api/submissions/' + str(self.submission1.id) + '/')
+        request = self.factory.delete(self.getApiUrl() + str(self.submission1.id) + '/')
         response = view(request, pk=self.submission1.id)
 
         self.assertEqual(len(Submission.objects.all()), 2)

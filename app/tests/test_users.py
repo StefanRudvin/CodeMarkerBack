@@ -1,20 +1,19 @@
 from rest_framework.test import force_authenticate
 from app.tests.CustomTestCase import CustomTestCase
 from app.views import UsersList, UsersDetail
-
-from django.conf import settings
-
 from django.contrib.auth.models import User
-
-from django.test import tag
 
 
 class TestUsers(CustomTestCase):
 
+    @staticmethod
+    def getApiUrl():
+        return '/api/users'
+
     def test_get_users(self):
         view = UsersList.as_view()
 
-        request = self.factory.get('/api/users/')
+        request = self.factory.get(self.getApiUrl())
         force_authenticate(request, user=self.student, token=self.student.auth_token)
         response = view(request)
 
@@ -23,7 +22,7 @@ class TestUsers(CustomTestCase):
     def test_get_users_student(self):
         view = UsersList.as_view()
 
-        request = self.factory.get('/api/users/')
+        request = self.factory.get(self.getApiUrl())
         self.loginStudent(request)
         response = view(request)
 
@@ -32,7 +31,7 @@ class TestUsers(CustomTestCase):
     def test_get_users_unauthenticated(self):
         view = UsersList.as_view()
 
-        request = self.factory.get('/api/users/')
+        request = self.factory.get(self.getApiUrl())
         response = view(request)
 
         self.assertEqual(response.status_code, 401)
@@ -44,7 +43,7 @@ class TestUsers(CustomTestCase):
 
         data = self.createUserData()
 
-        request = self.factory.post('/api/users/', data)
+        request = self.factory.post(self.getApiUrl(), data)
 
         force_authenticate(request, user=self.professor, token=self.professor.auth_token)
         response = view(request)
@@ -55,7 +54,7 @@ class TestUsers(CustomTestCase):
     def test_create_courses_unauthenticated(self):
         view = UsersList.as_view()
 
-        request = self.factory.post('/api/users/')
+        request = self.factory.post(self.getApiUrl())
         response = view(request)
 
         self.assertEqual(response.status_code, 401)
@@ -63,7 +62,7 @@ class TestUsers(CustomTestCase):
     def test_create_users_student(self):
         view = UsersList.as_view()
 
-        request = self.factory.post('/api/users/')
+        request = self.factory.post(self.getApiUrl())
         force_authenticate(request, user=self.student, token=self.student.auth_token)
         response = view(request)
 
@@ -72,7 +71,7 @@ class TestUsers(CustomTestCase):
     def test_get_user(self):
         view = UsersDetail.as_view()
 
-        request = self.factory.get('/api/users/' + str(self.student.id) + '/')
+        request = self.factory.get(self.getApiUrl() + str(self.student.id) + '/')
         force_authenticate(request, user=self.professor, token=self.professor.auth_token)
         response = view(request, pk=self.student.id)
 
@@ -81,7 +80,7 @@ class TestUsers(CustomTestCase):
     def test_get_user_student(self):
         view = UsersDetail.as_view()
 
-        request = self.factory.get('/api/users/' + str(self.admin.id) + '/')
+        request = self.factory.get(self.getApiUrl() + str(self.admin.id) + '/')
         self.loginStudent(request)
         response = view(request, pk=self.admin.id)
 
@@ -90,7 +89,7 @@ class TestUsers(CustomTestCase):
     def test_get_user_unauthenticated(self):
         view = UsersDetail.as_view()
 
-        request = self.factory.get('/api/users/' + str(self.student.id) + '/')
+        request = self.factory.get(self.getApiUrl() + str(self.student.id) + '/')
         response = view(request, pk=self.student.id)
 
         self.assertEqual(response.status_code, 401)
@@ -102,7 +101,7 @@ class TestUsers(CustomTestCase):
             'username': 'NewName'
         }
 
-        request = self.factory.patch('/api/users/' + str(self.student.id) + '/', data)
+        request = self.factory.patch(self.getApiUrl() + str(self.student.id) + '/', data)
         force_authenticate(request, user=self.professor, token=self.professor.auth_token)
         response = view(request, pk=self.student.id)
 
@@ -118,7 +117,7 @@ class TestUsers(CustomTestCase):
             'name': 'NewName'
         }
 
-        request = self.factory.patch('/api/users/' + str(self.student.id) + '/', data)
+        request = self.factory.patch(self.getApiUrl() + str(self.student.id) + '/', data)
         self.loginStudent(request)
         response = view(request, pk=self.student.id)
 
@@ -131,7 +130,7 @@ class TestUsers(CustomTestCase):
             'name': 'NewName'
         }
 
-        request = self.factory.patch('/api/users/' + str(self.student.id) + '/', data)
+        request = self.factory.patch(self.getApiUrl() + str(self.student.id) + '/', data)
         response = view(request, pk=self.student.id)
 
         self.assertEqual(response.status_code, 401)
@@ -140,7 +139,7 @@ class TestUsers(CustomTestCase):
         self.assertEqual(len(User.objects.all()), 3)
         view = UsersDetail.as_view()
 
-        request = self.factory.delete('/api/users/' + str(self.student.id) + '/')
+        request = self.factory.delete(self.getApiUrl() + str(self.student.id) + '/')
         self.loginProfessor(request)
         response = view(request, pk=self.student.id)
 
@@ -153,7 +152,7 @@ class TestUsers(CustomTestCase):
 
         view = UsersDetail.as_view()
 
-        request = self.factory.delete('/api/users/' + str(self.student.id) + '/')
+        request = self.factory.delete(self.getApiUrl() + str(self.student.id) + '/')
         self.loginStudent(request)
         response = view(request, pk=self.student.id)
 
@@ -164,7 +163,7 @@ class TestUsers(CustomTestCase):
     def test_delete_user_unauthenticated(self):
         view = UsersDetail.as_view()
 
-        request = self.factory.delete('/api/users/' + str(self.student.id) + '/')
+        request = self.factory.delete(self.getApiUrl() + str(self.student.id) + '/')
         response = view(request, pk=self.student.id)
 
         self.assertEqual(len(User.objects.all()), 3)
