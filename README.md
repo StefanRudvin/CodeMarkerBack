@@ -26,3 +26,9 @@ Make sure that you actually have a database called codemarker and your user root
 - python manage.py migrate
 
 - python manage.py runserver
+
+**Optional**: Get Sample Data:
+- python manage.py loaddata sampleData
+
+username: Administrator  
+password: Administrator
