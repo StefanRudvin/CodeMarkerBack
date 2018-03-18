@@ -72,7 +72,7 @@ class RestoreBackup(generics.CreateAPIView):
     def post(self, request, *args, **kwargs):
         if not (request.user.is_staff or request.user.is_superuser):
             return HttpResponseForbidden('You are not allowed to complete this action.')
-        return create_backup(request)
+        return restore_backup(request)
 
 
 # TODO:  Add permissions
@@ -339,6 +339,6 @@ class SubmissionsDetail(generics.RetrieveUpdateDestroyAPIView):
         submission = Submission.objects.get(id=submission_id)
 
         if (int(submission.user.id) != int(request.user.id)) and not (
-                    request.user.is_staff or request.user.is_superuser):
+                request.user.is_staff or request.user.is_superuser):
             return HttpResponseForbidden('You are not allowed to access this resource.')
         return self.retrieve(request, *args, **kwargs)

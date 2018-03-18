@@ -1,11 +1,16 @@
-from django.core.files.storage import FileSystemStorage
-from django.core.management import call_command
-from django.utils.encoding import smart_str
-from django.http import (HttpResponse)
-import zipfile
+import os
 import shutil
 import time
-import os
+import zipfile
+
+from django.core.files.storage import FileSystemStorage
+from django.core.management import call_command
+from django.http import HttpResponse
+from django.utils.encoding import smart_str
+
+import zipfile
+from django.core.mail import EmailMessage
+from rest_framework.response import Response
 
 
 def create_backup(request):
@@ -22,18 +27,21 @@ def create_backup(request):
     except OSError:
         pass
 
-    # mimetype is replaced by content_type for django 1.7
-    response = HttpResponse(content_type='application/force-download')
-    response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(
-        timestamp + '.zip')
-    response['X-Sendfile'] = smart_str(path)
+    email = EmailMessage(
+        'CodeMarker Backup',
+        'You can find created backup in the attachments',
+        's06kd7@abdn.ac.uk',
+        ['kdryja@gmail.com'],
+    )
+    email.attach_file(path)
+    email.send()
 
-    return response
+    return Response("Backup has been send to your email")
 
 
 def restore_backup(request):
     # Very important, create a backup of the current system state first.
-    create_backup()
+    create_backup(request)
 
     # Save uploaded archive containing backup
     zip_archive = request.FILES.get("backup")
