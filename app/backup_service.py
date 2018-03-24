@@ -27,16 +27,7 @@ def create_backup(request):
     except OSError:
         pass
 
-    email = EmailMessage(
-        'CodeMarker Backup',
-        'You can find created backup in the attachments',
-        's06kd7@abdn.ac.uk',
-        ['kdryja@gmail.com'],
-    )
-    email.attach_file(path)
-    email.send()
-
-    return Response("Backup has been send to your email")
+    return Response("Backup has been created")
 
 
 def restore_backup(request):
