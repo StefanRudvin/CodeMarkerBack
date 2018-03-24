@@ -1,22 +1,22 @@
+import logging
+
+from django.contrib.auth.models import User
 from django.http import (HttpResponse, HttpResponseBadRequest,
                          HttpResponseForbidden, HttpResponseServerError)
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework import generics, viewsets
+from rest_framework.authtoken.models import Token
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.permissions import DjangoModelPermissions
+from rest_framework.response import Response
 
+from app.backup_service import create_backup, restore_backup
+from app.factory import assessment_creator, import_users, submission_creator
+from app.models import Assessment, Course, Submission
 from app.serializers import (AssessmentSerializer, CourseSerializer,
                              CoursesUsersSerializer, SubmissionSerializer,
                              UserSerializer)
-
-from app.factory import assessment_creator, submission_creator
-from rest_framework.permissions import DjangoModelPermissions
-from app.backup_service import create_backup, restore_backup
-from rest_framework.authtoken.views import ObtainAuthToken
-from app.models import Assessment, Course, Submission
-from django.views.decorators.csrf import csrf_exempt
 from app.submission_processor import run_submission
-from rest_framework.authtoken.models import Token
-from rest_framework import generics, viewsets
-from rest_framework.response import Response
-from django.contrib.auth.models import User
-import logging
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -73,6 +73,17 @@ class RestoreBackup(generics.CreateAPIView):
         if not (request.user.is_staff or request.user.is_superuser):
             return HttpResponseForbidden('You are not allowed to complete this action.')
         return restore_backup(request)
+
+
+class ImportUsers(generics.CreateAPIView):
+    """
+    Endpoint for importing new users from CSV file
+    """
+
+    def post(self, request, *args, **kwargs):
+        if not (request.user.is_staff or request.user.is_superuser):
+            return HttpResponseForbidden('You are not allowed to complete this action.')
+        return import_users(request)
 
 
 # TODO:  Add permissions

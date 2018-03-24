@@ -56,4 +56,6 @@ urlpatterns = [
 
     url(r'^api/create_backup/$', views.CreateBackup.as_view()),
     url(r'^api/restore_backup/$', views.RestoreBackup.as_view()),
+
+    url(r'^api/import_users/$', views.ImportUsers.as_view()),
 ]

@@ -1,17 +1,20 @@
-from django.http import HttpResponse
-
-from app.models import Course, Assessment, Submission, Resource, InputGenerator
-from django.utils.datastructures import MultiValueDictKeyError
-from django.core.files.storage import FileSystemStorage
-from django.http import HttpResponseBadRequest
-from django.http import HttpResponseForbidden
-from rest_framework.response import Response
-from django.conf import settings
-from django.db import DataError
-import logging
+import codecs
+import csv
 import json
+import logging
 import os
 
+from django.conf import settings
+from django.contrib.auth.models import Group, User
+from django.core.exceptions import ObjectDoesNotExist
+from django.core.files.storage import FileSystemStorage
+from django.db import DataError
+from django.http import (HttpResponse, HttpResponseBadRequest,
+                         HttpResponseForbidden)
+from django.utils.datastructures import MultiValueDictKeyError
+from rest_framework.response import Response
+
+from app.models import Assessment, Course, InputGenerator, Resource, Submission
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -154,7 +157,6 @@ def submission_creator(self, serializer):
     if language == "undefined":
         return HttpResponseBadRequest("Looks like you have an empty language field.")
 
-
     assessment = Assessment.objects.get(id=assessment_id)
     course = Course.objects.get(id=assessment.course_id)
 
@@ -183,3 +185,38 @@ def submission_creator(self, serializer):
     uploaded_file_url = fs.url(filename)
 
     return Response(submission.id, 201)
+
+
+def import_users(request):
+    print("Hello World!")
+    csvfile = request.FILES.get("csv").read().decode("utf-8")
+    for row in csvfile.splitlines():
+        userdata = row.split(',')
+
+        try:
+            user = User.objects.get(username=userdata[2])
+            user.delete()
+        except ObjectDoesNotExist:
+            logger.debug("Requested user doesn't exist. Ignoring")
+
+        user = User.objects.create_user(first_name=userdata[0],
+                                        last_name=userdata[1],
+                                        username=userdata[2],
+                                        email=userdata[3],
+                                        password=userdata[4])
+        user.save()
+
+        group = Group.objects.get(name='student')
+        group.user_set.add(user)
+        group.save()
+
+        courses = userdata[5].split()
+        try:
+            for course in courses:
+                course_model = Course.objects.get(name=course)
+                course_model.students.add(user)
+                course_model.save()
+        except ObjectDoesNotExist:
+            return Response("One of the courses doesn't exist!", 400)
+
+    return Response(status=200)

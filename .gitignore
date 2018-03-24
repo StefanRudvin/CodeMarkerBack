@@ -1,4 +1,4 @@
-/uploads
+uploads
 /.idea
 .idea/workspace.xml
 ./idea/
@@ -9,5 +9,5 @@ app/migrations/__pycache__/*
 .vscode/
 ENV_DIR
 logfile
-backups
+backups/*.zip
 .DS_Store
