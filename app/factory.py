@@ -188,7 +188,7 @@ def submission_creator(self, serializer):
 
 
 def import_users(request):
-    print("Hello World!")
+
     csvfile = request.FILES.get("csv").read().decode("utf-8")
     for row in csvfile.splitlines():
         userdata = row.split(',')
