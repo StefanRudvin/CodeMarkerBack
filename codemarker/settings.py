@@ -72,7 +72,7 @@ LOGGING = {
 }
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["codemarker.uoa.abdn.ac.uk"]
 CORS_ORIGIN_ALLOW_ALL = True
 
 MEDIA_URL = '/uploads/'
