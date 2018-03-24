@@ -135,11 +135,12 @@ class CoursesList(generics.ListCreateAPIView):
     def get_queryset(self):
         user = self.request.user
 
-        if user.is_superuser:
+        if user.is_superuser or user.is_staff:
             return Course.objects.all()
 
-        if user.is_staff:
-            return Course.objects.filter(professor=user)
+        # TODO: Find a way a attach a teacher to a course
+        # if user.is_staff:
+        #     return Course.objects.filter(professor=user)
 
         return Course.objects.filter(students=user)
 
