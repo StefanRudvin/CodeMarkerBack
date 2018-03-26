@@ -19,7 +19,8 @@ def create_backup(request):
     path = 'backups/' + timestamp + '.zip'
 
     with open('uploads/sql.json', 'w') as f:
-        call_command('dumpdata', natural_foreign=True, stdout=f)
+        call_command('dumpdata', exclude=[
+            'authtoken.Token'], natural_foreign=True, stdout=f)
     os.makedirs('backups', exist_ok=True)
     shutil.make_archive(
         'backups/' + timestamp, 'zip', 'uploads')
