@@ -19,7 +19,7 @@ def create_backup(request):
     path = 'backups/' + timestamp + '.zip'
 
     with open('uploads/sql.json', 'w') as f:
-        call_command('dumpdata', stdout=f)
+        call_command('dumpdata', natural_foreign=True, stdout=f)
     os.makedirs('backups', exist_ok=True)
     shutil.make_archive(
         'backups/' + timestamp, 'zip', 'uploads')
@@ -48,9 +48,6 @@ def restore_backup(request):
     zip_ref = zipfile.ZipFile('backup.zip', 'r')
     zip_ref.extractall('uploads')
     zip_ref.close()
-
-    # Empty the current DB
-    flush.Command().execute(noinput=True)
 
     # Load fixtures into DB
     call_command('loaddata', 'uploads/sql.json')
