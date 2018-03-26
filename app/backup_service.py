@@ -11,6 +11,7 @@ from django.utils.encoding import smart_str
 import zipfile
 from django.core.mail import EmailMessage
 from rest_framework.response import Response
+from django.core.management.commands import flush
 
 
 def create_backup(request):
@@ -47,6 +48,9 @@ def restore_backup(request):
     zip_ref = zipfile.ZipFile('backup.zip', 'r')
     zip_ref.extractall('uploads')
     zip_ref.close()
+
+    # Empty the current DB
+    flush.Command().execute(noinput=True)
 
     # Load fixtures into DB
     call_command('loaddata', 'uploads/sql.json')

@@ -14,6 +14,7 @@ from django.http import (HttpResponse, HttpResponseBadRequest,
 from django.utils.datastructures import MultiValueDictKeyError
 from rest_framework.response import Response
 
+from app.backup_service import create_backup
 from app.models import Assessment, Course, InputGenerator, Resource, Submission
 
 # Get an instance of a logger
@@ -188,17 +189,33 @@ def submission_creator(self, serializer):
 
 
 def import_users(request):
+    """Given an uploaded CSV file containing list of users, import them into DB
 
+    Arguments:
+        request - request containing the uploaded CSV file
+
+    Returns:
+        request -- Whether the import was successful or not
+    """
+
+    # Create backup of the current userbase before import
+    create_backup(request)
+
+    # Parse uploaded CSV file
     csvfile = request.FILES.get("csv").read().decode("utf-8")
+
+    # Iterate the CSV file for entries
     for row in csvfile.splitlines():
         userdata = row.split(',')
 
+        # Delete duplicated users first
         try:
             user = User.objects.get(username=userdata[2])
             user.delete()
         except ObjectDoesNotExist:
             logger.debug("Requested user doesn't exist. Ignoring")
 
+        # Create and save new user based on the provided information in CSV
         user = User.objects.create_user(first_name=userdata[0],
                                         last_name=userdata[1],
                                         username=userdata[2],
@@ -206,17 +223,21 @@ def import_users(request):
                                         password=userdata[4])
         user.save()
 
+        # Add student to the group
         group = Group.objects.get(name='student')
         group.user_set.add(user)
         group.save()
 
         courses = userdata[5].split()
+        # Add student to all courses specified in the CSV file
         try:
             for course in courses:
                 course_model = Course.objects.get(name=course)
                 course_model.students.add(user)
                 course_model.save()
         except ObjectDoesNotExist:
+            # Something went wrong, report the issue and halt the import
             return Response("One of the courses doesn't exist!", 400)
 
+    # All was fine, return OK
     return Response(status=200)
