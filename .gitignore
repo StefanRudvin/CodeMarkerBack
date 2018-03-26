@@ -11,3 +11,4 @@ ENV_DIR
 logfile
 backups/*.zip
 .DS_Store
+__pycache__
