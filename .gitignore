@@ -6,10 +6,10 @@ uploads
 app/__pycache__/
 codemarker/__pycache__/*
 app/migrations/__pycache__/*
-.vscode/
 ENV_DIR
 logfile
 backups/*.zip
 .DS_Store
 __pycache__
 *.zip
+**/.ropeproject

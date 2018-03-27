@@ -1,0 +1,19 @@
+{
+    "python.linting.ignorePatterns": [
+        ".vscode/*.py",
+        "**/site-packages/**/*.py",
+        "demo"
+    ],
+    "python.pythonPath": "/Users/Konrad/.virtualenvs/codemarker/bin/python",
+    "python.linting.pylintArgs": [
+        "--max-line-length=120",
+        "--load-plugins",
+        "pylint_django"
+    ],
+    "editor.rulers": [
+        120
+    ],
+    "python.formatting.autopep8Args": [
+        "--max-line-length=120"
+    ]
+}
