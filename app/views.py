@@ -60,7 +60,7 @@ class CreateBackup(generics.CreateAPIView):
     def post(self, request, *args, **kwargs):
         if not (request.user.is_staff or request.user.is_superuser):
             return HttpResponseForbidden('You are not allowed to complete this action.')
-        return create_backup(request)
+        return create_backup()
 
 
 class RestoreBackup(generics.CreateAPIView):
