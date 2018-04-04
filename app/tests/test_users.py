@@ -8,7 +8,7 @@ class TestUsers(CustomTestCase):
 
     @staticmethod
     def getApiUrl():
-        return '/api/users'
+        return '/users'
 
     def test_get_users(self):
         view = UsersList.as_view()

@@ -15,7 +15,7 @@ class TestCoursesUsers(CustomTestCase):
             'user_id': self.student.id
         }
 
-        request = self.factory.post('api/courses/users/add/', data)
+        request = self.factory.post('courses/users/add/', data)
         self.loginProfessor(request)
         response = view(request)
 
@@ -25,7 +25,7 @@ class TestCoursesUsers(CustomTestCase):
     def test__add_courses_users_student(self):
         view = CoursesUsersAdd.as_view()
 
-        request = self.factory.post('api/courses/users/add/')
+        request = self.factory.post('courses/users/add/')
         self.loginStudent(request)
         response = view(request)
 
@@ -34,7 +34,7 @@ class TestCoursesUsers(CustomTestCase):
     def test_add_courses_users_unauthorized(self):
         view = CoursesUsersAdd.as_view()
 
-        request = self.factory.post('api/courses/users/add/')
+        request = self.factory.post('courses/users/add/')
         response = view(request)
 
         self.assertEqual(response.status_code, 401)
@@ -53,7 +53,7 @@ class TestCoursesUsers(CustomTestCase):
 
         view = CoursesUsersDestroy.as_view()
 
-        request = self.factory.post('api/courses/users/delete/', data)
+        request = self.factory.post('courses/users/delete/', data)
         self.loginProfessor(request)
         response = view(request)
 
@@ -64,7 +64,7 @@ class TestCoursesUsers(CustomTestCase):
 
         view = CoursesUsersDestroy.as_view()
 
-        request = self.factory.post('api/courses/users/delete/')
+        request = self.factory.post('courses/users/delete/')
         self.loginStudent(request)
         response = view(request)
 
@@ -73,7 +73,7 @@ class TestCoursesUsers(CustomTestCase):
     def test_remove_courses_users_unauthorized(self):
         view = CoursesUsersDestroy.as_view()
 
-        request = self.factory.post('api/courses/users/delete/')
+        request = self.factory.post('courses/users/delete/')
         response = view(request)
 
         self.assertEqual(response.status_code, 401)

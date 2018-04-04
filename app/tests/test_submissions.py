@@ -5,11 +5,11 @@ from app.models import Submission
 
 
 class TestSubmissions(CustomTestCase):
-    
+
     @staticmethod
     def getApiUrl():
-        return '/api/submissions'
-    
+        return '/submissions'
+
     def test_get_submissions(self):
         view = SubmissionsList.as_view()
 

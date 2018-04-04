@@ -10,7 +10,7 @@ class TestBackups(CustomTestCase):
     def test_create_backup(self):
         view = CreateBackup.as_view()
 
-        request = self.factory.post('api/create_backup/')
+        request = self.factory.post('create_backup/')
         self.loginProfessor(request)
 
         response = view(request)
@@ -26,7 +26,7 @@ class TestBackups(CustomTestCase):
     def test_create_backup_student(self):
         view = CreateBackup.as_view()
 
-        request = self.factory.post('api/create_backup/')
+        request = self.factory.post('create_backup/')
         self.loginStudent(request)
         response = view(request)
 
@@ -35,7 +35,7 @@ class TestBackups(CustomTestCase):
     def test_create_backup_unauthorized(self):
         view = CreateBackup.as_view()
 
-        request = self.factory.post('api/create_backup/')
+        request = self.factory.post('create_backup/')
         response = view(request)
 
         self.assertEqual(response.status_code, 401)
@@ -45,7 +45,7 @@ class TestBackups(CustomTestCase):
 
     #     with open('backups/' + os.listdir('backups')[0], 'rb') as fp:
     #         print(os.listdir('backups')[0])
-    #         request = self.factory.post('api/create_backup/', {'backup': fp})
+    #         request = self.factory.post('create_backup/', {'backup': fp})
     #         self.loginProfessor(request)
     #         response = view(request)
 
@@ -54,7 +54,7 @@ class TestBackups(CustomTestCase):
     def test_create_restore_student(self):
         view = RestoreBackup.as_view()
 
-        request = self.factory.post('api/restore_backup/')
+        request = self.factory.post('restore_backup/')
         self.loginStudent(request)
         response = view(request)
 
@@ -63,7 +63,7 @@ class TestBackups(CustomTestCase):
     def test_create_restore_unauthorized(self):
         view = RestoreBackup.as_view()
 
-        request = self.factory.post('api/restore_backup/')
+        request = self.factory.post('restore_backup/')
         response = view(request)
 
         self.assertEqual(response.status_code, 401)

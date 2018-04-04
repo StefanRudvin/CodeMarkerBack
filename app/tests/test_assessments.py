@@ -8,7 +8,7 @@ class TestAssessments(CustomTestCase):
 
     @staticmethod
     def getApiUrl():
-        return '/api/assessments/'
+        return '/assessments/'
 
     def test_get_assessments(self):
         view = AssessmentsList.as_view()

@@ -5,11 +5,11 @@ from app.models import Course
 
 
 class TestCourses(CustomTestCase):
-    
+
     @staticmethod
     def getApiUrl():
-        return '/api/courses'
-    
+        return '/courses'
+
     def test_get_courses(self):
         view = CoursesList.as_view()
 
