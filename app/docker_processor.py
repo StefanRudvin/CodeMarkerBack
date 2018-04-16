@@ -1,6 +1,15 @@
+"""
+Module containing instructions on how to execute submissions in docker containers.
+Utilizes docker pip package and created bash scripts (inside 'scripts' folder) that are running submissions
+
+@TeamAlpha 2018
+CodeMarker
+docker_processor.py
+"""
+
+import os
 import docker
 from codemarker.settings import MEDIA_ROOT
-import os
 
 
 def run_dynamic(submission):
@@ -22,7 +31,7 @@ def run_dynamic(submission):
                                   {
                                       'bind': '/mnt/vol2',
                                       'mode': 'ro'
-                                  }
+                                      }
                           },
                           command=f"/bin/bash /mnt/vol2/run_dynamic.sh {submission.filename} {submission.assessment_id} {submission.id} {submission.language}")
 
@@ -43,7 +52,7 @@ def run_static(submission, assessment):
                                       'mode': 'rw'
                                   },
                               os.path.join(MEDIA_ROOT, '..', 'scripts'):
-                                  {
+                              {
                                       'bind': '/mnt/vol2',
                                       'mode': 'ro'
                                   }
@@ -69,6 +78,6 @@ def generate_input(submission, resource_language):
                                   {
                                       'bind': '/mnt/vol2',
                                       'mode': 'ro'
-                                  }
+                                      }
                           },
                           command=f"/bin/bash /mnt/vol2/generate.sh {submission.assessment_id} {resource_language}")

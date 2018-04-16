@@ -1,9 +1,17 @@
+"""
+Module with all entry points definitions, i.e. what site should be served if
+user tries to access any given URL
+
+@TeamAlpha 2018
+CodeMarker
+views.py
+"""
+
 import logging
 
 from django.contrib.auth.models import User
 from django.http import (HttpResponse, HttpResponseBadRequest,
                          HttpResponseForbidden, HttpResponseServerError)
-from django.views.decorators.csrf import csrf_exempt
 from rest_framework import generics, viewsets
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -40,6 +48,10 @@ class CustomObtainAuthToken(ObtainAuthToken):
 
 
 def index(request):
+    """
+    Main entry point, displays Hello World message if user accesses root URL
+    """
+
     return HttpResponse("Hello world. You're at the codemarker index.")
 
 
@@ -86,7 +98,6 @@ class ImportUsers(generics.CreateAPIView):
         return import_users(request)
 
 
-# TODO:  Add permissions
 class UserViewSet(viewsets.ModelViewSet):
     permission_classes = (DjangoModelPermissions,)
     queryset = User.objects.all()
@@ -137,10 +148,6 @@ class CoursesList(generics.ListCreateAPIView):
 
         if user.is_superuser or user.is_staff:
             return Course.objects.all()
-
-        # TODO: Find a way a attach a teacher to a course
-        # if user.is_staff:
-        #     return Course.objects.filter(professor=user)
 
         return Course.objects.filter(students=user)
 

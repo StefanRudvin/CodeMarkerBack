@@ -1,4 +1,10 @@
-from django.contrib import admin
+"""
+Admin module enabling built-in administrative panel
+
+@TeamAlpha 2018
+CodeMarker
+admin.py
+"""
 
 # Register your models here.
 

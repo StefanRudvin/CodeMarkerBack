@@ -1,12 +1,19 @@
-from django_mysql.models import EnumField
-from django_mysql.models import ListCharField
-from django.utils import timezone
-from django.conf import settings
-from django.db import models
+"""
+Models information for all entities used in the system
+
+@TeamAlpha 2018
+CodeMarker
+models.py
+"""
+
 import datetime
 
+from django.conf import settings
+from django.db import models
+from django.utils import timezone
+from django_mysql.models import EnumField, ListCharField
 # Create your models here.
-from rest_framework.compat import MinValueValidator, MaxValueValidator
+from rest_framework.compat import MaxValueValidator, MinValueValidator
 
 
 class Course(models.Model):

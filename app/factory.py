@@ -1,5 +1,14 @@
-import codecs
-import csv
+"""
+Module containing creators for subsequent elements, such as assessments or submissions.
+Adheres to 'factory' architectural pattern.
+
+Factories to create new resources with lengthy methods.
+
+@TeamAlpha 2018
+CodeMarker
+factory.py
+"""
+
 import json
 import logging
 import os
@@ -9,8 +18,7 @@ from django.contrib.auth.models import Group, User
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.files.storage import FileSystemStorage
 from django.db import DataError
-from django.http import (HttpResponse, HttpResponseBadRequest,
-                         HttpResponseForbidden)
+from django.http import (HttpResponseBadRequest, HttpResponseForbidden)
 from django.utils.datastructures import MultiValueDictKeyError
 from rest_framework.response import Response
 
@@ -21,12 +29,16 @@ from app.models import Assessment, Course, InputGenerator, Resource, Submission
 logger = logging.getLogger(__name__)
 
 
-"""
-    Factories to create new resources with lengthy methods.
-"""
-
-
 def assessment_creator(self, serializer):
+    """Method responsible for creating new assessments
+
+    Raises:
+        MultiValueDictKeyError -- Raised when not enough arguments have been passed
+
+    Returns:
+        HttpResponse -- Whether resource has been successfully created or not
+    """
+
     try:
         user = self.request.user
         name = self.request.POST.get("name", "")
@@ -136,10 +148,22 @@ def assessment_creator(self, serializer):
 
 
 def course_creator(self, serializer):
+    """
+    Dummy method for course creation, for future reference
+    """
+
     pass
 
 
 def submission_creator(self, serializer):
+    """Method for creating new submissions
+
+    Arguments:
+        serializer - passed from the views class, contains POST information
+
+    Returns:
+        HttpResponse - whether creation was successful or not
+    """
 
     try:
         assessment_id = self.request.POST['assessment_id']

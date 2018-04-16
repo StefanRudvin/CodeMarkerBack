@@ -1,12 +1,21 @@
+"""
+Module responsible for all Business Logic related to marking and assessing the solution.
+Uses filecmp to compare desired outputs with actual outputs to assign specific marks.
+
+@TeamAlpha 2018
+CodeMarker
+submission_processor.py
+"""
+
 import filecmp
 import json
 import os
 
 from django.core import serializers
 
+from app.docker_processor import generate_input, run_dynamic, run_static
+from app.models import Assessment, Resource, Submission
 from codemarker.settings import MEDIA_ROOT
-from app.docker_processor import run_dynamic, run_static, generate_input
-from app.models import Submission, Resource, Assessment
 
 
 def run_submission(submission_id, **kwargs):
