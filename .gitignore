@@ -13,3 +13,4 @@ backups/*.zip
 __pycache__
 *.zip
 **/.ropeproject
+_build
