@@ -10,14 +10,7 @@ Welcome to CodeMarker's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-.. automodule:: app.models
-    :members:
-.. automodule:: app.views
-    :members:
-    :undoc-members:
-    :inherited-members:
-
-
+   modules/models
 
 Indices and tables
 ==================
