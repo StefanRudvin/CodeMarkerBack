@@ -18,12 +18,16 @@ from app.models import Assessment, Resource, Submission
 from codemarker.settings import MEDIA_ROOT
 
 
-def run_submission(submission_id, **kwargs):
+def run_submission(submission_id):
+    """Run submission in a docker container
+
+    Arguments:
+        submission_id - ID of the submission that we're running
+
+    Returns:
+        JSON dump, whether it was successful or not
     """
 
-    :param submission_id:
-    :return: data
-    """
     # First get submission
     submission = Submission.objects.get(pk=submission_id)
     submission.status = "in_progress"
@@ -58,7 +62,9 @@ def run_submission(submission_id, **kwargs):
 
 
 def test_outputs(expected_output_dir, output_dir, submission):
-    # Test output
+    """Method testing whether the output matches the expected output
+    """
+
     if not filecmp.dircmp(expected_output_dir, output_dir).diff_files:
         submission.result = "pass"
         submission.marks = 100

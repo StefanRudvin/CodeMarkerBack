@@ -2,9 +2,9 @@
    :maxdepth: 5
    :caption: Contents:
 
-Models
+Processor
 ======
-.. automodule:: app.models
+.. automodule:: app.submission_processor
     :members:
     :show-inheritance:
     :inherited-members:

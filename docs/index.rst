@@ -11,6 +11,9 @@ Welcome to CodeMarker's documentation!
    :caption: Contents:
 
    modules/models
+   modules/views
+   modules/processor
+   modules/factory
 
 Indices and tables
 ==================

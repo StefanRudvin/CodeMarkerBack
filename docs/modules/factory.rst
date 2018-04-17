@@ -2,9 +2,9 @@
    :maxdepth: 5
    :caption: Contents:
 
-Models
+Factory
 ======
-.. automodule:: app.models
+.. automodule:: app.factory
     :members:
     :show-inheritance:
     :inherited-members:

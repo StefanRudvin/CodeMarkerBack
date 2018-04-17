@@ -1,11 +1,10 @@
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 2
    :caption: Contents:
 
-Models
+Views
 ======
-.. automodule:: app.models
+.. automodule:: app.views
     :members:
     :show-inheritance:
     :inherited-members:
-
