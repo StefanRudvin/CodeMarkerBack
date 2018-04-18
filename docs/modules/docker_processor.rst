@@ -2,9 +2,10 @@
    :maxdepth: 5
    :caption: Contents:
 
-factory.py
+docker_processor.py
 ======
-.. automodule:: app.factory
+.. automodule:: app.docker_processor
     :members:
     :show-inheritance:
+    :inherited-members:
 

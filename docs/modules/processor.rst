@@ -2,10 +2,9 @@
    :maxdepth: 5
    :caption: Contents:
 
-Processor
+submission_processor.py
 ======
 .. automodule:: app.submission_processor
     :members:
     :show-inheritance:
-    :inherited-members:
 

@@ -2,10 +2,9 @@
    :maxdepth: 5
    :caption: Contents:
 
-Models
+models.py
 ======
 .. automodule:: app.models
     :members:
     :show-inheritance:
-    :inherited-members:
 

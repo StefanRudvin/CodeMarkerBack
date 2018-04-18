@@ -2,9 +2,9 @@
    :maxdepth: 5
    :caption: Contents:
 
-factory.py
+serializers.py
 ======
-.. automodule:: app.factory
+.. automodule:: app.serializers
     :members:
     :show-inheritance:
 

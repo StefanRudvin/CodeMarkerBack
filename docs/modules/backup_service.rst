@@ -2,9 +2,10 @@
    :maxdepth: 5
    :caption: Contents:
 
-factory.py
+backup_service.py
 ======
-.. automodule:: app.factory
+.. automodule:: app.backup_service
     :members:
     :show-inheritance:
+    :inherited-members:
 

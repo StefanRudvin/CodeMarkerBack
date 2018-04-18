@@ -1,10 +1,9 @@
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 2
    :caption: Contents:
 
-factory.py
+test_backup.py
 ======
-.. automodule:: app.factory
+.. automodule:: app.tests.test_backup
     :members:
     :show-inheritance:
-
