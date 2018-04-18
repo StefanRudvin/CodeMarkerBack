@@ -69,7 +69,7 @@ class TestSubmissions(CustomTestCase):
         force_authenticate(request, user=self.student, token=self.student.auth_token)
         response = view(request)
 
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 400)
 
     def test_get_submission(self):
         view = SubmissionsDetail.as_view()
