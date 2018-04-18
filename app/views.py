@@ -324,7 +324,7 @@ class SubmissionsList(generics.ListCreateAPIView):
     queryset = Submission.objects.all()
     serializer_class = SubmissionSerializer
 
-    permission_classes = (DjangoModelPermissions,)
+    #permission_classes = (DjangoModelPermissions,)
 
     def post(self, serializer):
         return submission_creator(self, serializer)

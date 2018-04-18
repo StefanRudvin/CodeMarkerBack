@@ -223,11 +223,11 @@ def import_users(request):
     """
 
     # Create backup of the current userbase before import
-    create_backup(request)
+    create_backup()
 
     # Parse uploaded CSV file
     csvfile = request.FILES.get("csv").read().decode("utf-8")
-
+    logger.error(csvfile)
     # Iterate the CSV file for entries
     for row in csvfile.splitlines():
         userdata = row.split(',')

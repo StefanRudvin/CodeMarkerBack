@@ -10,13 +10,14 @@ submission_processor.py
 import filecmp
 import json
 import os
-
+import logging
 from django.core import serializers
 
 from app.docker_processor import generate_input, run_dynamic, run_static
 from app.models import Assessment, Resource, Submission
 from codemarker.settings import MEDIA_ROOT
 
+logger = logging.getLogger(__name__)
 
 def run_submission(submission_id):
     """Run submission in a docker container
@@ -64,12 +65,14 @@ def run_submission(submission_id):
 def test_outputs(expected_output_dir, output_dir, submission):
     """Method testing whether the output matches the expected output
     """
-
+    logger.error(expected_output_dir)
+    logger.error(output_dir)
     if not filecmp.dircmp(expected_output_dir, output_dir).diff_files:
         submission.result = "pass"
         submission.marks = 100
         submission.info = "All tests cleared! Great job!"
     else:
+        logger.error(filecmp.dircmp(expected_output_dir, output_dir).diff_files)
         failed_output = ""
         for failed in filecmp.dircmp(expected_output_dir, output_dir).diff_files:
             file = open(os.path.join(output_dir, failed), "r")
