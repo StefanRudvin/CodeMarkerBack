@@ -256,6 +256,7 @@ def import_users(request):
         # Add student to all courses specified in the CSV file
         try:
             for course in courses:
+                logger.error("trying to add course ",course)
                 course_model = Course.objects.get(name=course)
                 course_model.students.add(user)
                 course_model.save()
