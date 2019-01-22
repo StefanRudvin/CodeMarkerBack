@@ -11,7 +11,7 @@ import datetime
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-from django_mysql.models import EnumField, ListCharField,TextField
+from django_mysql.models import EnumField, ListCharField
 # Create your models here.
 from rest_framework.compat import MaxValueValidator, MinValueValidator
 
