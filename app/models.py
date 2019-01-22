@@ -11,7 +11,7 @@ import datetime
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-from django_mysql.models import EnumField, ListCharField
+from django_mysql.models import EnumField, ListCharField,TextField
 # Create your models here.
 from rest_framework.compat import MaxValueValidator, MinValueValidator
 
@@ -86,8 +86,10 @@ class InputGenerator(models.Model):
 
 class Assessment(models.Model):
     name = models.CharField(max_length=400, null=False)
-    description = models.CharField(max_length=1000, default="")
-    additional_help = models.CharField(max_length=1000, default="")
+    #description = models.CharField(max_length=1000, default="")
+    #additional_help = models.CharField(max_length=1000, default="")
+    description = models.TextField(default="")
+    additional_help = models.TextField(default="")
     deadline = models.DateTimeField(blank=False)
     static_input = models.BooleanField(default=False)
     dynamic_input = models.BooleanField(default=False)
