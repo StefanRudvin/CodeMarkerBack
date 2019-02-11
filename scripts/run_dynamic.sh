@@ -24,19 +24,19 @@ do
     # You redirect input to the file and save output in the outputs folder in all the cases.
     case $language in
         java)
-            javac "submissions/${submissionId}/${filename}";
+            javac "submissions/${submissionId}/${filename}"; ulimit -t 10 ;
             java -cp submissions/${submissionId} ${filename%.*} < "${f}" &> "submissions/${submissionId}/outputs/${output}";
         ;;
         cpp)
-            g++ -o "submissions/${submissionId}/out" "submissions/${submissionId}/${filename}";
+            g++ -o "submissions/${submissionId}/out" "submissions/${submissionId}/${filename}"; ulimit -t 10 ;
             "submissions/${submissionId}/out" < "${f}" &> "submissions/${submissionId}/outputs/${output}";
         ;;
         c)
-            gcc -o "submissions/${submissionId}/out" "submissions/${submissionId}/${filename}";
+            gcc -o "submissions/${submissionId}/out" "submissions/${submissionId}/${filename}"; ulimit -t 10 ;
             "submissions/${submissionId}/out" < "${f}" &> "submissions/${submissionId}/outputs/${output}";
         ;;
         *)
-            ${language} "submissions/${submissionId}/${filename}" < "${f}" &> "submissions/${submissionId}/outputs/${output}";
+            ulimit -t 10 ; ${language} "submissions/${submissionId}/${filename}" < "${f}" &> "submissions/${submissionId}/outputs/${output}";
         ;;
     esac
     

@@ -45,9 +45,11 @@ def run_submission(submission_id):
         str(submission.assessment_id)), "submissions", str(submission_id), "static_outputs")
 
     if assessment.static_input:
+        submission.info=submission.info+"RUNNING STATIC INPUT. \n"
         run_static(submission, assessment)
         test_outputs(expected_static_output_dir, static_output_dir, submission)
     if assessment.dynamic_input:
+        submission.info=submission.info+"RUNNING DYNAMIC INPUT. \n"
         resource_language = Resource.objects.get(
             assessment_id=submission.assessment_id).language
         generate_input(submission, resource_language)
@@ -70,7 +72,7 @@ def test_outputs(expected_output_dir, output_dir, submission):
     if not filecmp.dircmp(expected_output_dir, output_dir).diff_files:
         submission.result = "pass"
         submission.marks = 100
-        submission.info = "All tests cleared! Great job!"
+        submission.info = submission.info+" All tests cleared! Great job! \n"
     else:
         logger.error(filecmp.dircmp(expected_output_dir, output_dir).diff_files)
         failed_output = ""
@@ -81,7 +83,7 @@ def test_outputs(expected_output_dir, output_dir, submission):
 
         submission.result = "fail"
         submission.marks = 0
-        submission.info = failed_output
+        submission.info = submission.info+failed_output
 
     count = 0
     total = 0.0

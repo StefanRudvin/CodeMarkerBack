@@ -305,10 +305,14 @@ class UsersDetail(generics.RetrieveUpdateDestroyAPIView):
         is_staff = self.request.POST.get("is_staff", "")
 
         email = self.request.POST.get("email", "")
+        
+        password = self.request.POST.get("password", "")
 
         user = User.objects.get(pk=user_id)
         user.username = username
         user.email = email
+        if password!="":
+           user.password = password
         user.is_staff = is_staff == 'true'
         user.save()
 
