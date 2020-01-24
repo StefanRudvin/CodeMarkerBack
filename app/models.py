@@ -138,7 +138,7 @@ class Submission(models.Model):
     info = models.TextField(default='None')
 
     timeTaken = models.DecimalField(
-        null=False, default=0, decimal_places=4, max_digits=4)
+        null=False, default=0, decimal_places=4, max_digits=6)
 
     late = models.BooleanField(default=False)
 
