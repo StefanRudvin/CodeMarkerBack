@@ -47,6 +47,7 @@ def assessment_creator(self, serializer):
         additional_help = self.request.POST.get("additional_help", "")
 
         deadline = self.request.POST.get('deadline', "")
+        max_time = self.request.POST.get('max_time', 0)
 
         dynamic_input = self.request.POST["dynamicInput"]
         static_input = self.request.POST["staticInput"]
@@ -83,7 +84,8 @@ def assessment_creator(self, serializer):
         deadline=deadline,
         static_input=json.loads(static_input),
         dynamic_input=json.loads(dynamic_input),
-        num_of_static=num_of_static)
+        num_of_static=num_of_static,
+        max_time=max_time)
 
     assessment.save()
 

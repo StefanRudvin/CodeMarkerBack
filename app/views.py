@@ -10,6 +10,8 @@ views.py
 import logging
 
 from django.contrib.auth.models import User
+from django.utils.timezone import make_aware
+from django.utils.dateparse import parse_datetime
 from django.http import (HttpResponse, HttpResponseBadRequest,
                          HttpResponseForbidden, HttpResponseServerError)
 from rest_framework import generics, viewsets
@@ -253,6 +255,21 @@ class AssessmentsDetail(generics.RetrieveUpdateDestroyAPIView):
             return HttpResponseForbidden('You are not allowed to access this resource.')
 
         return self.retrieve(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        if not (request.user.is_staff or request.user.is_superuser):
+            return HttpResponseForbidden('You are not allowed to access this resource.')
+
+        assessment_id = self.kwargs['pk']
+        assessment = Assessment.objects.get(id=assessment_id)
+        assessment.deadline = make_aware(parse_datetime(self.request.POST.get("deadline", "")))
+        assessment.name = self.request.POST.get("name", "")
+        assessment.description = self.request.POST.get("description", "")
+        assessment.additional_help = self.request.POST.get("additional_help", "")
+        assessment.max_time = self.request.POST.get("max_time", 0)
+        assessment.save()
+
+        return HttpResponse()
 
 
 class UsersList(generics.ListCreateAPIView):
