@@ -115,7 +115,7 @@ def test_outputs(expected_output_dir, output_dir, submission, max_time):
     submission.timeTaken = round(max(total), 3)
     submission.status = "complete"
 
-    if submission.timeTaken > max_time:
+    if (max_time > 0 and submission.timeTaken > max_time):
         submission.marks = 0
         submission.info = (
             submission.info
